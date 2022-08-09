@@ -64,9 +64,14 @@ body {
 .logbutton{
     border: 2px solid white;
     border-radius: 20px;
-    margin-top: 10%;
+    margin-top: 7%;
+    margin-bottom: 2%;
     background-color: rgb(38, 42, 53);
     color: white;
-    width: 7%;
-    height: 5%;
+    width: 10%;
+    padding: 1%;
+}
+.logbutton:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
 }

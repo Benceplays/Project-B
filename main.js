@@ -7,7 +7,7 @@ function registration() {
   }
 function login() {
     var c = document.getElementById("loginbut");
-    var v = document.getElementById("registerbut")
+    var v = document.getElementById("registerbut");
       c.style.display = "block";
       v.style.display = "none";
 }

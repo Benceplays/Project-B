@@ -17,7 +17,7 @@
         <li class="li"><a class="li-a" href="#contact">Contact</a></li>
         <li class="li"><a class="li-a" href="#about">About</a></li>
       </ul>
-    <button onclick="login()" class="logbutton" style="margin-left: 40%;">Bejelentkezés</button>
+    <button onclick="login()" class="logbutton" style="margin-left: 37.5%; ">Bejelentkezés</button>
     <button onclick="registration()" class="logbutton" style="margin-left: 5%;">Regisztráció</button>
     <div id="loginbut" class="loginpanel">
         <h1 class="loginh1">Bejelentkezés</h1>
@@ -26,12 +26,13 @@
         <a class="forgotpasswd" href="../forgotpasswd/index.html">Elfelejtetted a jelszavad?</a>
         <button class="logininbutton">Bejelentkezés</button>
     </div>
-    <div id="registerbut" class="loginpanel" style="display: none;">
+    <div id="registerbut" class="loginpanel" style="display: none; height: 500px;">
         <h1 class="loginh1">Regisztráció</h1>
-        <input class="loginobject" placeholder="Email cím" type="text" id="uname"><br><br>
-        <input class="loginobject" placeholder="Jelszó" title="Jelszó" id="passwd"><br><br>
-        <a class="forgotpasswd" href="../forgotpasswd/index.html">Elfelejtetted a jelszavad?</a>
-        <button class="logininbutton">Bejelentkezés</button>
+        <input class="loginobject" placeholder="Email cím" type="text" id="uname">
+        <input class="loginobject" placeholder="Felhasználónév" type="text" id="uname">
+        <input class="loginobject" placeholder="Jelszó" type="text" id="uname">
+        <input class="loginobject" placeholder="Jelszó még egyszer" title="Jelszó" id="passwd">
+        <button class="logininbutton" style="margin-left: 60%; padding:1%">Bejelentkezés</button>
     </div>
 
 </body>
