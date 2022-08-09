@@ -12,10 +12,24 @@
 </head>
 <body>
     <ul class="ul">
-        <li class="li"><a class="li-a" href="#home">Home</a></li>
-        <li class="li"><a class="li-a" href="#news">News</a></li>
-        <li class="li"><a class="li-a" href="#contact">Contact</a></li>
-        <li class="li"><a class="li-a" href="#about">About</a></li>
+        <li class="li" id="subki"><a class="li-a" href="../index.html">Kezdőlap</a></li>
+        <li class="li">
+          <ul style="padding: 0;"><a class="li-a" id="subscriber">Hirdetések</a>
+            <li id="sub-menu"  style="list-style-type: none; display: none; " ><a class="li-a">Level 1</a></li>
+            <li id="sub-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Level 2</a></li>
+            <li id="sub-menu3" style="list-style-type: none;display: none; "><a class="li-a">Level 3</a></li>                        
+          </ul>
+        </li>
+        <li class="li" id="subki2"><a class="li-a" href="#news">Hirdetések</a></li>
+        
+        <li class="li">
+          <ul style="padding: 0;"><a class="li-a" id="subscriber">Előfizetés</a>
+            <li id="sub-menu"  style="list-style-type: none; display: none; " ><a class="li-a">Level 1</a></li>
+            <li id="sub-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Level 2</a></li>
+            <li id="sub-menu3" style="list-style-type: none;display: none; "><a class="li-a">Level 3</a></li>                        
+          </ul>
+        </li>
+        <li style="float: right;" id="subki3"><a class="li-a" href="login.html">Login</a></li>
       </ul>
     <button onclick="login()" class="logbutton" style="margin-left: 37.5%; ">Bejelentkezés</button>
     <button onclick="registration()" class="logbutton" style="margin-left: 5%;">Regisztráció</button>
@@ -23,17 +37,18 @@
         <h1 class="loginh1">Bejelentkezés</h1>
         <input class="loginobject" placeholder="Email cím" type="text" id="uname"><br><br>
         <input class="loginobject" placeholder="Jelszó" title="Jelszó" id="passwd"><br><br>
-        <a class="forgotpasswd" href="../forgotpasswd/index.html">Elfelejtetted a jelszavad?</a>
+        <a class="forgotpasswd" href="../forgotpasswd/index.html" style="text-decoration: none; color: #ff8000; font-weight: bold;">Elfelejtetted a jelszavad?</a>
         <button class="logininbutton">Bejelentkezés</button>
     </div>
     <div id="registerbut" class="loginpanel" style="display: none; height: 500px;">
         <h1 class="loginh1">Regisztráció</h1>
-        <input class="loginobject" placeholder="Email cím" type="text" id="uname">
-        <input class="loginobject" placeholder="Felhasználónév" type="text" id="uname">
-        <input class="loginobject" placeholder="Jelszó" type="text" id="uname">
-        <input class="loginobject" placeholder="Jelszó még egyszer" title="Jelszó" id="passwd">
-        <button class="logininbutton" style="margin-left: 60%; padding:1%">Bejelentkezés</button>
-    </div>
+        <input class="loginobject" placeholder="Email cím" type="text" name="email" id="email">
+        <input class="loginobject" placeholder="Felhasználónév" type="text" name="username" id="username">
+        <input class="loginobject" placeholder="Jelszó" type="text" name="password" id="passwd">
+        <input class="loginobject" placeholder="Jelszó még egyszer" name="password2" title="Jelszó" id="passwd">
+        <button type="submit" class="logininbutton" style="margin-left: 60%; padding:1%">Regisztráció</button>
+      </div>
+
 
 </body>
 </html>

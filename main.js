@@ -41,11 +41,9 @@ function adsOver() {
   menu.forEach(elem =>{elem.style.display = "block"});
 }
 
-
 function kiadol(event) {
   let menu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2"), document.getElementById("ads-menu3"), document.getElementById("game-menu1"), document.getElementById("game-menu2"), document.getElementById("game-menu3")]
   menu.forEach(elem =>{elem.style.display = "none"});
 }
 
 }
-
