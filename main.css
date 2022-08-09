@@ -5,3 +5,30 @@ body {
 .orange-text{
     color: #ff8000;
 }
+
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(38, 42, 53);
+    border-bottom: #ff8000 2px solid;
+  }
+  
+  .li {
+    float: left;
+  }
+  
+  .li-a {
+    display: block;
+    color: #ff8000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .li-a:hover {
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+  }
