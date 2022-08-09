@@ -9,8 +9,6 @@ body {
     background-color:  rgb(38, 42, 53);
     border:3px solid #ff8000 ;
     border-radius: 5px;
-    border:2px solid #ff8000 ;
-    border-radius: 30px;
 }
 .loginobject{
     width: 80%;
@@ -29,16 +27,13 @@ body {
     width: 25%;
     height: 15%;
     border-radius: 5px;
-    margin-top: -20%;
+    margin-top: 5%;
     color: #ff8000;
     font-weight: bold;
 }
 .logininbutton:hover{
     background-color: #ff8000;
     color: rgb(38, 42, 53);
-    border-radius: 20px;
-    margin-top: 7%;
-    color: #ff8000;
 }
 .ul {
     list-style-type: none;
@@ -73,6 +68,16 @@ body {
 }
 .forgotpasswd{
     margin-left: 10%;
+    color: #ff8000;
+    text-decoration: none;
+}
+.forgotpasswd:hover{
+    color: #ff8000;
+    text-decoration: underline;
+}
+.forgotpasswd:active{
+    color: #ff8000;
+    text-decoration: underline;
 }
 .logbutton{
     border: 3px solid #ff8000 ;

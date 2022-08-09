@@ -11,48 +11,46 @@
 <title>ASD</title>
 </head>
 <body>
-    <ul class="ul">
-        <li class="li" id="subki"><a class="li-a" href="../index.html">Kezdőlap</a></li>
-        <li class="li">
-          <ul style="padding: 0;"><a class="li-a" id="subscriber">Hirdetések</a>
-            <li id="sub-menu"  style="list-style-type: none; display: none; " ><a class="li-a">Level 1</a></li>
-            <li id="sub-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Level 2</a></li>
-            <li id="sub-menu3" style="list-style-type: none;display: none; "><a class="li-a">Level 3</a></li>                        
-          </ul>
-        </li>
-        <li class="li" id="subki2"><a class="li-a" href="#news">Hirdetések</a></li>
-        
-        <li class="li">
-          <ul style="padding: 0;"><a class="li-a" id="subscriber">Előfizetés</a>
-            <li id="sub-menu"  style="list-style-type: none; display: none; " ><a class="li-a">Level 1</a></li>
-            <li id="sub-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Level 2</a></li>
-            <li id="sub-menu3" style="list-style-type: none;display: none; "><a class="li-a">Level 3</a></li>                        
-          </ul>
-        </li>
-        <li style="float: right;" id="subki3"><a class="li-a" href="login.html">Login</a></li>
+  <ul class="ul">
+    <li class="li" id="subki" ><a class="li-a" href="../index.html" id="adski">Kezdőlap</a></li>
+    <li class="li">
+      <ul style="padding: 0;" id="adski2"><a class="li-a" id="subscriber">Előfizetések</a>
+        <li id="sub-menu"  style="list-style-type: none; display: none; " ><a class="li-a">Level 1</a></li>
+        <li id="sub-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Level 2</a></li>
+        <li id="sub-menu3" style="list-style-type: none;display: none; "><a class="li-a">Level 3</a></li>                        
       </ul>
+    </li>
+    
+    <li class="li" id="subki2">
+      <ul style="padding: 0;"><a class="li-a" id="ads" >Hirdetések</a>
+        <li id="ads-menu2"  style="list-style-type: none;display: none; "><a class="li-a">DC Szerver</a></li>
+        <li id="ads-menu3" style="list-style-type: none;display: none; "><a class="li-a">TS Szerver</a></li>      
+        <li id="ads-menu1" style="list-style-type: none; display: none; float: left"><a class="li-a">Játékok</a></li> 
+          
+                       
+      </ul>
+    </li>
+    <li style="float: right;" id="subki3" ><a class="li-a" href="login.html" id="adski3">Login</a></li>
+  </ul>
     <button onclick="login()" class="logbutton" style="margin-left: 37.5%; ">Bejelentkezés</button>
     <button onclick="registration()" class="logbutton" style="margin-left: 4.8%; ">Regisztráció</button>
     <div id="loginbut" class="loginpanel">
         <h1 class="loginh1">Bejelentkezés</h1>a
-        <input class="loginobject" placeholder="Email cím" type="text" id="uname"><br><br>
+        <input class="loginobject" placeholder="Email cím" type="text" id="uname" style="margin-left: 7.5%; margin-right: 5%;"><br><br>
+        
         <input class="loginobject psw-hide" placeholder="Jelszó" type="password" title="Jelszó" id="psw" required><br><br>
-        <input class="checkboxcucc" type="checkbox" onclick="jelszonezes()"><p style="color: #ff8000;">Jelszavam megtekintése</p>
-        <input class="loginobject" placeholder="Jelszó" title="Jelszó" id="passwd"><br><br>
-        <a class="forgotpasswd" href="../forgotpasswd/index.html" style="text-decoration: none; color: #ff8000; font-weight: bold;">Elfelejtetted a jelszavad?</a>
+       <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -60px;" onclick="jelszonezes()" style="color: orange;">
+        <a class="forgotpasswd" href="../forgotpasswd/index.html" style="font-weight: bold;">Elfelejtetted a jelszavad?</a>
         <button class="logininbutton">Bejelentkezés</button>
     </div>
     <div id="registerbut" class="loginpanel" style="display: none; height: 50%;">
-        <h1 class="loginh1">Regisztráció</h1>
+        <h1 class="loginh1" >Regisztráció</h1>
         <input class="loginobject" placeholder="Email cím" type="text" name="email" id="email">
         <input class="loginobject" placeholder="Felhasználónév" type="text" name="username" id="username">
-        <input class="loginobject psw-hide" placeholder="Jelszó" type="password" name="password" id="passwd" required>
-        <input class="loginobject psw-hide" placeholder="Jelszó még egyszer" type="password" name="password2" title="Jelszó" id="passwd" required>
-        <input class="checkboxcucc" type="checkbox" onclick="jelszonezes()"><p style="color: #ff8000;">Jelszavam megtekintése</p>
+        <input class="loginobject psw-hide" placeholder="Jelszó" type="password" name="password" id="passwd"  required>
+        <input class="loginobject psw-hide" placeholder="Jelszó még egyszer" type="password" name="password2" title="Jelszó" id="passwd2"  required>
+        <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -35px;" onclick="jelszonezes2()" style="color: orange;">
         <button type="submit" class="logininbutton" style="margin-left: 60%; padding:1%; margin-bottom: 5%;">Regisztráció</button>
-        <input class="loginobject" placeholder="Jelszó" type="text" name="password" id="passwd">
-        <input class="loginobject" placeholder="Jelszó még egyszer" name="password2" title="Jelszó" id="passwd">
-        <button type="submit" class="logininbutton" style="margin-left: 60%; padding:1%">Regisztráció</button>
       </div>
 
 
