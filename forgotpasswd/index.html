@@ -11,18 +11,31 @@
 </head>
 <body>
     <ul class="ul">
-        <li class="li"><a class="li-a" href="#home">Home</a></li>
-        <li class="li"><a class="li-a" href="#news">News</a></li>
-        <li class="li"><a class="li-a" href="#contact">Contact</a></li>
-        <li class="li"><a class="li-a" href="#about">About</a></li>
+        <li class="li" id="subki"><a class="li-a" href="../index.html">Kezdőlap</a></li>
+        <li class="li">
+          <ul style="padding: 0;"><a class="li-a" id="subscriber">Hirdetések</a>
+            <li id="sub-menu"  style="list-style-type: none; display: none; " ><a class="li-a">Level 1</a></li>
+            <li id="sub-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Level 2</a></li>
+            <li id="sub-menu3" style="list-style-type: none;display: none; "><a class="li-a">Level 3</a></li>                        
+          </ul>
+        </li>
+        <li class="li" id="subki2"><a class="li-a" href="#news">Hirdetések</a></li>
+        
+        <li class="li">
+          <ul style="padding: 0;"><a class="li-a" id="subscriber">Előfizetés</a>
+            <li id="sub-menu"  style="list-style-type: none; display: none; " ><a class="li-a">Level 1</a></li>
+            <li id="sub-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Level 2</a></li>
+            <li id="sub-menu3" style="list-style-type: none;display: none; "><a class="li-a">Level 3</a></li>                        
+          </ul>
+        </li>
+        <li style="float: right;" id="subki3"><a class="li-a" href="../login/login.html">Login</a></li>
       </ul>
     
     <div class="loginpanel">
         <h1 class="loginh1">Elfelejtett jelszó</h1>
         <input class="loginobject" placeholder="Email cím" type="text" id="uname"><br><br>
-        <input class="loginobject" placeholder="Jelszó" title="Jelszó" id="passwd"><br><br>
-        <a href=""></a>
-        <button class="logininbutton">Bejelentkezés</button>
+        <p class="forgotpasswdtext">Az itt megadott email címedre fogunk küldeni egy jelszó visszaállító email-t.</p>
+        <button class="logininbutton">Küldés</button>
     </div>
 
 </body>

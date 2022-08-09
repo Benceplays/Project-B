@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(38, 42, 53);
+}
+
 .ul {
     list-style-type: none;
     margin: 0;
@@ -27,4 +31,35 @@
 .loginh1{
     text-align: center;
     margin-top: 2%;
+}
+.loginpanel{
+    width: 25%;
+    height: 300px;
+    margin-left: 37.5%;
+    background-color: #ff8000;
+    border:2px solid white;
+    border-radius: 30px;
+    margin-top: 7%;
+}
+.loginobject{
+    width: 80%;
+    margin-top: 8%;
+    margin-left: 10%;
+    position: static;
+    border-radius: 5px;
+    padding: 1%;
+}
+.logininbutton{
+    background-color: rgb(38, 42, 53);
+    border: 2px solid white;
+    margin-left: 35%;
+    width: 25%;
+    height: 15%;
+    border-radius: 20px;
+    color: white;
+}
+.forgotpasswdtext{
+    text-align: center;
+    font-size: 120%;
+    font-weight: bold;
 }

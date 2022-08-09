@@ -4,11 +4,11 @@ body {
 
 .loginpanel{
     width: 25%;
-    height: 400px;
+    height: 425px;
     margin-left: 37.5%;
-    background-color: #ff8000;
-    border:2px solid white;
-    border-radius: 30px;
+    background-color:  rgb(38, 42, 53);
+    border:3px solid #ff8000 ;
+    border-radius: 5px;
 }
 .loginobject{
     width: 80%;
@@ -17,16 +17,23 @@ body {
     position: static;
     border-radius: 5px;
     padding: 1%;
+    border-color: #ff8000;
+    background-color:rgb(38, 42, 53);
 }
 .logininbutton{
     background-color: rgb(38, 42, 53);
-    border: 2px solid white;
+    border: 2px solid #ff8000;
     margin-left: 15%;
     width: 25%;
     height: 15%;
-    border-radius: 20px;
-    margin-top: 7%;
-    color: white;
+    border-radius: 5px;
+    margin-top: -20%;
+    color: #ff8000;
+    font-weight: bold;
+}
+.logininbutton:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
 }
 .ul {
     list-style-type: none;
@@ -57,21 +64,40 @@ body {
 .loginh1{
     text-align: center;
     margin-top: 2%;
+    color: #ff8000;
 }
 .forgotpasswd{
     margin-left: 10%;
 }
 .logbutton{
-    border: 2px solid white;
-    border-radius: 20px;
+    border: 3px solid #ff8000 ;
+    border-radius: 5px;
     margin-top: 7%;
     margin-bottom: 2%;
     background-color: rgb(38, 42, 53);
-    color: white;
+    color: #ff8000 ;
+    font-weight: bold;
+    font-size: 20px;
     width: 10%;
     padding: 1%;
 }
 .logbutton:hover{
     background-color: #ff8000;
     color: rgb(38, 42, 53);
+}
+
+::placeholder {
+    color: #ff8000 ;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ff8000 ;
+   }
+
+   input:focus { 
+    outline: none !important;
+    border-color:  #ff8000;
+    box-shadow: 0 0 10px  #ff8000;
+}
+input{
+    color:#ff8000 ;
 }
