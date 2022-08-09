@@ -30,3 +30,4 @@ function mouseOut() {
   menu.forEach(elem =>{elem.style.display = "none"});
 }
 }
+
