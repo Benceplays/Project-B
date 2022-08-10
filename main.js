@@ -116,14 +116,24 @@ myInput.onkeyup = function() {
   }
 }
 myInput2.onkeyup = function() {
-  if(myInput.value == myInput2.value){
+  if(myInput2.value == myInput.value){
     document.getElementById("message2").classList = 'displaycucc';
   }
-  else{
+  if(myInput2.value != myInput.value){
+    document.getElementById("message2").classList = '';
+  }
+  }
+myInput.onkeyup = function() {
+  if(myInput2.value == myInput.value){
+    document.getElementById("message2").classList = 'displaycucc';
+  }
+  if(myInput2.value != myInput.value){
     document.getElementById("message2").classList = '';
   }
   }
 
+
+  
 }
 function jelszonezes() {
   var x = document.getElementById("psw");
