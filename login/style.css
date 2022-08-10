@@ -79,6 +79,10 @@ body {
     color: #ff8000;
     text-decoration: underline;
 }
+.margin-fent{
+    margin-top: 0% !important;
+}
+
 .logbutton{
     border: 3px solid #ff8000 ;
     border-radius: 5px;
@@ -111,3 +115,28 @@ body {
 input{
     color:#ff8000 ;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover
+input:-webkit-autofill:active
+input:-webkit-autofill:focus{
+    -webkit-text-fill-color: #ff8000;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.valid {
+    color: green;
+  }
+  
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -5px;
+    content: "X";
+  }
+  .displaycucc  {
+    display: none;
+  }

@@ -39,19 +39,30 @@
         <input class="loginobject" placeholder="Email cím" type="text" id="uname" style="margin-left: 7.5%; margin-right: 5%;"><br><br>
         
         <input class="loginobject psw-hide" placeholder="Jelszó" type="password" title="Jelszó" id="psw" required><br><br>
-       <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -60px;" onclick="jelszonezes()" style="color: orange;">
+          <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -60px;" onclick="jelszonezes()" >
         <a class="forgotpasswd" href="../forgotpasswd/index.html" style="font-weight: bold;">Elfelejtetted a jelszavad?</a>
         <button class="logininbutton">Bejelentkezés</button>
     </div>
     <div id="registerbut" class="loginpanel" style="display: none; height: 50%;">
         <h1 class="loginh1" >Regisztráció</h1>
-        <input class="loginobject" placeholder="Email cím" type="text" name="email" id="email">
-        <input class="loginobject" placeholder="Felhasználónév" type="text" name="username" id="username">
-        <input class="loginobject psw-hide" placeholder="Jelszó" type="password" name="password" id="passwd"  required>
+        <input class="loginobject"  placeholder="Email cím" type="text" name="email" id="email">
+        <input class="loginobject" autocomplete="off" placeholder="Felhasználónév" type="text" name="username" id="username">
+        <input class="loginobject psw-hide" placeholder="Jelszó" type="password" name="password" id="passwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+        <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: 9%;" onclick="jelszonezes2()">
+        <div id="message" class="displaycucc" style="margin-left: 13%; margin-top: 2%;">
+          <p id="letter" class="invalid">Kis betű</p>
+          <p id="capital" class="invalid">Nagy betű</p>
+          <p id="number" class="invalid">Egy szám</p>
+          <p id="length" class="invalid">Minimum 8 karakter</b></p>
+          
+      </div>  
         <input class="loginobject psw-hide" placeholder="Jelszó még egyszer" type="password" name="password2" title="Jelszó" id="passwd2"  required>
-        <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -35px;" onclick="jelszonezes2()" style="color: orange;">
+        <div id="message2" class="displaycucc" style="margin-left: 13%; margin-top: 2%; color: red">
+          <p>A jelszavak nem egyeznek</p>
+      </div>  
         <button type="submit" class="logininbutton" style="margin-left: 60%; padding:1%; margin-bottom: 5%;">Regisztráció</button>
-      </div>
+
+  </div>       
 
 
 </body>
