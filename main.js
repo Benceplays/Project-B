@@ -61,17 +61,25 @@ window.onload=function(){
 
 
 myInput.onfocus = function() {
-  myInput2.classList = 'loginobject psw-hide margin-fent';
   document.getElementById("message").classList = '';
 }
 
 myInput.onblur = function() {
   if(letter2 == 1 && capital2 == 1 && number2 == 1 && length2 == 1 ){
   document.getElementById("message").classList = 'displaycucc';
-  myInput2.classList = 'loginobject psw-hide';
   }
 }
 myInput.onkeyup = function() {
+  if(myInput2.value == myInput.value){
+    document.getElementById("message2").classList = 'displaycucc';
+    myInput.classList = 'sarga loginobject psw-hide';
+    myInput2.classList = 'sarga loginobject psw-hide';
+  }
+  if(myInput2.value != myInput.value){
+    document.getElementById("message2").classList = '';
+    myInput2.classList = 'piros loginobject psw-hide';
+    myInput.classList = 'piros loginobject psw-hide';
+  }
   let lowerCaseLetters = /[a-z]/g;
   if(myInput.value.match(lowerCaseLetters)) {  
     letter.classList.remove("invalid");
@@ -118,21 +126,45 @@ myInput.onkeyup = function() {
 myInput2.onkeyup = function() {
   if(myInput2.value == myInput.value){
     document.getElementById("message2").classList = 'displaycucc';
+    myInput2.classList = 'sarga loginobject psw-hide';
+    myInput.classList = 'sarga loginobject psw-hide';
   }
   if(myInput2.value != myInput.value){
     document.getElementById("message2").classList = '';
-  }
-  }
-myInput.onkeyup = function() {
-  if(myInput2.value == myInput.value){
-    document.getElementById("message2").classList = 'displaycucc';
-  }
-  if(myInput2.value != myInput.value){
-    document.getElementById("message2").classList = '';
+    myInput.classList = 'piros loginobject psw-hide';
+    myInput2.classList = 'piros loginobject psw-hide';
   }
   }
 
+let regist = document.getElementById('reg-button');
+let email = document.getElementById('email');
+let user = document.getElementById('username');
 
+email.onkeyup = function(){
+  if(email.value != ""){
+    email.classList = 'sarga loginobject';
+  }
+}
+user.onkeyup = function(){
+  if(user.value != ""){
+    user.classList = 'sarga loginobject';
+  }
+}
+
+regist.onclick = function(){
+  if(myInput.value == ""){
+    myInput.classList = 'piros loginobject psw-hide';
+  }
+  if(myInput2.value == ""){
+    myInput2.classList = 'piros loginobject psw-hide';
+  }
+  if(email.value == ""){
+    email.classList = 'piros loginobject';
+  }
+  if(user.value == ""){
+    user.classList = 'piros loginobject';
+  }
+}
   
 }
 function jelszonezes() {

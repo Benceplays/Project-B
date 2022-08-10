@@ -79,9 +79,6 @@ body {
     color: #ff8000;
     text-decoration: underline;
 }
-.margin-fent{
-    margin-top: 0% !important;
-}
 
 .logbutton{
     border: 3px solid #ff8000 ;
@@ -99,12 +96,30 @@ body {
     background-color: #ff8000;
     color: rgb(38, 42, 53);
 }
+.piros{
+    border-color: red ;
+  }
+  .piros::placeholder {
+    color: red !important;
+}
+.piros::-ms-input-placeholder {
+    color: red !important;
+   }
+.sarga{
+    border-color:#ff8000 ;
+  }
+.sarga::placeholder {
+    color: #ff8000 !important ;
+}
+.sarga::-ms-input-placeholder {
+    color: #ff8000 !important;
+   }
 
 ::placeholder {
-    color: #ff8000 ;
+    color: #ff8000 !important ;
 }
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #ff8000 ;
+::-ms-input-placeholder {
+    color: #ff8000 !important;
    }
 
    input:focus { 
