@@ -31,14 +31,15 @@ body {
 .loginh1{
     text-align: center;
     margin-top: 2%;
+    color: #ff8000;
 }
 .loginpanel{
     width: 25%;
     height: 300px;
     margin-left: 37.5%;
-    background-color: #ff8000;
-    border:2px solid white;
-    border-radius: 30px;
+    background-color: rgb(38, 42, 53);
+    border:2px solid #ff8000;
+    border-radius: 5px;
     margin-top: 7%;
 }
 .loginobject{
@@ -48,18 +49,40 @@ body {
     position: static;
     border-radius: 5px;
     padding: 1%;
+    border-color: #ff8000;
+    background-color:rgb(38, 42, 53);
 }
 .logininbutton{
     background-color: rgb(38, 42, 53);
-    border: 2px solid white;
-    margin-left: 35%;
+    border: 2px solid #ff8000;
+    margin-left: 37%;
     width: 25%;
     height: 15%;
-    border-radius: 20px;
-    color: white;
+    border-radius: 5px;
+    margin-top: -50%;
+    color:  #ff8000;
 }
 .forgotpasswdtext{
     text-align: center;
     font-size: 120%;
     font-weight: bold;
+    color:#ff8000;
+}
+
+
+::placeholder {
+    color: #ff8000 ;
+}
+::-ms-input-placeholder {
+    color: #ff8000 ;
+   }
+
+
+   input:focus { 
+    outline: none !important;
+    border-color:  #ff8000;
+    box-shadow: 0 0 10px  #ff8000;
+}
+input{
+    color:#ff8000 ;
 }
