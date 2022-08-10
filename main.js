@@ -12,7 +12,7 @@ function login() {
       v.style.display = "none";
 
 }
-
+//Menü
 window.onload=function(){
   document.getElementById("subscriber").addEventListener("mouseover", mouseOver);
   let subki = [document.getElementById("subki"), document.getElementById("subki2"), document.getElementById("subki3")]
@@ -48,6 +48,7 @@ window.onload=function(){
   }
 
 
+//Regisztráció/Belépéshez használt változók
   let myInput = document.getElementById("passwd");
   let myInput2 = document.getElementById("passwd2");
   let letter = document.getElementById("letter");
@@ -69,11 +70,14 @@ myInput.onblur = function() {
   document.getElementById("message").classList = 'displaycucc';
   }
 }
+//A regisztráción belül a jelszónál bizonyos követelmények
 myInput.onkeyup = function() {
   if(myInput2.value == myInput.value){
     document.getElementById("message2").classList = 'displaycucc';
-    myInput.classList = 'sarga loginobject psw-hide';
-    myInput2.classList = 'sarga loginobject psw-hide';
+    if(letter2 == 1 && capital2 == 1 && number2 == 1 && length2 == 1 ){
+      myInput.classList = 'sarga loginobject psw-hide';
+      myInput2.classList = 'sarga loginobject psw-hide';
+    }
   }
   if(myInput2.value != myInput.value){
     document.getElementById("message2").classList = '';
@@ -123,11 +127,14 @@ myInput.onkeyup = function() {
     length2 = 0;
   }
 }
+//Regisztráció/Bejelentkezésnél gombnál az üresen hagyott kifejezéseket pirosra váltja, jelszavak nem egyeznek felirat megjelenitése/eltüntetése
 myInput2.onkeyup = function() {
   if(myInput2.value == myInput.value){
     document.getElementById("message2").classList = 'displaycucc';
-    myInput2.classList = 'sarga loginobject psw-hide';
-    myInput.classList = 'sarga loginobject psw-hide';
+    if(letter2 == 1 && capital2 == 1 && number2 == 1 && length2 == 1 ){
+      myInput2.classList = 'sarga loginobject psw-hide';
+      myInput.classList = 'sarga loginobject psw-hide';
+    }
   }
   if(myInput2.value != myInput.value){
     document.getElementById("message2").classList = '';
@@ -139,10 +146,39 @@ myInput2.onkeyup = function() {
 let regist = document.getElementById('reg-button');
 let email = document.getElementById('email');
 let user = document.getElementById('username');
-
+let uname = document.getElementById("uname");
+let psw = document.getElementById("psw");
+let logi = document.getElementById("logi");
+psw.onkeyup = function(){
+  if(psw.value != ""){
+    psw.classList = 'sarga loginobject psw-hide';
+  }
+}
+uname.onkeyup = function(){
+  if(uname.value.includes("@") == true){
+    uname.classList = 'sarga loginobject';
+  }
+  if(uname.value.includes("@") == false){
+    uname.classList = 'piros loginobject';
+  }
+}
+logi.onclick = function(){
+  if(uname.value.includes("@") == true){
+    uname.classList = 'sarga loginobject';
+  }
+  if(uname.value == ""){
+    uname.classList = 'piros loginobject';
+  }
+  if(psw.value == ""){
+    psw.classList = 'piros loginobject psw-hide';
+  }
+}
 email.onkeyup = function(){
-  if(email.value != ""){
+  if(email.value.includes("@") == true){
     email.classList = 'sarga loginobject';
+  }
+  if(email.value.includes("@") == false){
+    email.classList = 'piros loginobject';
   }
 }
 user.onkeyup = function(){
@@ -151,12 +187,16 @@ user.onkeyup = function(){
   }
 }
 
+
 regist.onclick = function(){
   if(myInput.value == ""){
     myInput.classList = 'piros loginobject psw-hide';
   }
   if(myInput2.value == ""){
     myInput2.classList = 'piros loginobject psw-hide';
+  }
+  if(email.value.includes("@") == true){
+    email.classList = 'sarga loginobject';
   }
   if(email.value == ""){
     email.classList = 'piros loginobject';
@@ -167,6 +207,7 @@ regist.onclick = function(){
 }
   
 }
+// Jelszó megjelenítése / eltünetése gombbal 
 function jelszonezes() {
   var x = document.getElementById("psw");
   if (x.type === "password") {
