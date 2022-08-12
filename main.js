@@ -14,11 +14,18 @@ function login() {
 }
 //Menü
 window.onload=function(){
+  let vonal = document.getElementById("vonalvalami").addEventListener("mouseover", eltunik);;
   document.getElementById("subscriber").addEventListener("mouseover", mouseOver);
   let subki = [document.getElementById("subki"), document.getElementById("subki2"), document.getElementById("subki3")]
   subki.forEach(cuccok=>{cuccok.addEventListener("mouseover", mouseOut)});
   
   
+  function eltunik() {
+    let menu = [document.getElementById("sub-menu"), document.getElementById("sub-menu2"), document.getElementById("sub-menu3")]
+    menu.forEach(elem =>{elem.style.display = "none"});
+    let asd = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2"), document.getElementById("ads-menu3"), document.getElementById("game-menu1"), document.getElementById("game-menu2"), document.getElementById("game-menu3")]
+    asd.forEach(elem =>{elem.style.display = "none"});
+  }
   
   function mouseOver() {
     let menu = [document.getElementById("sub-menu"), document.getElementById("sub-menu2"), document.getElementById("sub-menu3")]

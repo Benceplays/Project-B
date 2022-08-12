@@ -155,3 +155,13 @@ input:-webkit-autofill:focus{
   .displaycucc  {
     display: none;
   }
+
+
+  .valamivonal{
+    width: 100%;
+    height: 100px;
+}
+
+.valamivonal:hover{
+    font-weight: bold;
+}
