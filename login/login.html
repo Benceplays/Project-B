@@ -37,16 +37,19 @@
 
     <button onclick="login()" class="logbutton" style="margin-left: 37.5%; ">Bejelentkezés</button>
     <button onclick="registration()" class="logbutton" style="margin-left: 4.8%; ">Regisztráció</button>
+    <form action="../login.php" method="post" >
     <div id="loginbut" class="loginpanel">
         <h1 class="loginh1">Bejelentkezés</h1>a
-        <input class="loginobject" placeholder="Email cím" type="text" id="uname" style="margin-left: 7.5%; margin-right: 5%;"><br><br>
+        <input class="loginobject" placeholder="Felhasználónév" type="text" name="usernamefirst" id="usernamefirst" style="margin-left: 7.5%; margin-right: 5%;"><br><br>
         
-        <input class="loginobject psw-hide" placeholder="Jelszó" type="password" title="Jelszó" id="psw" required><br><br>
-          <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -60px;" onclick="jelszonezes()" >
+        <input class="loginobject psw-hide" placeholder="Jelszó" type="password" title="Jelszó" id="passwordfirst" name="passwordfirst" required><br><br>
+          <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -60px;" onclick="jelszonezes()">
         <a class="forgotpasswd" href="../forgotpasswd/index.html" style="font-weight: bold;">Elfelejtetted a jelszavad?</a>
-        <button class="logininbutton" id="logi">Bejelentkezés</button>
+        <button class="logininbutton" style="margin-bottom: 5%;" id="logi">Bejelentkezés</button>
+        <a class="regbuttonka" onclick="registration2()" style="font-weight: bold;">Még nincs fiókod? Regisztrálj egyet itt!</a>
     </div>
-    <form action="../login.php" method="post" >
+    </form>
+    <form action="../registration.php" method="post" >
     <div id="registerbut" class="loginpanel" style="display: none; height: 50%;">
         <h1 class="loginh1" >Regisztráció</h1>
         <input class="loginobject"  placeholder="Email cím" type="text" name="email" id="email">

@@ -165,3 +165,16 @@ input:-webkit-autofill:focus{
 .valamivonal:hover{
     font-weight: bold;
 }
+.regbuttonka{
+    margin-left: 10%;
+    color: #ff8000;
+    text-decoration: none;
+}
+.regbuttonka:hover{
+    color: #ff8000;
+    text-decoration: underline;
+}
+.regbuttonka:active{
+    color: #ff8000;
+    text-decoration: underline;
+}
