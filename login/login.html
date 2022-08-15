@@ -12,27 +12,19 @@
 </head>
 <body>
   <ul class="ul">
-    <li class="li" id="subki" ><a class="li-a" href="../index.html" id="adski">Kezdőlap</a></li>
+    <li class="li" ><a class="li-a" href="../index.html" id="adski">Kezdőlap</a></li>
     <li class="li">
-      <ul style="padding: 0;" id="adski2"><a class="li-a" id="subscriber">Előfizetések</a>
-        <li id="sub-menu"  style="list-style-type: none; display: none; " ><a class="li-a">Level 1</a></li>
-        <li id="sub-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Level 2</a></li>
-        <li id="sub-menu3" style="list-style-type: none;display: none; "><a class="li-a">Level 3</a></li>                        
-      </ul>
+      <ul style="padding: 0;" id="adski2"><a class="li-a" id="subscriber">Előfizetések</a></ul>
     </li>
     
-    <li class="li" id="subki2">
-      <ul style="padding: 0;"><a class="li-a" id="ads" >Hirdetések</a>
-        <li id="ads-menu2"  style="list-style-type: none;display: none; "><a class="li-a">DC Szerver</a></li>
-        <li id="ads-menu3" style="list-style-type: none;display: none; "><a class="li-a">TS Szerver</a></li>      
-        <li id="ads-menu1" style="list-style-type: none; display: none; float: left"><a class="li-a">Játékok</a></li> 
-          
-                       
+    <li class="li">
+      <ul style="padding: 0;"><a class="li-a" id="ads" href="#" >Hirdetések</a>
+        <li id="ads-menu2"  style="list-style-type: none;display: none; "><a class="li-a">Keresés</a></li>   
+        <li id="ads-menu1" style="list-style-type: none; display: none"><a class="li-a" href="../server/server.html">Készítés</a></li>                         
       </ul>
     </li>
-    <li style="float: right;" id="subki3" ><a class="li-a" href="login.html" id="adski3">Login</a></li>
+    <li style="float: right;" ><a class="li-a" href="login.html" id="adski3">Login</a></li>
   </ul>
-  <div class="valamivonal" id="vonalvalami"></div>
 
 
     <button onclick="login()" class="logbutton" style="margin-left: 37.5%; ">Bejelentkezés</button>
@@ -46,7 +38,6 @@
           <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -60px;" onclick="jelszonezes()">
         <a class="forgotpasswd" href="../forgotpasswd/index.html" style="font-weight: bold;">Elfelejtetted a jelszavad?</a>
         <button class="logininbutton" style="margin-bottom: 5%;" id="logi">Bejelentkezés</button>
-        <a class="regbuttonka" onclick="registration2()" style="font-weight: bold;">Még nincs fiókod? Regisztrálj egyet itt!</a>
     </div>
     </form>
     <form action="../registration.php" method="post" >

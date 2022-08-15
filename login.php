@@ -1,6 +1,5 @@
 <?php
-
-$conn = new mysqli('localhost','root','','teszt');
+$conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 
 if($conn->connect_error){
     echo "$conn->connect_error";
@@ -13,13 +12,13 @@ if($conn->connect_error){
         $sql = "SELECT * FROM registration WHERE username='$uname' AND password='$password'";
     
         $result=mysqli_query($conn, $sql);
-    
-        if(mysqli_num_rows($result)==1){
-            echo "Sikeresen belogoltál";
+        if($uname != "" and $password != ""){
+            if(mysqli_num_rows($result)==1){
+                    echo"Sikeresen bejelentkeztél";
+                }
         }
         else{
-            echo "Nem sikerult a bejelnetkezés";
-            exit();
+            echo "<script>window.location = 'login/login.html';</script>";
         }
     }
 }

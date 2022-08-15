@@ -1,0 +1,72 @@
+body {
+    background-color: rgb(38, 42, 53);
+}
+
+.orange-text{
+    color: #ff8000;
+}
+.profilemain{
+    margin-top: 5%;
+    width: 75%;
+    height: auto;
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+    margin-left: 12.5%;
+    color: #ff8000;
+    font-weight: bold;
+}
+.pfp{
+    height: 100px;
+    width: 100px;
+    margin-left: 10%;
+    margin-bottom: 40%;
+    margin-top: -10%;
+    border-radius: 60px;
+    border: 3px solid #ff8000;
+}
+.pfname{
+    font-size: large;
+    width: 10px;
+    margin-left:25%;
+    margin-top: 10%;
+}
+.pfstar{
+    font-size: medium;
+    width: 10px;
+    margin-left:25%;
+}
+.servermain{
+    width: 45%;
+    height: 400px;
+    margin-left: 50%;
+    margin-top: -500px;
+    margin-bottom: 100px;
+    border: 2px solid#ff8000;
+}
+.profileleiras{
+    width: 35%;
+    height: 200px;
+    margin-top: -30%;
+    margin-left: 2.5%;
+    border: 2px solid #ff8000;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+}
+.firstserver{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    height: 50px;
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+
+}
+.servernameinserver{
+    font-size: medium;
+    margin-left: 2%;
+}
+.serverstarinserver{
+    text-align: right;
+    margin-top: -8%;
+    margin-right: 2%;
+}

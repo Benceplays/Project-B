@@ -5,12 +5,6 @@ function registration() {
       y.style.display = "block";
       x.style.display = "none";
   }
-  function registration2() {
-    var y = document.getElementById("registerbut");
-    var x = document.getElementById("loginbut");
-      y.style.display = "block";
-      x.style.display = "none";
-  }
 function login() {
     var c = document.getElementById("loginbut");
     var v = document.getElementById("registerbut");
@@ -18,45 +12,25 @@ function login() {
       v.style.display = "none";
 
 }
+function szerverkatt(){
+  window.location = '../index.html';
+}
 //Menü
 window.onload=function(){
-  let vonal = document.getElementById("vonalvalami").addEventListener("mouseover", eltunik);;
-  document.getElementById("subscriber").addEventListener("mouseover", mouseOver);
-  let subki = [document.getElementById("subki"), document.getElementById("subki2"), document.getElementById("subki3")]
-  subki.forEach(cuccok=>{cuccok.addEventListener("mouseover", mouseOut)});
   
-  
-  function eltunik() {
-    let menu = [document.getElementById("sub-menu"), document.getElementById("sub-menu2"), document.getElementById("sub-menu3")]
-    menu.forEach(elem =>{elem.style.display = "none"});
-    let asd = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2"), document.getElementById("ads-menu3"), document.getElementById("game-menu1"), document.getElementById("game-menu2"), document.getElementById("game-menu3")]
-    asd.forEach(elem =>{elem.style.display = "none"});
-  }
-  
-  function mouseOver() {
-    let menu = [document.getElementById("sub-menu"), document.getElementById("sub-menu2"), document.getElementById("sub-menu3")]
-    menu.forEach(elem =>{elem.style.display = "block"});
-  }
-  
-  
-  function mouseOut() {
-    let menu = [document.getElementById("sub-menu"), document.getElementById("sub-menu2"), document.getElementById("sub-menu3")]
-    menu.forEach(elem =>{elem.style.display = "none"});
-  }
-  
-  document.getElementById("ads").addEventListener("mouseover", adsOver);
+  document.getElementById("ads").addEventListener("click", adsOver);
   let adski = [document.getElementById("adski"), document.getElementById("adski2"), document.getElementById("adski3")]
   adski.forEach(cuccok=>{cuccok.addEventListener("mouseover", kiadol)});
   
   
   function adsOver() {
-    let menu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2"), document.getElementById("ads-menu3")]
+    let menu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2")]
     menu.forEach(elem =>{elem.style.display = "block"});
   }
   
   
   function kiadol(event) {
-    let menu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2"), document.getElementById("ads-menu3"), document.getElementById("game-menu1"), document.getElementById("game-menu2"), document.getElementById("game-menu3")]
+    let menu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2")]
     menu.forEach(elem =>{elem.style.display = "none"});
   }
 
@@ -159,8 +133,8 @@ myInput2.onkeyup = function() {
 let regist = document.getElementById('reg-button');
 let email = document.getElementById('email');
 let user = document.getElementById('username');
-let uname = document.getElementById("uname");
-let psw = document.getElementById("psw");
+let uname = document.getElementById("usernamefirst");
+let psw = document.getElementById("passwordfirst");
 let logi = document.getElementById("logi");
 psw.onkeyup = function(){
   if(psw.value != ""){
@@ -168,17 +142,11 @@ psw.onkeyup = function(){
   }
 }
 uname.onkeyup = function(){
-  if(uname.value.includes("@") == true){
+  if(uname.value != ""){
     uname.classList = 'sarga loginobject';
-  }
-  if(uname.value.includes("@") == false){
-    uname.classList = 'piros loginobject';
   }
 }
 logi.onclick = function(){
-  if(uname.value.includes("@") == true){
-    uname.classList = 'sarga loginobject';
-  }
   if(uname.value == ""){
     uname.classList = 'piros loginobject';
   }
@@ -222,7 +190,7 @@ regist.onclick = function(){
 }
 // Jelszó megjelenítése / eltünetése gombbal 
 function jelszonezes() {
-  var x = document.getElementById("psw");
+  var x = document.getElementById("passwordfirst");
   if (x.type === "password") {
       x.type = "text";
   }
@@ -240,4 +208,3 @@ function jelszonezes2() {
       x.type = "password";
   }
 }
-
