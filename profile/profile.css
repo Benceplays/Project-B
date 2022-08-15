@@ -19,7 +19,6 @@ body {
     height: 100px;
     width: 100px;
     margin-left: 10%;
-    margin-bottom: 40%;
     margin-top: -10%;
     border-radius: 60px;
     border: 3px solid #ff8000;
@@ -37,17 +36,20 @@ body {
 }
 .servermain{
     width: 45%;
-    height: 400px;
+    min-height: 300px;
+    height: auto;
     margin-left: 50%;
-    margin-top: -500px;
-    margin-bottom: 100px;
+    margin-bottom: 10%;
+    margin-top: -5%;
+    padding-bottom: 2.5%;
     border: 2px solid#ff8000;
 }
 .profileleiras{
     width: 35%;
-    height: 200px;
-    margin-top: -30%;
+    min-height: 200px;
+    height: auto;
     margin-left: 2.5%;
+    margin-top: -20%;
     border: 2px solid #ff8000;
     background-color: rgb(38, 42, 53);
     color: #ff8000;
