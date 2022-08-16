@@ -48,3 +48,19 @@ body {
 .orange{
     color: #ff8000;
 }
+.hirdetesbutton{
+    color: #ff8000;
+    background-color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+    width: 25%;
+    height: 50px;
+    font-size: 20px;
+    margin-left: 37.5%;
+    margin-top: 2%;
+
+}
+.hirdetesbutton:hover{
+    color: rgb(38, 42, 53);
+    background-color: #ff8000;
+}

@@ -1,0 +1,111 @@
+body {
+    background-color: rgb(38, 42, 53);
+}
+
+.orange-text{
+    color: #ff8000;
+}
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(38, 42, 53);
+    border-bottom: #ff8000 2px solid;
+}
+  
+.li {
+    float: left;
+}
+  
+.li-a {
+    display: block;
+    color: #ff8000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.li-a:hover {
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background:  #141414; 
+
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background:  #ff8000;
+    border-radius: 5px;  
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+    background:  #ff8000; 
+    }
+.elofizetesekmain{
+    width: 75%;
+    height: 600px;
+    margin-left: 12.5%;
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+.kezdo{
+    width: 26%;
+    height: 500px;
+    margin-left: 5.5%;
+    margin-top: 5%;
+    border: 2px solid #ff8000;
+}
+.halado{
+        width: 26%;
+        height: 500px;
+        margin-left: 5%;
+        margin-top: 5%;
+        border: 2px solid #ff8000;
+}
+.profi{
+    width: 26%;
+    height: 500px;
+    margin-left: 5%;
+    margin-top: 5%;
+    border: 2px solid #ff8000;
+}
+.kozos{
+    display:inline-block;
+    box-sizing: border-box;
+}
+.kozosszoveg{
+    text-align: center;
+    color: #ff8000;
+    max-width: 75%;
+    margin-left: 12.5%;
+}
+.simplevonal{
+    width: 60%;
+    margin-left: 20%;
+    border: 1px solid #ff8000;
+    height: 0px;
+}
+.buybutton{
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: 2px solid #ff8000;
+    border-radius: 10px;
+    width: 50%;
+    height: auto;
+    font-size: 25px;
+    margin-left: 25%;
+}
+.buybutton:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    
+}
