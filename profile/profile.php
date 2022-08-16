@@ -8,6 +8,28 @@
     <script src="../main.js"></script>
 </head>
 <body>
+<ul class="ul">
+    <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
+    <li class="li">
+      <ul style="padding: 0;"><a class="li-a" href="../elofizetesek/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
+    </li>
+    
+    <li class="li" onmouseover="beadol()" onmouseout="kiadol()">
+    <script>
+    function beadol() {
+      let menu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2")];
+      menu.forEach(elem =>{elem.style.display = "block"});
+    }
+    function kiadol() {
+      let kiadolmenu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2")];
+      kiadolmenu.forEach(elem =>{elem.style.display = "none"});
+    }
+    </script>
+      <ul style="padding: 0;"><a class="li-a" href="#" >Hirdetések</a>
+        <li id="ads-menu2"  style="list-style-type: none;display:none; "><a class="li-a">Keresés</a></li>   
+        <li id="ads-menu1" style="list-style-type: none; display:none"><a class="li-a" href="../server/server.php">Készítés</a></li>                         
+      </ul>
+    </li>
     <div class="profilemain">
         <p class="pfname">
         <?php 
@@ -32,7 +54,6 @@
         $result_leiras = mysqli_query($conn, $update_leiras);
      }
     }
-        
         ?>
         <img class="pfp" src="../img/upscale-245339439045212.png" alt="">
         <div class="servermain">
@@ -42,20 +63,27 @@
         </div>
         </div>
         <form action="profile.php" method="POST">
-        <textarea class="profileleiras" style="resize: none;" rows="4" cols="50" name="leiras" id="leiras" <?php if(isset($_POST['szerkeszt'])) {
-            $szerkeszt_valtozo = 1;
-            echo "<script>alert('asd');</script>";
-        } ?> 
-        <?php if(isset($_POST['szerkeszt'])) {
-            $szerkeszt_valtozo = 0;
-            echo "<script>alert('nem');</script>";
-        } ?>placeholder="Leírás: " maxlength="500" style="max-width: 600px;"><?php         
+        <textarea class="profileleiras" style="resize: none;" rows="4" name="leiras" id="leiras" placeholder="Leírás: " maxlength="500" style="max-width: 600px;"><?php         
         $profile_lekeres = "SELECT leiras FROM registration WHERE username='$_SESSION[usernamefirst]'";
         $profile_lekeres_result=mysqli_query($conn, $profile_lekeres);
         $profiles = mysqli_fetch_all($profile_lekeres_result, MYSQLI_ASSOC);
          foreach ($profiles as $leirasok) {
         echo $leirasok['leiras'];
-        } ?></textarea><input type="submit"  name="szerkeszt" value="szerkeszt" ><input type="submit"></form>
+        } 
+        ?></textarea><input id="send" onclick="disablecucc()" type="submit"></form>
+        <button id="szerkeszt" onclick="disableornot()">Szerkeszt</button>
+        <script>
+        document.getElementById("send").style.display = "none";  
+        document.getElementById("leiras").disabled = true;
+        function disableornot() {
+                document.getElementById("szerkeszt").style.display = "none";  
+                document.getElementById("leiras").disabled = false;      
+                document.getElementById("send").style.display = "block";  
+        }
+        function disablcucc() {
+            document.getElementById("szerkeszt").style.display = "block";  
+        }
+        </script>
     </div>
 </body>
 </html>
