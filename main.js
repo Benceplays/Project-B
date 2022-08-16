@@ -17,23 +17,6 @@ function szerverkatt(){
 }
 //Menü
 window.onload=function(){
-  
-  document.getElementById("ads").addEventListener("click", adsOver);
-  let adski = [document.getElementById("adski"), document.getElementById("adski2"), document.getElementById("adski3")]
-  adski.forEach(cuccok=>{cuccok.addEventListener("mouseover", kiadol)});
-  
-  
-  function adsOver() {
-    let menu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2")]
-    menu.forEach(elem =>{elem.style.display = "block"});
-  }
-  
-  
-  function kiadol(event) {
-    let menu = [document.getElementById("ads-menu1"), document.getElementById("ads-menu2")]
-    menu.forEach(elem =>{elem.style.display = "none"});
-  }
-
 
 //Regisztráció/Belépéshez használt változók
   let myInput = document.getElementById("passwd");

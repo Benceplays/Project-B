@@ -2,39 +2,6 @@ body {
     background-color: rgb(38, 42, 53);
 }
 
-.loginpanel{
-    width: 25%;
-    height: 425px;
-    margin-left: 37.5%;
-    background-color:  rgb(38, 42, 53);
-    border:3px solid #ff8000 ;
-    border-radius: 5px;
-}
-.loginobject{
-    width: 80%;
-    margin-top: 8%;
-    margin-left: 10%;
-    position: static;
-    border-radius: 5px;
-    padding: 1%;
-    border-color: #ff8000;
-    background-color:rgb(38, 42, 53);
-}
-.logininbutton{
-    background-color: rgb(38, 42, 53);
-    border: 2px solid #ff8000;
-    margin-left: 15%;
-    width: 25%;
-    height: 15%;
-    border-radius: 5px;
-    margin-top: 5%;
-    color: #ff8000;
-    font-weight: bold;
-}
-.logininbutton:hover{
-    background-color: #ff8000;
-    color: rgb(38, 42, 53);
-}
 .ul {
     list-style-type: none;
     margin: 0;
@@ -66,41 +33,55 @@ body {
     margin-top: 2%;
     color: #ff8000;
 }
-.forgotpasswd{
-    margin-left: 10%;
-    color: #ff8000;
-    text-decoration: none;
-}
-.forgotpasswd:hover{
-    color: #ff8000;
-    text-decoration: underline;
-}
-.forgotpasswd:active{
-    color: #ff8000;
-    text-decoration: underline;
-}
-
-.logbutton{
-    border: 3px solid #ff8000 ;
+.loginpanel{
+    width: 25%;
+    height: 300px;
+    margin-left: 37.5%;
+    background-color: rgb(38, 42, 53);
+    border:2px solid #ff8000;
     border-radius: 5px;
     margin-top: 7%;
-    margin-bottom: 2%;
-    background-color: rgb(38, 42, 53);
-    color: #ff8000 ;
-    font-weight: bold;
-    font-size: 20px;
-    width: 10%;
+}
+.loginobject{
+    width: 80%;
+    margin-top: 8%;
+    margin-left: 10%;
+    position: static;
+    border-radius: 5px;
     padding: 1%;
+    border-color: #ff8000;
+    background-color:rgb(38, 42, 53);
 }
-.logbutton:hover{
-    background-color: #ff8000;
-    color: rgb(38, 42, 53);
+.logininbutton{
+    background-color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    margin-left: 37%;
+    width: 25%;
+    height: 15%;
+    border-radius: 5px;
+    margin-top: -50%;
+    color:  #ff8000;
 }
+.forgotpasswdtext{
+    text-align: center;
+    font-size: 120%;
+    font-weight: bold;
+    color:#ff8000;
+}
+
+
+::placeholder {
+    color: #ff8000 ;
+}
+::-ms-input-placeholder {
+    color: #ff8000 ;
+   }
+
 .piros{
-    border-color: red ;
-  }
-  .piros::placeholder {
-    color: red !important;
+  border-color: red ;
+}
+.piros::placeholder {
+  color: red !important;
 }
 .piros::-ms-input-placeholder {
     color: red !important;
@@ -115,12 +96,6 @@ body {
     color: #ff8000 !important;
    }
 
-::placeholder {
-    color: #ff8000 !important ;
-}
-::-ms-input-placeholder {
-    color: #ff8000 !important;
-   }
 
    input:focus { 
     outline: none !important;
@@ -130,29 +105,3 @@ body {
 input{
     color:#ff8000 ;
 }
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover
-input:-webkit-autofill:active
-input:-webkit-autofill:focus{
-    -webkit-text-fill-color: #ff8000;
-    transition: background-color 5000s ease-in-out 0s;
-}
-
-.valid {
-    color: green;
-  }
-  
-  .invalid {
-    color: red;
-  }
-  
-  .invalid:before {
-    position: relative;
-    left: -5px;
-    content: "X";
-  }
-  .displaycucc  {
-    display: none;
-  }
-

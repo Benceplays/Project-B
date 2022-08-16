@@ -72,3 +72,27 @@ body {
     margin-top: -8%;
     margin-right: 2%;
 }
+
+::placeholder {
+    color: #ff8000 !important ;
+}
+::-ms-input-placeholder {
+    color: #ff8000 !important;
+   }
+
+   input:focus { 
+    outline: none !important;
+    border-color:  #ff8000;
+    box-shadow: 0 0 10px  #ff8000;
+}
+input{
+    color:#ff8000 ;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover
+input:-webkit-autofill:active
+input:-webkit-autofill:focus{
+    -webkit-text-fill-color: #ff8000;
+    transition: background-color 5000s ease-in-out 0s;
+}
