@@ -14,7 +14,7 @@
 <ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
-      <ul style="padding: 0;"><a class="li-a" href="../elofizetesek/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
+      <ul style="padding: 0;"><a class="li-a" href="../elofizetes/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
     </li>
     
     <li class="li" onmouseover="beadol()" onmouseout="kiadol()">
@@ -80,7 +80,7 @@
         
         <input class="loginobject psw-hide" placeholder="Jelszó" type="password" title="Jelszó" id="passwordfirst" name="passwordfirst" required><br><br>
           <img src="../password.png" width="30px" style="float: right; margin-right: 2%; margin-top: -60px;" onclick="jelszonezes()">
-        <a class="forgotpasswd" href="../forgotpasswd/index.php" style="font-weight: bold;">Elfelejtetted a jelszavad?</a>
+        <a class="forgotpasswd" href="../forgotpasswd/forgotpasswd.php" style="font-weight: bold;">Elfelejtetted a jelszavad?</a>
         <button class="logininbutton" style="margin-bottom: 5%;" id="logi">Bejelentkezés</button>
     </div>
     </form>
