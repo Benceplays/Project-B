@@ -69,17 +69,20 @@
         </script>';
       }
     }
-    $query = "SELECT name, ipcim, leiras FROM registration";
-    $result = mysqli_query($conn, $query);
-
+    ?>
+    <?php
+    $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+    $query = "SELECT servername, ipcim, leiras FROM servers";
+    $result = mysqli_query($connect, $query);
+    $adatok = mysqli_fetch_assoc($result);
     
     ?>
   </ul>
     
     <div class="mainservers">
-        <h3 id="playername" class="maintitles"><?php echo $data['name']; ?></h3>
-        <h2 id="serverip" class="maintitles"><?php echo $data['ipcim']; ?></h2>
-        <h3 id="leiras" class="maintitles"><?php echo $data['leiras']; ?></h3>
+        <h3 id="playername" class="maintitles"><?php echo $adatok['servername']; ?></h3>
+        <h2 id="serverip" class="maintitles"><?php echo $adatok['ipcim']; ?></h2>
+        <h3 id="leiras" class="maintitles"><?php echo $adatok['leiras']; ?></h3>
     </div>
 </body>
 </html>

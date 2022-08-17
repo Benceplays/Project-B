@@ -55,7 +55,20 @@ body {
     margin-left: 25%;
     border: 2px solid #ff8000;
     background-color: rgb(38, 42, 53);
+    border-radius: 20px;
+    margin-top: 2%;
 }
 .maintitles{
     color: #ff8000;
+}
+#playername{
+    padding: 2px;
+    font-weight: bold;
+}
+#serverip{
+    padding: 2px;
+}
+#leiras{
+    text-align: right;
+    margin-top: -10%;
 }
