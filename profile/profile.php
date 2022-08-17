@@ -41,7 +41,6 @@
       echo "$conn->connect_error";
       die("Connection Failed : ". $conn->connect_error);
     } else {
-
         $profile_sql = "SELECT date FROM registration WHERE username='$_SESSION[usernamefirst]'";
         $result_profile=mysqli_query($conn, $profile_sql);
         $registration = mysqli_fetch_all($result_profile, MYSQLI_ASSOC);
@@ -53,9 +52,38 @@
         $update_leiras = "UPDATE registration SET leiras='$leirascucc' WHERE username='$_SESSION[usernamefirst]'";
         $result_leiras = mysqli_query($conn, $update_leiras);
      }
+    $msg = "";
+     if (isset($_POST['upload'])) {
+        $filename = $_FILES["uploadfile"]["name"];
+        $tempname = $_FILES["uploadfile"]["tmp_name"];
+        $folder = "./img/" . $filename;
+        $targetFilePath = $folder . $filename;
+        $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+        $allowTypes = array('jpg','png','jpeg');
+        if(in_array($fileType, $allowTypes)){
+          $query_img = "SELECT profile_img FROM registration WHERE username='$_SESSION[usernamefirst]' ";
+          $result_img = mysqli_query($conn, $query_img);
+          $data = mysqli_fetch_assoc($result_img);
+          unlink( "./img/".$data['profile_img']);
+          if(move_uploaded_file($tempname, $folder)){
+            $sql_img = "UPDATE registration SET profile_img='$filename' WHERE username='$_SESSION[usernamefirst]'";
+            mysqli_query($conn, $sql_img);
+          }
+        }
+     }
     }
         ?>
-        <img class="pfp" src="../img/upscale-245339439045212.png" alt="">
+        <?php
+        $query_img = "SELECT profile_img FROM registration WHERE username='$_SESSION[usernamefirst]' ";
+        $result_img = mysqli_query($conn, $query_img);
+ 
+        while ($data = mysqli_fetch_assoc($result_img)) {
+        ?>
+            <img class="pfp" src="./img/<?php echo $data['profile_img']; ?>">
+ 
+        <?php
+        }
+        ?>
         <div class="servermain">
         <div onclick="szerverkatt()" class="firstserver">
             <p class="servernameinserver">Szerver neve</p>
@@ -84,6 +112,15 @@
             document.getElementById("szerkeszt").style.display = "block";  
         }
         </script>
+        <form method="POST" action="profile.php" enctype="multipart/form-data">
+            <div>
+                <input  type="file" name="uploadfile"/>
+            </div>
+            <div >
+                <button  type="submit" name="upload">UPLOAD</button>
+            </div>
+      </form>
+
     </div>
 </body>
 </html>
