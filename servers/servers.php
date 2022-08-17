@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="servers.css">
     <script src="main.js"></script>
-<title>ASD</title>
+<title>Szerver hirdetések</title>
 </head>
 <body>
 
       
   <ul class="ul">
-    <li class="li" ><a class="li-a" href="index.php">Kezdőlap</a></li>
+    <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
-      <ul style="padding: 0;"><a class="li-a" href="elofizetes/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
+      <ul style="padding: 0;"><a class="li-a" href="../elofizetes/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
     </li>
     
     <li class="li" onmouseover="beadol()" onmouseout="kiadol()">
@@ -31,8 +31,8 @@
     }
     </script>
       <ul style="padding: 0;"><a class="li-a" href="#" >Hirdetések</a>
-        <li id="ads-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="servers/servers.php">Keresés</a></li>   
-        <li id="ads-menu1" style="list-style-type: none; display:none"><a class="li-a" href="server/server.php">Készítés</a></li>                         
+        <li id="ads-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="servers.php">Keresés</a></li>   
+        <li id="ads-menu1" style="list-style-type: none; display:none"><a class="li-a" href="../server/server.php">Készítés</a></li>                         
       </ul>
     </li>
     <?php 
@@ -46,7 +46,7 @@
       $loginsql = "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
       $result_login=mysqli_query($conn, $loginsql);
       if(mysqli_num_rows($result_login)==0){
-        echo '<li class="li" style="float: right;" ><a class="li-a" href="login/logincucc.php">Login</a></li>';
+        echo '<li class="li" style="float: right;" ><a class="li-a" href="login/logincucc.php">Bejelentkezés</a></li>';
       }
       if(mysqli_num_rows($result_login)==1){
         if(isset($_POST['kilepes'])) {
@@ -69,15 +69,17 @@
         </script>';
       }
     }
+    $query = "SELECT name, ipcim, leiras FROM registration";
+    $result = mysqli_query($conn, $query);
+
+    
     ?>
   </ul>
     
-    <div class="" style="padding-top: calc(100vh / 2.8); padding-bottom: 0px;">
-
-        <h2 class="orange-text" style="text-align: center;" >Welcome!</h2>
-        <div class="col d-flex justify-content-center text-white">
-          
+    <div class="mainservers">
+        <h3 id="playername" class="maintitles"><?php echo $data['name']; ?></h3>
+        <h2 id="serverip" class="maintitles"><?php echo $data['ipcim']; ?></h2>
+        <h3 id="leiras" class="maintitles"><?php echo $data['leiras']; ?></h3>
     </div>
-  </div>
 </body>
 </html>
