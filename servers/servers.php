@@ -71,19 +71,33 @@
     }
     ?>
     </ul>
-  <?php
+    <?php
     $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
     for ($i = 1; $i <= 25; $i++){
-    $query = "SELECT playername, servername, ipcim, leiras, id FROM servers WHERE id = '$i'";
+    $query = "SELECT boosted, playername, servername, ipcim, leiras, id FROM servers WHERE id = '$i'";
     $result = mysqli_query($connect, $query);
     $adatok = mysqli_fetch_assoc($result);
-    if($adatok['id'] == $i) {?>
+    if($adatok['id'] == $i and $adatok['boosted'] == 1) {?>
       <div style="color: #ff8000;" class="divek">
       <h1><?php echo $adatok['servername'];?></h1>
       <h3><?php echo $adatok['playername'];?></h3>
       <h2><?php echo $adatok['ipcim'];?></h2>
       <div class="leirasdiv">
         <p><?php echo $adatok['leiras'];?></p>
+      </div>
+      </div>
+      <?php }} 
+    for ($b = 1; $b <= 25; $b++){
+    $query_b = "SELECT boosted, playername, servername, ipcim, leiras, id FROM servers WHERE id = '$b'";
+    $result_b = mysqli_query($connect, $query_b);
+    $adatok_b = mysqli_fetch_assoc($result_b);
+    if($adatok_b['id'] == $b and $adatok_b['boosted'] == 0) {?>
+      <div style="color: #ff8000;" class="divek">
+      <h1><?php echo $adatok_b['servername'];?></h1>
+      <h3><?php echo $adatok_b['playername'];?></h3>
+      <h2><?php echo $adatok_b['ipcim'];?></h2>
+      <div class="leirasdiv">
+        <p><?php echo $adatok_b['leiras'];?></p>
       </div>
       </div>
       <?php }} ?>
