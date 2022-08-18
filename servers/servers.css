@@ -55,7 +55,38 @@ body {
     margin-left: 25%;
     border: 2px solid #ff8000;
     background-color: rgb(38, 42, 53);
+    border-radius: 20px;
+    margin-top: 2%;
 }
 .maintitles{
     color: #ff8000;
+}
+#playername{
+    padding: 2px;
+    font-weight: bold;
+}
+#serverip{
+    padding: 2px;
+}
+#leiras{
+    text-align: right;
+    margin-top: -10%;
+}
+.divek{
+    color: #ff8000;
+    width: 50%;
+    height: 150px;
+    margin-left: 25%;
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+    margin-top: 2%;
+    padding: 0.1%;
+}
+.leirasdiv{
+    color: #ff8000;
+    max-width: 50%;
+    min-height: 150px;
+    max-height: 150px;
+    margin-left: 50%;
+    margin-top: -150px;
 }
