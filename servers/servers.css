@@ -62,7 +62,6 @@ body {
     color: #ff8000;
 }
 #playername{
-    padding: 2px;
     font-weight: bold;
 }
 #serverip{
@@ -88,5 +87,5 @@ body {
     min-height: 150px;
     max-height: 150px;
     margin-left: 50%;
-    margin-top: -150px;
+    margin-top: -140px;
 }

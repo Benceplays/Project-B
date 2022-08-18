@@ -14,7 +14,7 @@
 <ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
-      <ul style="padding: 0;"><a class="li-a" href="../elofizetesek/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
+      <ul style="padding: 0;"><a class="li-a" href="../elofizetes/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
     </li>
     
     <li class="li" onmouseover="beadol()" onmouseout="kiadol()">
@@ -75,16 +75,19 @@
     $query = "SELECT boosted, playername, servername, ipcim, leiras, id FROM servers WHERE id = '$i'";
     $result = mysqli_query($connect, $query);
     $adatok = mysqli_fetch_assoc($result);
-    if($adatok['id'] == $i and $adatok['boosted'] == 1) {?>
+    if($adatok['id'] == $i and $adatok['boosted'] == 1) {
+      $myfile = fopen("asdf.php", "w");
+      ?>
       <div style="color: #ff8000;" class="divek">
       <h1><?php echo $adatok['servername'];?></h1>
-      <h3><?php echo $adatok['playername'];?></h3>
-      <h2><?php echo $adatok['ipcim'];?></h2>
+      <p><?php echo $adatok['playername'];?></p>
+      <h3><?php echo $adatok['ipcim'];?></h3>
       <div class="leirasdiv">
         <p><?php echo $adatok['leiras'];?></p>
       </div>
       </div>
-      <?php }} 
+      <?php 
+    }} 
     for ($b = 1; $b <= 25; $b++){
     $query_b = "SELECT boosted, playername, servername, ipcim, leiras, id FROM servers WHERE id = '$b'";
     $result_b = mysqli_query($connect, $query_b);
@@ -92,12 +95,13 @@
     if($adatok_b['id'] == $b and $adatok_b['boosted'] == 0) {?>
       <div style="color: #ff8000;" class="divek">
       <h1><?php echo $adatok_b['servername'];?></h1>
-      <h3><?php echo $adatok_b['playername'];?></h3>
-      <h2><?php echo $adatok_b['ipcim'];?></h2>
+      <p><?php echo $adatok_b['playername'];?></p>
+      <h3><?php echo $adatok_b['ipcim'];?></h3>
       <div class="leirasdiv">
         <p><?php echo $adatok_b['leiras'];?></p>
       </div>
       </div>
-      <?php }} ?>
+      <?php $myfile = fopen("asdf.php", "w");
+    }} ?>
 </body>
 </html>
