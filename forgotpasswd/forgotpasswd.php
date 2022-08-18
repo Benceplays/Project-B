@@ -49,7 +49,7 @@
       if(mysqli_num_rows($result_login)==1){
         if(isset($_POST['kilepes'])) {
           $logincucosvaltozo = 0;
-          $update_login = "UPDATE registration SET login='$logincucosvaltozo'";
+          $update_login = "UPDATE registration SET login='$logincucosvaltozo' WHERE username='$_SESSION[usernamefirst]' ";
           $resultlogin_update = mysqli_query($conn, $update_login);
           echo "<script>window.location = '../index.php';</script>";
         }
