@@ -16,6 +16,9 @@
     	$adatok_all= mysqli_fetch_assoc($result_all);
 			if($adatok_all['email'] != $email){
 				if($adatok_all['username'] != $username){
+					$filePath = 'profile/minta.php';
+					$destinationFilePath = 'profile/'.$username.'.php';
+					copy($filePath, $destinationFilePath);
 					$stmt = $conn->prepare("insert into registration(email, username, password, date, password2) values(?, ?, ?, ?, ?)");
 					$stmt->bind_param("ssssi", $email, $username, $password, $date, $password2);
 					$execval = $stmt->execute();
