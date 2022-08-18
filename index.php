@@ -46,7 +46,7 @@
       $loginsql = "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
       $result_login=mysqli_query($conn, $loginsql);
       if(mysqli_num_rows($result_login)==0){
-        echo '<li class="li" style="float: right;" ><a class="li-a" href="login/logincucc.php">Login</a></li>';
+        echo '<li class="li" style="float: right;" ><a class="li-a" href="login/logincucc.php">Bejelentkezés</a></li>';
       }
       if(mysqli_num_rows($result_login)==1){
         if(isset($_POST['kilepes'])) {
