@@ -10,9 +10,9 @@
 		echo "$conn->connect_error";
 		die("Connection Failed : ". $conn->connect_error);
 	} else {
-		$sql_szerverlekerdezes = "SELECT * FROM registration WHERE login='$_SESSION[loginvaltozo]'";
-		$result_login=mysqli_query($conn, $sql_szerverlekerdezes);
-		if(mysqli_num_rows($result_login)==1){
+		$sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
+		$result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
+		if(mysqli_num_rows($result_szerverlekerdezes)==1){
 			$stmt = $conn->prepare("insert into servers(servername, ipcim, leiras, playername, boosted) values(?, ?, ?, ?, ?)");
 			$stmt->bind_param("ssssi", $servername, $serverip, $serverleiras, $_SESSION['usernamefirst'], $boosted);
 			$execval = $stmt->execute();
