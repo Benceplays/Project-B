@@ -3,7 +3,7 @@
 	$servername = $_POST['servername'];
 	$serverip = $_POST['serverip'];
 	$serverleiras = $_POST['serverleiras'];
-	$boosted = 1;
+	$boosted = 0;
 
 	$conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 	if($conn->connect_error){
