@@ -90,6 +90,7 @@
      }
     $msg = "";
       if (isset($_POST['upload'])) {
+        mkdir("img/$_SESSION[usernamefirst]");
         $filename = $_FILES["uploadfile"]["name"];
         $tempname = $_FILES["uploadfile"]["tmp_name"];
         $folder = "./img/$_SESSION[usernamefirst]/" . $filename;
@@ -117,7 +118,14 @@
    
         while ($data = mysqli_fetch_assoc($result_img)) {
         ?>
-            <img class="pfp" src="<?php echo "./img/$_SESSION[usernamefirst]/$data[profile_img]"; ?>">
+            <img class="pfp" src="<?php
+              if(file_exists("./img/$_SESSION[usernamefirst]")){
+                echo "./img/$_SESSION[usernamefirst]/$data[profile_img]";
+              }
+              else{
+                echo "./img/default.png";
+            }
+             ?>">
          
         <?php
         }
