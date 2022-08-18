@@ -31,7 +31,7 @@
     }
     </script>
       <ul style="padding: 0;"><a class="li-a" href="#" >Hirdetések</a>
-        <li id="ads-menu2"  style="list-style-type: none;display:none; "><a class="li-a">Keresés</a></li>   
+        <li id="ads-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="../servers/servers.php">Keresés</a></li>   
         <li id="ads-menu1" style="list-style-type: none; display:none"><a class="li-a" href="server.php">Készítés</a></li>                         
       </ul>
     </li>
