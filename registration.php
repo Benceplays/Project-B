@@ -11,6 +11,7 @@
 		die("Connection Failed : ". $conn->connect_error);
 	} else {
 		if($email != "" and strpos($email, '@') !== false and $username != "" and $password != "" and $password != "" and $password == $password2){
+		mkdir("profile/img/$username");
 		$stmt = $conn->prepare("insert into registration(email, username, password, date, password2) values(?, ?, ?, ?, ?)");
 		$stmt->bind_param("ssssi", $email, $username, $password, $date, $password2);
 		$execval = $stmt->execute();

@@ -53,10 +53,10 @@
         $result_leiras = mysqli_query($conn, $update_leiras);
      }
     $msg = "";
-     if (isset($_POST['upload'])) {
+      if (isset($_POST['upload'])) {
         $filename = $_FILES["uploadfile"]["name"];
         $tempname = $_FILES["uploadfile"]["tmp_name"];
-        $folder = "./img/" . $filename;
+        $folder = "./img/$_SESSION[usernamefirst]/" . $filename;
         $targetFilePath = $folder . $filename;
         $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         $allowTypes = array('jpg','png','jpeg');
@@ -64,7 +64,9 @@
           $query_img = "SELECT profile_img FROM registration WHERE username='$_SESSION[usernamefirst]' ";
           $result_img = mysqli_query($conn, $query_img);
           $data = mysqli_fetch_assoc($result_img);
-          unlink( "./img/".$data['profile_img']);
+          if($data['profile_img'] != "default.png"){
+            unlink( "./img/$_SESSION[usernamefirst]/".$data['profile_img']);
+            }
           if(move_uploaded_file($tempname, $folder)){
             $sql_img = "UPDATE registration SET profile_img='$filename' WHERE username='$_SESSION[usernamefirst]'";
             mysqli_query($conn, $sql_img);
@@ -76,11 +78,11 @@
         <?php
         $query_img = "SELECT profile_img FROM registration WHERE username='$_SESSION[usernamefirst]' ";
         $result_img = mysqli_query($conn, $query_img);
- 
+   
         while ($data = mysqli_fetch_assoc($result_img)) {
         ?>
-            <img class="pfp" src="./img/<?php echo $data['profile_img']; ?>">
- 
+            <img class="pfp" src="<?php echo "./img/$_SESSION[usernamefirst]/$data[profile_img]"; ?>">
+         
         <?php
         }
         ?>
