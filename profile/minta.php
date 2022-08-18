@@ -83,7 +83,7 @@
         $result_profile=mysqli_query($conn, $profile_sql);
         $registration = mysqli_fetch_all($result_profile, MYSQLI_ASSOC);
       foreach ($registration as $date) {
-        echo '<p style="font-size: large;">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
+        echo '<p class="datum" style="font-size: large;">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
      }
     }
         ?>

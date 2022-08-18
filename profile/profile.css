@@ -39,20 +39,25 @@ body {
     margin-left: 12.5%;
     color: #ff8000;
     font-weight: bold;
+    padding: 0%;
 }
 .pfp{
     height: 275px;
     width: 275px;
-    margin-left: 10%;
-    margin-top: -10%;
+    margin-left: 5%;
+    margin-top: 5%;
     border-radius: 0px;
     border: 3px solid #ff8000;
 }
+.datum{
+    margin-top:  25%;
+}
 .pfname{
-    font-size: large;
+    font-size:xx-large;
     width: 10px;
-    margin-left:25%;
-    margin-top: 10%;
+    margin-left: 22%;
+    margin-top: 6%;
+    position:absolute;
 }
 .pfstar{
     font-size: medium;
@@ -60,17 +65,19 @@ body {
     margin-left:25%;
 }
 .servermain{
-    width: 45%;
-    min-height: 300px;
+    position:absolute;
+    width: 35%;
+    min-height: 10%;
     height: auto;
-    margin-left: 50%;
+    margin-left: 35%;
     margin-bottom: 10%;
-    margin-top: -5%;
+    margin-top: -25%;
     padding-bottom: 2.5%;
     border: 2px solid#ff8000;
 }
 .profileleiras{
-    width: 35%;
+    position: absolute;
+    width: 25%;
     min-height: 200px;
     height: auto;
     margin-left: 2.5%;

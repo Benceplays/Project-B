@@ -70,19 +70,13 @@
         <p class="pfname">
         <?php 
         include '../login.php'; 
-        echo $_SESSION["usernamefirst"],'</p><p class="pfstar">4.5★</p>';
+        echo $_SESSION["usernamefirst"],'</p>';
         $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 
     if($conn->connect_error){
       echo "$conn->connect_error";
       die("Connection Failed : ". $conn->connect_error);
     } else {
-        $profile_sql = "SELECT date FROM registration WHERE username='$_SESSION[usernamefirst]'";
-        $result_profile=mysqli_query($conn, $profile_sql);
-        $registration = mysqli_fetch_all($result_profile, MYSQLI_ASSOC);
-      foreach ($registration as $date) {
-        echo '<p style="font-size: large;">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
-     }
      if(isset($_POST['leiras'])){
         $leirascucc = $_POST['leiras'];
         $update_leiras = "UPDATE registration SET leiras='$leirascucc' WHERE username='$_SESSION[usernamefirst]'";
@@ -128,6 +122,12 @@
              ?>">
          
         <?php
+        }
+        $profile_sql = "SELECT date FROM registration WHERE username='$_SESSION[usernamefirst]'";
+        $result_profile=mysqli_query($conn, $profile_sql);
+        $registration = mysqli_fetch_all($result_profile, MYSQLI_ASSOC);
+        foreach ($registration as $date) {
+        echo '<p class="datum" style="font-size: large;">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
         }
         ?>
         <div class="servermain">
