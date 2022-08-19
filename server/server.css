@@ -89,3 +89,19 @@ body {
     margin-left: 25%;
     height: 500px;
 }
+.button {
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    padding: 15px 32px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-weight: bold;
+  }
+.button:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}
