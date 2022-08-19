@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="profile.css">
     <script src="../main.js"></script>
 </head>
-<body>
+<body <?php
+        include '../login.php';
+        $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+        
+        $query_background = "SELECT background_img FROM registration WHERE username='$_SESSION[usernamefirst]' ";
+        $result_background = mysqli_query($conn, $query_background);
+        $data_background = mysqli_fetch_assoc($result_background);
+        ?>
+        style="background-image: url('<?php echo "img/$data_background[background_img]";?>') !important;">
 <ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
@@ -31,8 +39,6 @@
       </ul>
     </li>
     <?php 
-    include '../login.php';
-    $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 
     if($conn->connect_error){
       echo "$conn->connect_error";
@@ -72,6 +78,16 @@
         include '../login.php'; 
         echo $_SESSION["usernamefirst"],'</p>';
         $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+        ?>
+        <p class="pfrang">
+          <?php 
+          $query_rang = "SELECT rang FROM registration WHERE username='$_SESSION[usernamefirst]' ";
+          $result_rang = mysqli_query($conn, $query_rang);
+          $data_rang= mysqli_fetch_assoc($result_rang);
+          echo $data_rang['rang'];
+          ?>
+        </p>
+        <?php
 
     if($conn->connect_error){
       echo "$conn->connect_error";
@@ -82,7 +98,6 @@
         $update_leiras = "UPDATE registration SET leiras='$leirascucc' WHERE username='$_SESSION[usernamefirst]'";
         $result_leiras = mysqli_query($conn, $update_leiras);
      }
-    $msg = "";
       if (isset($_POST['upload'])) {
         mkdir("img/$_SESSION[usernamefirst]");
         $filename = $_FILES["uploadfile"]["name"];
@@ -164,8 +179,42 @@
             </div>
             <div >
                 <button class="button3"  type="submit" name="upload">UPLOAD</button>
+                <button class="buttonX" type="submit" name="background_clear">X</button>
             </div>
       </form>
+      <script>
+        function background_div(){
+          document.getElementById('backgrounddiv').style.display = "block";
+        }
+      </script>
+      <button class="button5" type="submit" onclick="background_div()">Háttérkép kiválasztása</button>
+
+      <form method="POST" action="profile.php" enctype="multipart/form-data">
+        <div id="backgrounddiv" style="display: none;">
+         <button class="buttons" type="submit" name="background_cucc"><img class="images" src="img/background.jpg" ></button>
+         <button class="buttons" type="submit" name="background_cucc2"><img class="images" src="img/background2.jpg" ></button>
+        </div>
+      </form>
+      <?php
+      if (isset($_POST['background_cucc'])) {
+        $filename2 = "background.jpg";
+        $sql_img2 = "UPDATE registration SET background_img='$filename2' WHERE username='$_SESSION[usernamefirst]'";
+        mysqli_query($conn, $sql_img2); 
+        echo "<script>window.location = 'profile.php';</script>";
+      }
+      if (isset($_POST['background_cucc2'])) {
+        $filename3 = "background2.jpg";
+        $sql_img3 = "UPDATE registration SET background_img='$filename3' WHERE username='$_SESSION[usernamefirst]'";
+        mysqli_query($conn, $sql_img3); 
+        echo "<script>window.location = 'profile.php';</script>";
+      }
+      if (isset($_POST['background_clear'])) {
+        $filename3 = "";
+        $sql_img3 = "UPDATE registration SET background_img='$filename3' WHERE username='$_SESSION[usernamefirst]'";
+        mysqli_query($conn, $sql_img3); 
+        echo "<script>window.location = 'profile.php';</script>";
+      }
+    ?>
 
     </div>
 </body>
