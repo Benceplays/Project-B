@@ -24,7 +24,7 @@
 					$execval = $stmt->execute();
 					echo $execval;
 					echo '<script>alert("Sikeres regisztráció!")</script>';
-					echo "<script>window.location = 'login/logincucc.php';</script>";
+					echo "<script>window.location = 'profile/profile.php';</script>";
 					$stmt->close();
 					$conn->close();
 				}
