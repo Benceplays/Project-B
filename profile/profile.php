@@ -78,12 +78,22 @@
         include '../login.php'; 
         echo $_SESSION["usernamefirst"],'</p>';
         $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+        $query_rang = "SELECT rang FROM registration WHERE username='$_SESSION[usernamefirst]' ";
+        $result_rang = mysqli_query($conn, $query_rang);
+        $data_rang= mysqli_fetch_assoc($result_rang);
         ?>
-        <p class="pfrang">
+        <p class="pfrang" <?php 
+        if($data_rang['rang'] == "Tag"){
+            echo "style='color: #808080 !important;'";
+        }
+        if($data_rang['rang'] == "Admin"){
+          echo "style='color: #00ff1a !important;'";
+        }
+        if($data_rang['rang'] == "Elofizeto"){
+          echo "style='color: #a600ff !important;'";
+        }
+        ?>>
           <?php 
-          $query_rang = "SELECT rang FROM registration WHERE username='$_SESSION[usernamefirst]' ";
-          $result_rang = mysqli_query($conn, $query_rang);
-          $data_rang= mysqli_fetch_assoc($result_rang);
           echo $data_rang['rang'];
           ?>
         </p>
@@ -144,11 +154,15 @@
         foreach ($registration as $date) {
         echo '<p class="datum">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
         }
+        $query_servers = "SELECT servername FROM servers WHERE playername='$_SESSION[usernamefirst]'";
+        $result_servers = mysqli_query($conn, $query_servers);
+        $data_servers= mysqli_fetch_assoc($result_servers);
+
         ?>
         <div class="servermain">
         <div onclick="szerverkatt()" class="firstserver">
-            <p class="servernameinserver">Szerver neve</p>
-            <p class="serverstarinserver">3.5★</p>
+            <p class="servernameinserver"><?php echo $data_servers['servername']; ?></p>
+            <p class="serverstarinserver">Ertekeles</p>
         </div>
         </div>
         <form action="profile.php" method="POST">

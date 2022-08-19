@@ -115,9 +115,9 @@ body {
     margin-left: 2%;
 }
 .serverstarinserver{
-    text-align: right;
-    margin-top: -8%;
-    margin-right: 2%;
+    position:absolute;
+    margin-top: -5.5%;
+    margin-left: 75%;
 }
 
 ::placeholder {
