@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Előfizetések</title>
     <link rel="stylesheet" href="elofizetesek.css">
+    <script href="../main.js"></script>
 </head>
 <body>
     <ul class="ul">

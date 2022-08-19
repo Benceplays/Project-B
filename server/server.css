@@ -79,3 +79,13 @@ body {
     color: rgb(38, 42, 53);
     background-color: #ff8000;
 }
+.ipcimnew{
+    color: #ff8000
+}
+.serverdatas{
+    border: 2px solid #ff8000;
+    color: #ff8000;
+    width: 50%;
+    margin-left: 25%;
+    height: 500px;
+}

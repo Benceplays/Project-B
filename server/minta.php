@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="servers.css">
-    <script src="main.js"></script>
-<title>Szerver hirdetések</title>
+	<link rel="stylesheet" href="../servers/servers.css">
 </head>
-<body>   
+<body>
 <ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
@@ -69,39 +67,25 @@
     }
     ?>
   </ul>
-    <?php
-    $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
-    for ($i = 1; $i <= 25; $i++){
-    $query = "SELECT boosted, playername, servername, ipcim, leiras, id FROM servers WHERE id = '$i'";
-    $result = mysqli_query($connect, $query);
-    $adatok = mysqli_fetch_assoc($result);
-    if($adatok['id'] == $i and $adatok['boosted'] == 1) {
-      ?>
-      <div style="color: #ff8000;" class="divek">
-      <h1><?php echo $adatok['servername'];?></h1>
-      <p><?php echo $adatok['playername'];?></p>
-      <h3><?php echo $adatok['ipcim'];?></h3>
-      <div class="leirasdiv">
-        <p><?php echo $adatok['leiras'];?></p>
-      </div>
-      </div>
-      <?php 
-    }} 
-    for ($b = 1; $b <= 25; $b++){
-    $query_b = "SELECT boosted, playername, servername, ipcim, leiras, id FROM servers WHERE id = '$b'";
-    $result_b = mysqli_query($connect, $query_b);
-    $adatok_b = mysqli_fetch_assoc($result_b);
-    if($adatok_b['id'] == $b and $adatok_b['boosted'] == 0) {?>
-      <div style="color: #ff8000;" class="divek">
-      <h1><?php echo $adatok_b['servername'];?></h1>
-      <p><?php echo $adatok_b['playername'];?></p>
-      <h3><?php echo $adatok_b['ipcim'];?></h3>
-      <div class="leirasdiv">
-        <p><?php echo $adatok_b['leiras'];?></p>
-      </div>
-      </div>
-      <?php 
-    }} 
-    ?>
+<?php
+$pathcucc = basename($_SERVER['SCRIPT_FILENAME']);
+$username = pathinfo($pathcucc, PATHINFO_FILENAME);
+$conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+	if($conn->connect_error){
+		echo "$conn->connect_error";
+		die("Connection Failed : ". $conn->connect_error);
+	} else {
+		$sql_szerverlekerdezes =  "SELECT * FROM servers WHERE servername='$username'";
+		$result=mysqli_query($conn, $sql_szerverlekerdezes);
+        $data = mysqli_fetch_assoc($result);
+		?>
+		<div class="serverdatas">
+        <h2 class="servernamenew"><?php echo $data['servername']; ?></h2>
+        <h2 class="playernamenew"><?php echo $data['playername']; ?></h2>
+        <h2 class="ipcimnew"><?php echo $data['ipcim']; ?></h2>
+        <h2 class="leirasnew"><?php echo $data['leiras']; ?></h2>
+		</div>
+	<?php
+	}?>
 </body>
 </html>
