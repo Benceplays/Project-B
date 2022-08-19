@@ -1,0 +1,94 @@
+body {
+    background-color: rgb(38, 42, 53);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:rgb(38, 42, 53);
+    margin-top: 0%;
+ }
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(38, 42, 53);
+    border-bottom: #ff8000 2px solid;
+}
+  
+.li {
+    float: left;
+}
+  
+.li-a {
+    display: block;
+    color: #ff8000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+  
+.li-a:hover {
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+}
+.orange-text{
+    color: #ff8000;
+}
+.profilemain{
+    background-color:rgb(38, 42, 53);
+    margin-top: 5%;
+    width: 75%;
+    height: auto;
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+    margin-left: 12.5%;
+    color: #ff8000;
+    font-weight: bold;
+    padding: 0%;
+}
+.pfp{
+    height: 275px;
+    width: 275px;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 0px;
+    border: 3px solid #ff8000;
+}
+.datum{
+    margin-top:  15%;
+    margin-left: 70%;
+}
+.pfname{
+    font-size:xx-large;
+    width: 10px;
+    margin-left: 0%;
+    margin-top: 0%;
+    position:absolute;
+}
+.profileleiras{
+    position: absolute;
+    width: 25%;
+    min-height: 200px;
+    height: auto;
+    margin-left: 0%;
+    margin-top: 0%;
+    border: 2px solid #ff8000;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+}
+::-webkit-scrollbar {
+    width: 9px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background:  #141414; 
+
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background:  #ff8000;
+    border-radius: 5px;  
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+    background:  #ff8000; 
+    }
