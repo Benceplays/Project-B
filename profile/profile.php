@@ -160,7 +160,7 @@
         </script>
         <form method="POST" action="profile.php" enctype="multipart/form-data">
             <div>
-                <input title="" style="color:transparent" type="file" name="uploadfile"/>
+                <input class="button4" title="" style="color:transparent" type="file" name="uploadfile"/>
             </div>
             <div >
                 <button class="button3"  type="submit" name="upload">UPLOAD</button>

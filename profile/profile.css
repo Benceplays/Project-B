@@ -198,8 +198,8 @@ input:-webkit-autofill:focus{
         color:  #ff8000;
     }
     .button3 {
-        margin-top: -30%;
-        margin-left: 22;
+        margin-top: -17%;
+        margin-left: 25%;
         position: absolute;
         background-color: #ff8000;
         color: rgb(38, 42, 53);
@@ -216,3 +216,8 @@ input:-webkit-autofill:focus{
         background-color: rgb(38, 42, 53);
         color:  #ff8000;
     }
+    .button4 {
+        position:absolute;;
+        margin-top: -17%;
+        margin-left: 18.5%;
+      }
