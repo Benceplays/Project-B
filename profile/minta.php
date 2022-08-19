@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="minta.css">
     <script src="../main.js"></script>
 </head>
 <body>
@@ -94,8 +94,8 @@
         while ($data = mysqli_fetch_assoc($result_img)) {
         ?>
             <img class="pfp" src="<?php
-              if(file_exists("./img/$_SESSION[usernamefirst]")){
-                echo "./img/$_SESSION[usernamefirst]/$data[profile_img]";
+              if(file_exists("./img/$username")){
+                echo "./img/$username/$data[profile_img]";
               }
               else{
                 echo "./img/default.png";
@@ -112,7 +112,7 @@
         </div>
         </div>-->
         <textarea class="profileleiras" style="resize: none;" rows="4" name="leiras" id="leiras" disabled placeholder="Leírás: " maxlength="500" style="max-width: 600px;"><?php         
-        $profile_lekeres = "SELECT leiras FROM registration WHERE username='$_SESSION[usernamefirst]'";
+        $profile_lekeres = "SELECT leiras FROM registration WHERE username='$username'";
         $profile_lekeres_result=mysqli_query($conn, $profile_lekeres);
         $profiles = mysqli_fetch_all($profile_lekeres_result, MYSQLI_ASSOC);
          foreach ($profiles as $leirasok) {
