@@ -51,7 +51,7 @@
           echo "<script>window.location = '../index.php';</script>";
         }
         echo '<li class="li" style="float: right;" onmouseover="loginpanel()" onmouseout="loginoutpanel()"><ul style="padding: 0;"><a class="li-a" href="#">', $_SESSION["usernamefirst"], '</a><li id="login-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="profile.php">Profilom</a></li>   
-        <li id="login-menu1" style="list-style-type: none; display:none"><form method="post"><input type="submit" name="kilepes" class="kilepes" value="kilepes" /></form></li></ul></li>';
+        <li id="login-menu1" style="list-style-type: none; display:none"><form method="post"><input class="button" type="submit" name="kilepes" class="kilepes" value="Kilépés" /></form></li></ul></li>';
         echo '<script>
         function loginpanel() {
           let menu = [document.getElementById("login-menu1"), document.getElementById("login-menu2")];
@@ -127,7 +127,7 @@
         $result_profile=mysqli_query($conn, $profile_sql);
         $registration = mysqli_fetch_all($result_profile, MYSQLI_ASSOC);
         foreach ($registration as $date) {
-        echo '<p class="datum" style="font-size: large;">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
+        echo '<p class="datum">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
         }
         ?>
         <div class="servermain">
@@ -144,8 +144,8 @@
          foreach ($profiles as $leirasok) {
         echo $leirasok['leiras'];
         } 
-        ?></textarea><input id="send" onclick="disablecucc()" type="submit"></form>
-        <button id="szerkeszt" onclick="disableornot()">Szerkeszt</button>
+        ?></textarea><input class="button2" id="send" onclick="disablecucc()" type="submit"></form>
+        <button class="button2" id="szerkeszt" onclick="disableornot()">Szerkeszt</button>
         <script>
         document.getElementById("send").style.display = "none";  
         document.getElementById("leiras").disabled = true;
@@ -160,10 +160,10 @@
         </script>
         <form method="POST" action="profile.php" enctype="multipart/form-data">
             <div>
-                <input  type="file" name="uploadfile"/>
+                <input title="" style="color:transparent" type="file" name="uploadfile"/>
             </div>
             <div >
-                <button  type="submit" name="upload">UPLOAD</button>
+                <button class="button3"  type="submit" name="upload">UPLOAD</button>
             </div>
       </form>
 
