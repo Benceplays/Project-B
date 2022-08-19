@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Előfizetések</title>
     <link rel="stylesheet" href="elofizetesek.css">
+    <script href="../main.js"></script>
 </head>
 <body>
     <ul class="ul">
@@ -50,7 +51,7 @@
           echo "<script>window.location = 'index.php';</script>";
         }
         echo '<li class="li" style="float: right;" onmouseover="loginpanel()" onmouseout="loginoutpanel()"><ul style="padding: 0;"><a class="li-a" href="#">', $_SESSION["usernamefirst"], '</a><li id="login-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="profile/profile.php">Profilom</a></li>   
-        <li id="login-menu1" style="list-style-type: none; display:none"><form method="post"><input type="submit" name="kilepes" class="kilepes" value="kilepes" /></form></li></ul></li>';
+        <li id="login-menu1" style="list-style-type: none; display:none"><form method="post"><input class="button" type="submit" name="kilepes" class="kilepes" value="Kilépés" /></form></li></ul></li>';
         echo '<script>
         function loginpanel() {
           let menu = [document.getElementById("login-menu1"), document.getElementById("login-menu2")];

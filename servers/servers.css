@@ -89,3 +89,46 @@ body {
     margin-left: 50%;
     margin-top: -140px;
 }
+.serverdatas{
+    border: 2px solid #ff8000;
+    color: #ff8000;
+    width: 50%;
+    margin-left: 25%;
+    height: 500px;
+    font-weight: bold;
+}
+.servernamenew{
+    font-size: 35px;
+    padding: 1%;
+}
+.playernamenew{
+    font-size: 15px;
+    text-align: right;
+    margin-right: 5%;
+}
+.ipcimnew{
+    font-size: 20px;
+    margin-left: 1%;
+    margin-top: 2%;
+}
+.leirasnew{
+    font-size: 15px;
+    margin-left: 1%;
+    margin-top: 5%;
+}
+.button {
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    padding: 15px 32px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-weight: bold;
+  }
+.button:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}

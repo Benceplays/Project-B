@@ -1,6 +1,8 @@
 <?php
 	include '../login.php';
 	$servername = $_POST['servername'];
+	session_start();
+	$_SESSION['servernametwo'] = $servername;
 	$serverip = $_POST['serverip'];
 	$serverleiras = $_POST['serverleiras'];
 	$boosted = 0;
@@ -21,6 +23,10 @@
 			echo "<script>window.location = '../profile/profile.php';</script>";
 			$stmt->close();
 			$conn->close();
+
+	    	$filePath = 'minta.php';
+      		$destinationFilePath = '../szerverek/'.$servername.'.php';
+      		copy($filePath, $destinationFilePath);
 		}
 		else{
 			echo '<script>alert("Nem vagy bejelentkezve");</script>';

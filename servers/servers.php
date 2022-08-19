@@ -54,7 +54,7 @@
           echo "<script>window.location = '../index.php';</script>";
         }
         echo '<li class="li" style="float: right;" onmouseover="loginpanel()" onmouseout="loginoutpanel()"><ul style="padding: 0;"><a class="li-a" href="#">', $_SESSION["usernamefirst"], '</a><li id="login-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="../profile/profile.php">Profilom</a></li>   
-        <li id="login-menu1" style="list-style-type: none; display:none"><form method="post"><input type="submit" name="kilepes" class="kilepes" value="kilepes" /></form></li></ul></li>';
+        <li id="login-menu1" style="list-style-type: none; display:none"><form method="post"><input class="button" type="submit" name="kilepes" class="kilepes" value="Kilépés" /></form></li></ul></li>';
         echo '<script>
         function loginpanel() {
           let menu = [document.getElementById("login-menu1"), document.getElementById("login-menu2")];
@@ -76,7 +76,6 @@
     $result = mysqli_query($connect, $query);
     $adatok = mysqli_fetch_assoc($result);
     if($adatok['id'] == $i and $adatok['boosted'] == 1) {
-      $myfile = fopen("asdf.php", "w");
       ?>
       <div style="color: #ff8000;" class="divek">
       <h1><?php echo $adatok['servername'];?></h1>
@@ -101,7 +100,8 @@
         <p><?php echo $adatok_b['leiras'];?></p>
       </div>
       </div>
-      <?php $myfile = fopen("asdf.php", "w");
-    }} ?>
+      <?php 
+    }} 
+    ?>
 </body>
 </html>

@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="forgotpasswd.css">
-    <script src="../main.js"></script>
-<title>ASD</title>
+	<link rel="stylesheet" href="../servers/servers.css">
 </head>
 <body>
 <ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
-      <ul style="padding: 0;"><a class="li-a" href="../elofizetesek/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
+      <ul style="padding: 0;"><a class="li-a" href="../elofizetes/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
     </li>
     
     <li class="li" onmouseover="beadol()" onmouseout="kiadol()">
@@ -29,7 +27,7 @@
     }
     </script>
       <ul style="padding: 0;"><a class="li-a" href="#" >Hirdetések</a>
-        <li id="ads-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="../servers/servers.php">Keresés</a></li>   
+        <li id="ads-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="servers.php">Keresés</a></li>    
         <li id="ads-menu1" style="list-style-type: none; display:none"><a class="li-a" href="../server/server.php">Készítés</a></li>                         
       </ul>
     </li>
@@ -69,13 +67,25 @@
     }
     ?>
   </ul>
-    
-    <div class="loginpanel">
-        <h1 class="loginh1">Elfelejtett jelszó</h1>
-        <input class="loginobject" placeholder="Email cím" type="text"><br><br>
-        <p class="forgotpasswdtext">Az itt megadott email címedre fogunk küldeni egy jelszó visszaállító email-t.</p>
-        <button class="logininbutton">Küldés</button>
-    </div>
-
+<?php
+$pathcucc = basename($_SERVER['SCRIPT_FILENAME']);
+$username = pathinfo($pathcucc, PATHINFO_FILENAME);
+$conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+	if($conn->connect_error){
+		echo "$conn->connect_error";
+		die("Connection Failed : ". $conn->connect_error);
+	} else {
+		$sql_szerverlekerdezes =  "SELECT * FROM servers WHERE servername='$username'";
+		$result=mysqli_query($conn, $sql_szerverlekerdezes);
+        $data = mysqli_fetch_assoc($result);
+		?>
+		<div class="serverdatas">
+        <h2 class="servernamenew"><?php echo $data['servername']; ?></h2>
+        <h2 class="playernamenew"><?php echo $data['playername']; ?></h2>
+        <h2 class="ipcimnew"><?php echo $data['ipcim']; ?></h2>
+        <h2 class="leirasnew"><?php echo $data['leiras']; ?></h2>
+		</div>
+	<?php
+	}?>
 </body>
 </html>
