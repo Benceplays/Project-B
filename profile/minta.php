@@ -175,8 +175,8 @@
         ?>
         <div class="commentiras">
           <form method="post">
-            <input type="text" name="comment" placeholder="Írj hozzászólást..." required />
-            <input type="submit" name="hozzaszolas" value="Hozzászólás elküldése" />
+            <textarea class="comment_text" type="text" name="comment" placeholder="Írj hozzászólást..." style="resize: none;" rows="8" cols="50" required maxlength="500"></textarea>
+            <input class="comment_send" type="submit" name="hozzaszolas" value="Hozzászólás elküldése" />
           </form>
         </div>
         <?php
@@ -194,8 +194,24 @@
             echo '<script>alert("Nem vagy bejelentkezve!");</script>';
           }
         }
-        ?>
-        
+        for ($a = 1; $a <= 500; $a++){
+          $image = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+          $commentconn = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+          $query_hozzaszolasok = "SELECT * FROM $username WHERE id = '$a'";
+          $result_hozzaszolasok = mysqli_query($commentconn, $query_hozzaszolasok);
+          $adatok_hozzaszolasok = mysqli_fetch_assoc($result_hozzaszolasok);
+          $query_image = "SELECT profile_img FROM registration WHERE username='$adatok_hozzaszolasok[username]'";
+          $result_image = mysqli_query($image, $query_image);
+          $adatok_image= mysqli_fetch_assoc($result_image);
+          if($adatok_hozzaszolasok['id'] == $a) {?>
+          <div class="hozzaszolasok">
+            <img class="hozzaszolasok_img" src="img/<?php echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];?>">
+            <p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p>
+            <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p>   
+            <textarea class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
+          </div>
+          
+            <?php }}?>       
 
     </div>
 </body>
