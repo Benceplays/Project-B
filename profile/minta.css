@@ -3,6 +3,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color:rgb(38, 42, 53);
     margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    background-repeat: no-repeat;
+    background-size: 100%;
  }
 .ul {
     list-style-type: none;
@@ -45,27 +49,29 @@ body {
     font-weight: bold;
     padding: 0%;
 }
+.pfrang{
+    font-size:large;
+    width: 10px;
+}
 .pfp{
     height: 275px;
     width: 275px;
     margin-left: 5%;
-    margin-top: 5%;
+    margin-top:  0%;
     border-radius: 0px;
     border: 3px solid #ff8000;
 }
 .datum{
-    margin-top:  15%;
-    margin-left: 70%;
+    margin-top:  0%;
 }
 .pfname{
     font-size:xx-large;
     width: 10px;
-    margin-left: 0%;
-    margin-top: 0%;
+    margin-left: 22%;
+    margin-top: 15%;
     position:absolute;
 }
 .profileleiras{
-    position: absolute;
     width: 25%;
     min-height: 200px;
     height: auto;
@@ -92,3 +98,44 @@ body {
     ::-webkit-scrollbar-thumb:hover {
     background:  #ff8000; 
     }
+.button {
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    padding: 15px 32px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-weight: bold;
+  }
+.button:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}
+.servermain{
+    width: 35%;
+    min-height: 10%;
+    height: auto;
+    padding-bottom: 1.8%;
+    border: 2px solid#ff8000;
+}
+.firstserver{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    height: 50px;
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+
+}
+.servernameinserver{
+    font-size: medium;
+    margin-left: 2%;
+}
+.serverstarinserver{
+    position:absolute;
+    margin-top: -5.5%;
+    margin-left: 75%;
+}
