@@ -87,6 +87,11 @@ body {
     background-color: rgb(38, 42, 53);
     color: #ff8000;
 }
+@media only screen and (min-width: 2500px) {
+    .profileleiras{
+      margin-top: 20%;
+    }
+  }
 ::-webkit-scrollbar {
     width: 9px;
     }

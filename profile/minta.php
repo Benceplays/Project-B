@@ -173,7 +173,6 @@
           echo "<script>window.location = 'profile.php';</script>";
         }
         ?>
-
         
 
     </div>
