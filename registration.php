@@ -16,6 +16,10 @@
     	$adatok_all= mysqli_fetch_assoc($result_all);
 			if($adatok_all['email'] != $email){
 				if($adatok_all['username'] != $username){
+					$tableconn  = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+					$table = "CREATE TABLE $username ( id INT NOT NULL AUTO_INCREMENT , username VARCHAR(16) NOT NULL , date DATE NOT NULL , comment VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;";
+					$tableconn->query($table);
+					$tableconn->close();
 					$filePath = 'profile/minta.php';
 					$destinationFilePath = 'profile/'.$username.'.php';
 					copy($filePath, $destinationFilePath);

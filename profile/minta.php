@@ -173,6 +173,28 @@
           echo "<script>window.location = 'profile.php';</script>";
         }
         ?>
+        <div class="commentiras">
+          <form method="post">
+            <input type="text" name="comment" placeholder="Írj hozzászólást..." required />
+            <input type="submit" name="hozzaszolas" value="Hozzászólás elküldése" />
+          </form>
+        </div>
+        <?php
+        if (isset($_POST['hozzaszolas'])) {
+          $sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
+          $result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
+          if(mysqli_num_rows($result_szerverlekerdezes)==1){
+            $comment = $_POST['comment'];
+            $date_comment = date('Y-m-d');
+            $conn_comment  = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+            $sql_comment = "INSERT INTO $username(username, comment, date) VALUES ('$_SESSION[usernamefirst]', '$comment', '$date_comment')";
+            $result_comment = mysqli_query($conn_comment, $sql_comment);
+          }
+          else{ 
+            echo '<script>alert("Nem vagy bejelentkezve!");</script>';
+          }
+        }
+        ?>
         
 
     </div>
