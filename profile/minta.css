@@ -41,7 +41,7 @@ body {
     background-color:rgb(38, 42, 53);
     margin-top: 5%;
     width: 75%;
-    height: auto;
+    height: 600px;
     border: 2px solid #ff8000;
     border-radius: 20px;
     margin-left: 12.5%;
@@ -52,31 +52,37 @@ body {
 .pfrang{
     font-size:large;
     width: 10px;
+    position: absolute;
+    margin-left: 22%;
+    margin-top: 7%;
 }
 .pfp{
     height: 275px;
     width: 275px;
-    margin-left: 5%;
-    margin-top:  0%;
+    margin-left: -22.5%;
+    margin-top:  5%;
     border-radius: 0px;
     border: 3px solid #ff8000;
 }
 .datum{
-    margin-top:  0%;
+    margin-top:  1%;
+    margin-left: 42.5%;
+    position: absolute;
 }
 .pfname{
     font-size:xx-large;
     width: 10px;
     margin-left: 22%;
-    margin-top: 15%;
+    margin-top: 5%;
     position:absolute;
 }
 .profileleiras{
     width: 25%;
     min-height: 200px;
     height: auto;
-    margin-left: 0%;
-    margin-top: 0%;
+    margin-left: 3.5%;
+    margin-top: 25%;
+    float: left;
     border: 2px solid #ff8000;
     background-color: rgb(38, 42, 53);
     color: #ff8000;
@@ -120,6 +126,9 @@ body {
     height: auto;
     padding-bottom: 1.8%;
     border: 2px solid#ff8000;
+    position: absolute;
+    margin-left: 35%;
+    margin-top: -15%;
 }
 .firstserver{
     width: 90%;
@@ -138,4 +147,17 @@ body {
     position:absolute;
     margin-top: -5.5%;
     margin-left: 75%;
+}
+.szerkesztes{
+    position: absolute;
+    margin-top: -7%;
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    font-weight: bold;
+    font-size: medium;
+}
+.szerkesztes:hover{
+    background-color: rgb(38, 42, 53);
+    color:  #ff8000;
 }
