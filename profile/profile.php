@@ -163,15 +163,15 @@
           $adatok_servers = mysqli_fetch_assoc($result_servers);
           if($adatok_servers['id'] == $i and $adatok_servers['playername'] == $_SESSION['usernamefirst']){
           ?>
-          <div onclick="szerveratdobas()" class="firstserver">
-              <p class="servernameinserver" ><?php echo $adatok_servers['servername']; $proba = $adatok_servers['servername']; ?></p>
-              <p class="serverstarinserver">Ertekeles</p>
-          </div>
-         <script>
-          function szerveratdobas(){
-            window.location = '../szerverek/<?php echo $proba; ?>.php';
+          <script>
+          function szerveratdobas<?php echo $i;?>(){
+            window.location = '../szerverek/<?php echo $adatok_servers['servername']; ?>.php';
           }
          </script>
+          <div onclick="szerveratdobas<?php echo$i;?>()" class="firstserver">
+              <p class="servernameinserver" ><?php echo $adatok_servers['servername']; ?></p>
+              <p class="serverstarinserver">Ertekeles</p>
+          </div>
           <?php }} ?>
          </div>
         <form action="profile.php" method="POST">
