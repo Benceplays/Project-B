@@ -51,35 +51,8 @@ body {
     ::-webkit-scrollbar-thumb:hover {
     background:  #ff8000; 
     }
-.elofizetesekmain{
-    width: 75%;
-    height: 600px;
-    margin-left: 12.5%;
-    border: 2px solid #ff8000;
-    border-radius: 20px;
-    margin-top: 5%;
-}
-.kezdo{
-    width: 26%;
-    height: 500px;
-    margin-left: 5.5%;
-    margin-top: 5%;
-    border: 2px solid #ff8000;
-}
-.halado{
-        width: 26%;
-        height: 500px;
-        margin-left: 5%;
-        margin-top: 5%;
-        border: 2px solid #ff8000;
-}
-.profi{
-    width: 26%;
-    height: 500px;
-    margin-left: 5%;
-    margin-top: 5%;
-    border: 2px solid #ff8000;
-}
+
+
 .kozos{
     display:inline-block;
     box-sizing: border-box;
@@ -126,4 +99,13 @@ body {
 .button:hover{
     background-color: #ff8000;
     color:  rgb(38, 42, 53);
+}
+
+.paddinglr{
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
+
+*{
+    overflow-x: hidden;
 }
