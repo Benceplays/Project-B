@@ -114,9 +114,9 @@ body {
 }
 ::-ms-input-placeholder {
     color: #ff8000 !important;
-   }
+}
 
-   input:focus { 
+input:focus { 
     outline: none !important;
     border-color:  #ff8000;
     box-shadow: 0 0 10px  #ff8000;

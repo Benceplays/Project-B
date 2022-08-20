@@ -1,11 +1,9 @@
 body {
     background-color: rgb(38, 42, 53);
 }
-
 .orange-text{
     color: #ff8000;
 }
-
 .ul {
     list-style-type: none;
     margin: 0;
@@ -18,7 +16,6 @@ body {
 .li {
     float: left;
 }
-  
 .li-a {
     display: block;
     color: #ff8000;
@@ -27,7 +24,6 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
-
 .li-a:hover {
     background-color: #ff8000;
     color: rgb(38, 42, 53);
@@ -92,29 +88,31 @@ body {
 .serverdatas{
     border: 2px solid #ff8000;
     color: #ff8000;
-    width: 50%;
-    margin-left: 25%;
-    height: 500px;
+    width: 75%;
+    margin-left: 12.5%;
+    height: auto;
     font-weight: bold;
+    margin-top: 2%;
 }
 .servernamenew{
     font-size: 35px;
     padding: 1%;
+    margin-top: 2%;
 }
 .playernamenew{
-    font-size: 15px;
+    font-size: 20px;
     text-align: right;
-    margin-right: 5%;
+    margin-right: 10%;
+    margin-top: 1%;
 }
 .ipcimnew{
     font-size: 20px;
     margin-left: 1%;
-    margin-top: 2%;
 }
 .leirasnew{
     font-size: 15px;
-    margin-left: 1%;
-    margin-top: 5%;
+    margin-right: 1%;
+    margin-top: 10%;
 }
 .button {
     background-color: rgb(38, 42, 53);
@@ -131,4 +129,57 @@ body {
 .button:hover{
     background-color: #ff8000;
     color:  rgb(38, 42, 53);
+}
+::placeholder {
+    color: #ff8000 !important ;
+}
+::-ms-input-placeholder {
+    color: #ff8000 !important;
+}
+.serverimgs{
+    width: 50%;
+    height: 400px;
+    margin-left: 1%;
+}
+.leirasdiv{
+    width: 50%;
+    height: 400px;
+    border: 2px solid #ff8000;
+    margin-right: 1%;
+}
+.hozzaszolastext:focus { 
+    outline: none !important;
+    border-color:  #ff8000;
+    box-shadow: 0 0 10px  #ff8000;
+}
+.hozzaszolastext{
+    color:#ff8000 ;
+    background-color: rgb(38, 42, 53);
+    width: 50%;
+    border: 2px solid #ff8000;
+    margin-left: 1%;
+    max-width: 50%;
+    height: auto;
+    margin-top: 15%;
+}
+.hozzaszolastext:-webkit-autofill:focus{
+    -webkit-text-fill-color: #ff8000;
+    transition: background-color 5000s ease-in-out 0s;
+}
+.hozaszolasbutton{
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    height: 30px;
+    border: 2px solid #ff8000;
+    margin-bottom: 2px;
+}
+.hozaszolasbutton:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+}
+.leirasdivtwo{
+    border: 2px solid #ff8000;
+    color: #ff8000;
+    margin-top: 15%;
+    margin-right: 5%;
 }
