@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="minta.css">
     <script src="../main.js"></script>
 </head>
-<body>
+<body <?php
+        $pathcucc = basename($_SERVER['SCRIPT_FILENAME']);
+        $username = pathinfo($pathcucc, PATHINFO_FILENAME);
+        include '../login.php'; 
+        $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+        
+        $query_background = "SELECT background_img FROM registration WHERE username='$username' ";
+        $result_background = mysqli_query($conn, $query_background);
+        $data_background = mysqli_fetch_assoc($result_background);
+        ?>
+        style="background-image: url('<?php echo "img/$data_background[background_img]";?>') !important;">
 <ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
@@ -31,8 +41,6 @@
       </ul>
     </li>
     <?php 
-    include '../login.php';
-    $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 
     if($conn->connect_error){
       echo "$conn->connect_error";
@@ -69,11 +77,27 @@
     <div class="profilemain">
         <p class="pfname">
         <?php 
-        $pathcucc = basename($_SERVER['SCRIPT_FILENAME']);
-        $username = pathinfo($pathcucc, PATHINFO_FILENAME);
-        include '../login.php'; 
-        echo $username,'</p><p class="pfstar">4.5★</p>';
-        $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+        echo $username,'</p>';
+        $query_rang = "SELECT rang FROM registration WHERE username='$username' ";
+        $result_rang = mysqli_query($conn, $query_rang);
+        $data_rang= mysqli_fetch_assoc($result_rang);
+        ?>
+        <p class="pfrang" <?php 
+        if($data_rang['rang'] == "Tag"){
+            echo "style='color: #808080 !important;'";
+        }
+        if($data_rang['rang'] == "Admin"){
+          echo "style='color: #00ff1a !important;'";
+        }
+        if($data_rang['rang'] == "Elofizeto"){
+          echo "style='color: #a600ff !important;'";
+        }
+        ?>>
+          <?php 
+          echo $data_rang['rang'];
+          ?>
+        </p>
+    <?php
 
     if($conn->connect_error){
       echo "$conn->connect_error";
@@ -119,6 +143,25 @@
         echo $leirasok['leiras'];
         } 
         ?></textarea>
+         <div class="servermain">
+        <?php
+        for ($i = 1; $i <= 25; $i++){
+          $query_servers = "SELECT * FROM servers WHERE id='$i'";
+          $result_servers = mysqli_query($conn, $query_servers);
+          $adatok_servers = mysqli_fetch_assoc($result_servers);
+          if($adatok_servers['id'] == $i and $adatok_servers['playername'] == $username){
+          ?>
+          <script>
+          function szerveratdobas<?php echo $i;?>(){
+            window.location = '../szerverek/<?php echo $adatok_servers['servername']; ?>.php';
+          }
+         </script>
+          <div onclick="szerveratdobas<?php echo$i;?>()" class="firstserver">
+              <p class="servernameinserver" ><?php echo $adatok_servers['servername']; ?></p>
+              <p class="serverstarinserver">Ertekeles</p>
+          </div>
+          <?php }} ?>
+         </div>
         
 
     </div>
