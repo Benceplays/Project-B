@@ -20,7 +20,7 @@
 			$execval = $stmt->execute();
 			echo $execval;
 			echo '<script>alert("Sikeresen létrehozva a hirdetés");</script>';
-			echo "<script>window.location = '../profile/profile.php';</script>";
+			echo "<script>window.location = '../profile/$_SESSION[usernamefirst].php';</script>";
 			$stmt->close();
 			$conn->close();
 
