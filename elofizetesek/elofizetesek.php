@@ -9,10 +9,10 @@
     <script href="../main.js"></script>
 </head>
 <body>
-    <ul class="ul">
+<ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
-      <ul style="padding: 0;"><a class="li-a" href="elofizetesek.php" id="subscriber">Előfizetések</a></ul>
+      <ul style="padding: 0;"><a class="li-a" href="../elofizetes/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
     </li>
     
     <li class="li" onmouseover="beadol()" onmouseout="kiadol()">
@@ -32,7 +32,7 @@
       </ul>
     </li>
     <?php 
-    include 'login.php';
+    include '../login.php';
     $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 
     if($conn->connect_error){
@@ -49,9 +49,9 @@
           $logincucosvaltozo = 0;
           $update_login = "UPDATE registration SET login='$logincucosvaltozo' WHERE username='$_SESSION[usernamefirst]' ";
           $resultlogin_update = mysqli_query($conn, $update_login);
-          echo "<script>window.location = 'index.php';</script>";
+          echo "<script>window.location = '../index.php';</script>";
         }
-        echo '<li class="li" style="float: right;" onmouseover="loginpanel()" onmouseout="loginoutpanel()"><ul style="padding: 0;"><a class="li-a" href="#">', $_SESSION["usernamefirst"], '</a><li id="login-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="profile/profile.php">Profilom</a></li>   
+        echo '<li class="li" style="float: right;" onmouseover="loginpanel()" onmouseout="loginoutpanel()"><ul style="padding: 0;"><a class="li-a" href="#">', $_SESSION["usernamefirst"], '</a><li id="login-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="profile.php">Profilom</a></li>   
         <li id="login-menu1" style="list-style-type: none; display:none"><form method="post"><input class="button" type="submit" name="kilepes" class="kilepes" value="Kilépés" /></form></li></ul></li>';
         echo '<script>
         function loginpanel() {

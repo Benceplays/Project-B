@@ -80,10 +80,15 @@ $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
         $data = mysqli_fetch_assoc($result);
 		?>
 		<div class="serverdatas">
+        <p class="playernamenew"><?php echo $data['playername']; ?></p>
+        <img class="serverimgs" src="../server/img/servertest.jpg" alt="">
         <h2 class="servernamenew"><?php echo $data['servername']; ?></h2>
-        <h2 class="playernamenew"><?php echo $data['playername']; ?></h2>
         <h2 class="ipcimnew"><?php echo $data['ipcim']; ?></h2>
-        <h2 class="leirasnew"><?php echo $data['leiras']; ?></h2>
+        <div class="leirasdivtwo">
+            <h2 class="leirasnew"><?php echo $data['leiras']; ?></h2>
+        </div>
+        <textarea type="text" class="hozzaszolastext" placeholder="Hozzászólás írása..."></textarea>
+        <button class="hozaszolasbutton">Küldés</button>
 		</div>
 	<?php
 	}?>
