@@ -80,6 +80,17 @@
         <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver neve" type="text" name="servername" style="width: 30%; margin-left:15% ;" required>
         <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szever IP címe" type="text" name="serverip" id="" style="width: 30%; margin-left:5%;" required>
         <textarea class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" style="width: 80%;min-height: 45%; max-height: 45%; margin-left: 10%; margin-top: -2%; margin-top: 5%;" required></textarea>
+        <textarea name="egyeburl" id="egyeburl" class="egyeburl" style="resize:none;" placeholder="További linkeket itt adhatsz meg..."></textarea>
+        <select class="kategoriak" name="servers">
+            <option value="">Válassz egy kategóriát</option>
+            <option value="minecraft" require>Minecraft</option>
+            <option value="csgo" require>Counter Strike Global Offensive</option>
+            <option value="fivem" require>Fivem</option>
+            <option value="mta" require>Multi Theft Auto</option>
+            <option value="rust" require>Rust</option>
+            <option value="cssource" require>Counter Strike Source</option>
+        </select>
+        <p style="color:#ff8000; margin-left:10%;">A szerverhez kapcsolódó képeket itt csatolhatod:</p>
         <button class="hirdetesbutton">Hirdetés létrehozása</button>
     </div>
     </form>
