@@ -216,6 +216,9 @@
         <div id="backgrounddiv" style="display: none;">
          <button class="buttons" type="submit" name="background_cucc"><img class="images" src="img/background.jpg" ></button>
          <button class="buttons" type="submit" name="background_cucc2"><img class="images" src="img/background2.jpg" ></button>
+         <button class="buttons" type="submit" name="background_cucc3"><img class="images" src="img/background3.jpeg" ></button>
+         <button class="buttons" type="submit" name="background_cucc4"><img class="images" src="img/background4.jpeg" ></button>
+         <button class="buttons" type="submit" name="background_cucc5"><img class="images" src="img/background5.jpeg" ></button>
         </div>
       </form>
       <?php
@@ -231,10 +234,28 @@
         mysqli_query($conn, $sql_img3); 
         echo "<script>window.location = 'profile.php';</script>";
       }
+      if (isset($_POST['background_cucc3'])) {
+        $filename4 = "background3.jpeg";
+        $sql_img4 = "UPDATE registration SET background_img='$filename4' WHERE username='$_SESSION[usernamefirst]'";
+        mysqli_query($conn, $sql_img4); 
+        echo "<script>window.location = 'profile.php';</script>";
+      }
+      if (isset($_POST['background_cucc4'])) {
+        $filename5 = "background4.jpeg";
+        $sql_img5 = "UPDATE registration SET background_img='$filename5' WHERE username='$_SESSION[usernamefirst]'";
+        mysqli_query($conn, $sql_img5); 
+        echo "<script>window.location = 'profile.php';</script>";
+      }
+      if (isset($_POST['background_cucc5'])) {
+        $filename6 = "background5.jpeg";
+        $sql_img6 = "UPDATE registration SET background_img='$filename6' WHERE username='$_SESSION[usernamefirst]'";
+        mysqli_query($conn, $sql_img6); 
+        echo "<script>window.location = 'profile.php';</script>";
+      }
       if (isset($_POST['background_clear'])) {
-        $filename3 = "";
-        $sql_img3 = "UPDATE registration SET background_img='$filename3' WHERE username='$_SESSION[usernamefirst]'";
-        mysqli_query($conn, $sql_img3); 
+        $filename_clear = "";
+        $sql_img_clear = "UPDATE registration SET background_img='$filename_clear' WHERE username='$_SESSION[usernamefirst]'";
+        mysqli_query($conn, $sql_img_clear); 
         echo "<script>window.location = 'profile.php';</script>";
       }
     ?>

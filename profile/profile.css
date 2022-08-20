@@ -90,6 +90,11 @@ body {
     padding-bottom: 1.8%;
     border: 2px solid#ff8000;
 }
+@media only screen and (max-width: 2560px) {
+    .servermain{
+        margin-top: -25%;
+    }
+}
 .profileleiras{
     position: absolute;
     width: 25%;
