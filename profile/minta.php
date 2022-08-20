@@ -167,7 +167,7 @@
         $result_szerkeszt = mysqli_query($conn, $query_szerkeszt);
         $adatok_szerkeszt = mysqli_fetch_assoc($result_szerkeszt);
         if($adatok_szerkeszt['login']==1 and $username == $_SESSION['usernamefirst']){
-          echo '<form method="post"><button class="szerkesztes" type="submit" name="szerkesztes" value="Profilom szerkesztése" /></form>';
+          echo '<form method="post"><input class="szerkesztes" type="submit" name="szerkesztes" value="Profilom szerkesztése" /></form>';
         }
         if (isset($_POST['szerkesztes'])) {
           echo "<script>window.location = 'profile.php';</script>";
