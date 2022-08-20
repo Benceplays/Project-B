@@ -154,17 +154,26 @@
         foreach ($registration as $date) {
         echo '<p class="datum">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
         }
-        $query_servers = "SELECT servername FROM servers WHERE playername='$_SESSION[usernamefirst]'";
-        $result_servers = mysqli_query($conn, $query_servers);
-        $data_servers= mysqli_fetch_assoc($result_servers);
-
         ?>
         <div class="servermain">
-        <div onclick="szerverkatt()" class="firstserver">
-            <p class="servernameinserver"><?php echo $data_servers['servername']; ?></p>
-            <p class="serverstarinserver">Ertekeles</p>
-        </div>
-        </div>
+        <?php
+        for ($i = 1; $i <= 25; $i++){
+          $query_servers = "SELECT * FROM servers WHERE id='$i'";
+          $result_servers = mysqli_query($conn, $query_servers);
+          $adatok_servers = mysqli_fetch_assoc($result_servers);
+          if($adatok_servers['id'] == $i and $adatok_servers['playername'] == $_SESSION['usernamefirst']){
+          ?>
+          <div onclick="szerveratdobas()" class="firstserver">
+              <p class="servernameinserver" ><?php echo $adatok_servers['servername']; $proba = $adatok_servers['servername']; ?></p>
+              <p class="serverstarinserver">Ertekeles</p>
+          </div>
+         <script>
+          function szerveratdobas(){
+            window.location = '../szerverek/<?php echo $proba; ?>.php';
+          }
+         </script>
+          <?php }} ?>
+         </div>
         <form action="profile.php" method="POST">
         <textarea class="profileleiras" style="resize: none;" rows="4" name="leiras" id="leiras" placeholder="Leírás: " maxlength="500" style="max-width: 600px;"><?php         
         $profile_lekeres = "SELECT leiras FROM registration WHERE username='$_SESSION[usernamefirst]'";
