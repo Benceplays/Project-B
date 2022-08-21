@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="../servers/servers.css">
+  <link rel="stylesheet" href="serverminta.css">
 </head>
 <body>
 <ul class="ul">
@@ -87,8 +88,61 @@ $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
         <div class="leirasdivtwo">
             <h2 class="leirasnew"><?php echo $data['leiras']; ?></h2>
         </div>
-        <textarea type="text" class="hozzaszolastext" placeholder="Hozzászólás írása..."></textarea>
-        <button class="hozaszolasbutton">Küldés</button>
+
+        <div class="commentiras">
+          <form method="post">
+            <textarea class="comment_text" type="text" name="comment" placeholder="Írj hozzászólást..." style="resize: none;" rows="8" cols="50" required maxlength="500"></textarea>
+            <input class="comment_send" type="submit" name="hozzaszolas" value="Hozzászólás elküldése" />
+          </form>
+        </div>
+        <?php
+         if (isset($_POST['hozzaszolasok_delete'])) {
+           $idfel = $_POST['idcucc'];
+           $torlesconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
+           $sql_torles = "DELETE FROM $username WHERE id='$idfel'";
+           mysqli_query($torlesconn, $sql_torles); 
+         }
+        
+        if (isset($_POST['hozzaszolas'])) {
+          $sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
+          $result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
+          if(mysqli_num_rows($result_szerverlekerdezes)==1){
+            $comment = $_POST['comment'];
+            $date_comment = date('Y-m-d');
+            $conn_comment  = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
+            $sql_comment = "INSERT INTO $username(username, comment, date) VALUES ('$_SESSION[usernamefirst]', '$comment', '$date_comment')";
+            $result_comment = mysqli_query($conn_comment, $sql_comment);
+          }
+          else{ 
+            echo '<script>alert("Nem vagy bejelentkezve!");</script>';
+          }
+        }
+        for ($a = 1; $a <= 750; $a++){
+          $image = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+          $commentconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
+          $query_hozzaszolasok = "SELECT * FROM $username WHERE id = '$a'";
+          $result_hozzaszolasok = mysqli_query($commentconn, $query_hozzaszolasok);
+          $adatok_hozzaszolasok = mysqli_fetch_assoc($result_hozzaszolasok);
+          $query_image = "SELECT profile_img FROM registration WHERE username='$adatok_hozzaszolasok[username]'";
+          $result_image = mysqli_query($image, $query_image);
+          $adatok_image= mysqli_fetch_assoc($result_image);
+          if($adatok_hozzaszolasok['id'] == $a){
+          ?>
+          <div class="hozzaszolasok">
+            <img class="hozzaszolasok_img" src="img/<?php echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];?>">
+            <p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p>
+            <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p>   
+            <textarea class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
+            <?php
+            if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
+              echo '<form method="post">
+              <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">  
+                <button class="torlesgomb" type="submit" name="hozzaszolasok_delete">Törlés</button>
+              </form>';
+            }?>
+            </div>
+          <?php }}?>  
+    </div>
 		</div>
 	<?php
 	}?>

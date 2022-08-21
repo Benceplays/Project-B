@@ -1,0 +1,82 @@
+.commentiras{
+    margin-top: 17%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+.comment_text{
+    background-color: rgb(38, 42, 53);
+    color:  #ff8000;
+    border: #ff8000 2px solid;
+    border-radius: 5px;
+    width: 22%;
+}
+.comment_send {
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    padding: 4px 6px;
+    border: 2px solid #ff8000;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 1%;
+    margin-top: 2.5%;
+    font-weight: bold;
+    position: absolute;
+  }
+.comment_send:hover{
+    background-color:rgb(38, 42, 53);
+    color:  #ff8000;
+}
+::placeholder {
+    color: #ff8000 !important ;
+}
+::-ms-input-placeholder {
+    color: #ff8000 !important;
+}
+.hozzaszolasok{
+    border: 2px solid#ff8000;
+    width: 35%;
+    border-radius: 5px;
+    margin-left: 30%;
+    margin-bottom: 3%;
+}
+.hozzaszolasok_img{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: #ff8000 2px solid;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+.hozzaszolasok_name{
+    margin-left: 15%;
+    margin-top: -8%;
+}
+.hozzaszolasok_date{
+    float: right;
+    margin-top: -10%;
+    margin-right: 2%;
+}
+.hozzaszolasok_text{
+    background-color:rgb(38, 42, 53);
+    color:  #ff8000;
+    width: 98%;
+    border: none;
+}
+.torlesgomb{
+    margin-right: -15%;
+    margin-top: -20%;
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    border: #ff8000 2px solid;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    float: right;
+}
+.torlesgomb:hover{
+    background-color: rgb(38, 42, 53);
+    color:  #ff8000;
+}
