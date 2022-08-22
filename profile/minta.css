@@ -167,6 +167,19 @@ body {
     background-color: rgb(38, 42, 53);
     color:  #ff8000;
 }
+.adminfelirat{
+    position: absolute;
+    margin-top: -5%;
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    font-weight: bold;
+    font-size: medium;
+}
+.adminfelirat:hover{
+    background-color: rgb(38, 42, 53);
+    color:  #ff8000;
+}
 .commentiras{
     margin-top: 17%;
     margin-left: 5%;
@@ -247,3 +260,28 @@ body {
     background-color: rgb(38, 42, 53);
     color:  #ff8000;
 }
+.textarea {
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
+  }
+  .width-machine {
+    /*   Sort of a magic number to add extra space for number spinner */
+    padding: 0 1rem;
+  }
+  
+  .textarea {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+  }
+  
+  .textarea[contenteditable]:empty::before {
+    content: "Placeholder still possible";
+    color: gray;
+  }
+  

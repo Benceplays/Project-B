@@ -128,15 +128,12 @@
          
         <?php
         }
-        ?>
-        <!-- <div class="servermain">
-        <div onclick="szerverkatt()" class="firstserver">
-            <p class="servernameinserver">Szerver neve</p>
-            <p class="serverstarinserver">3.5★</p>
-        </div>
-        </div>-->
-         <div class="servermain">
-        <?php
+        $query_serversc = "SELECT * FROM servers WHERE playername='$username'";
+        $result_serversc = mysqli_query($conn, $query_serversc);
+        $adatok_serversc = mysqli_fetch_assoc($result_serversc);
+        if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $username){
+          echo "<div class='servermain'>";
+        }
         for ($i = 1; $i <= 25; $i++){
           $query_servers = "SELECT * FROM servers WHERE id='$i'";
           $result_servers = mysqli_query($conn, $query_servers);
@@ -152,8 +149,11 @@
               <p class="servernameinserver" ><?php echo $adatok_servers['servername']; ?></p>
               <p class="serverstarinserver">Ertekeles</p>
           </div>
-          <?php }} ?>
-         </div>
+          <?php }} 
+          if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $username){
+            echo "</div>";
+          }
+          ?>
          <textarea class="profileleiras" style="resize: none;" rows="4" name="leiras" id="leiras" disabled placeholder="Leírás: " maxlength="500" style="max-width: 600px;"><?php         
         $profile_lekeres = "SELECT leiras FROM registration WHERE username='$username'";
         $profile_lekeres_result=mysqli_query($conn, $profile_lekeres);
@@ -163,14 +163,20 @@
         } 
         ?></textarea>
         <?php 
-        $query_szerkeszt= "SELECT login FROM registration WHERE username='$_SESSION[usernamefirst]'";
+        $query_szerkeszt= "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]'";
         $result_szerkeszt = mysqli_query($conn, $query_szerkeszt);
         $adatok_szerkeszt = mysqli_fetch_assoc($result_szerkeszt);
         if($adatok_szerkeszt['login']==1 and $username == $_SESSION['usernamefirst']){
           echo '<form method="post"><input class="szerkesztes" type="submit" name="szerkesztes" value="Profilom szerkesztése" /></form>';
         }
+        if($adatok_szerkeszt['login']==1 and $username == $_SESSION['usernamefirst'] and $adatok_szerkeszt['rang'] == "Admin"){
+          echo '<form method="post"><input class="adminfelirat" type="submit" name="admingomb" value="Admin rendszer"/></form>';
+        }
         if (isset($_POST['szerkesztes'])) {
           echo "<script>window.location = 'profile.php';</script>";
+        }
+        if (isset($_POST['admingomb'])) {
+          echo "<script>window.location = '../admin/admin.php';</script>";
         }
         ?>
         <div class="commentiras">
@@ -236,7 +242,7 @@
             <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p></button>
             </form>
             <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p>   
-            <textarea id="commentcucc" class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
+            <span id="commentcucc" class="textarea hozzaszolasok_text" role="textbox" contenteditable><?php echo $adatok_hozzaszolasok['comment'];?></span>
             <?php
             if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
               echo '
