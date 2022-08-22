@@ -242,7 +242,7 @@
             <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p></button>
             </form>
             <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p>   
-            <span id="commentcucc" class="textarea hozzaszolasok_text" role="textbox" contenteditable><?php echo $adatok_hozzaszolasok['comment'];?></span>
+            <textarea id="commentcucc" class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
             <?php
             if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
               echo '
