@@ -186,6 +186,23 @@
            $sql_torles = "DELETE FROM $username WHERE id='$idfel'";
            mysqli_query($torlesconn, $sql_torles); 
          }
+         if (isset($_POST['toprofile_img'])) {
+          $idfel2 = $_POST['idcucc2'];
+          $lekeres = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+          $sql_lekeres = "SELECT username FROM $username WHERE id='$idfel2'";
+          $result_profile_lekeres = mysqli_query($lekeres, $sql_lekeres);
+          $adatok_lekerdezve= mysqli_fetch_assoc($result_profile_lekeres); 
+          echo '<script>window.location = "',$adatok_lekerdezve['username'],'.php";</script>';
+        }
+        if (isset($_POST['toprofile_name'])) {
+          $idfel2 = $_POST['idcucc2'];
+          $lekeres = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+          $sql_lekeres = "SELECT username FROM $username WHERE id='$idfel2'";
+          $result_profile_lekeres = mysqli_query($lekeres, $sql_lekeres);
+          $adatok_lekerdezve= mysqli_fetch_assoc($result_profile_lekeres); 
+          echo '<script>window.location = "',$adatok_lekerdezve['username'],'.php";</script>';
+        }
+        
         
         if (isset($_POST['hozzaszolas'])) {
           $sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
@@ -213,18 +230,22 @@
           if($adatok_hozzaszolasok['id'] == $a){
           ?>
           <div class="hozzaszolasok">
-            <img class="hozzaszolasok_img" src="img/<?php echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];?>">
-            <p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p>
+            <form method="POST">
+            <input type="hidden" name="idcucc2" value="<?php echo $adatok_hozzaszolasok["id"];?>">  
+            <button name="toprofile_img" style="border: none; background-color: rgb(38, 42, 53); margin-top: 2%;"><img class="hozzaszolasok_img" onclick="toprofile()" src="img/<?php echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];?>"></button>
+            <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p></button>
+            </form>
             <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p>   
-            <textarea class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
+            <textarea id="commentcucc" class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
             <?php
             if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
-              echo '<form method="post">
+              echo '
+              <form method="post">
               <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">  
                 <button class="torlesgomb" type="submit" name="hozzaszolasok_delete">Törlés</button>
               </form>';
             }?>
-            </div>
+          </div>
 
           <?php }}?>  
 
