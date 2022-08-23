@@ -122,7 +122,7 @@
               echo "./img/default.png";
             }
             else{
-              echo "./img/$_SESSION[usernamefirst]/$data[profile_img]";
+              echo "./img/$username/$data[profile_img]";
           }
            ?>">
        

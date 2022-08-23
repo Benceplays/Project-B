@@ -143,6 +143,20 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
       $result_profile_img = mysqli_query($conn, $update_profile_img);
       $adatok_profile_img = mysqli_fetch_assoc($result_profile_img);
     }
+    if(isset($_POST['toprofile_img'])) {
+      $idfelname = $_POST['idcucc'];
+      $sql_profilename =  "SELECT username FROM registration WHERE id='$idfelname'";
+      $result_profilename = mysqli_query($conn, $sql_profilename);
+      $adatok_profilename = mysqli_fetch_assoc($result_profilename);
+      echo "<script>window.location = '../profile/".$adatok_profilename['username'].".php';</script>";
+    }
+    if(isset($_POST['toprofile_name'])) {
+      $idfelname = $_POST['idcucc'];
+      $sql_profilename =  "SELECT username FROM registration WHERE id='$idfelname'";
+      $result_profilename = mysqli_query($conn, $sql_profilename);
+      $adatok_profilename = mysqli_fetch_assoc($result_profilename);
+      echo "<script>window.location = '../profile/".$adatok_profilename['username'].".php';</script>";
+    }
     if(isset($_POST['kuldes'])) {
     $kategoriak = $_POST['kategoriak'];
     $idrangok = $_POST['idrang'];
