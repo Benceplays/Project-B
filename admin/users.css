@@ -81,8 +81,8 @@ body {
     margin-top: -5.5%;
 }
 .adatok_rang{
-    margin-left: 15%;
-    margin-top: -2%;
+    margin-left: 30%;
+    margin-top: -3.85%;
     font-weight: bold;
 }
 .felhasznalok{
@@ -92,4 +92,70 @@ body {
     margin-bottom: 2%;
     margin-top: 2%;
     margin-left: 25%;
+    padding: 1%;
+    padding-bottom: 1%;
+}
+.profile_removecucc{
+    font-size: medium;
+    margin-top: 5%;
+    margin-left: -5%;
+    position: absolute;
+    color: #ff8000;
+    background-color: rgb(38, 42, 53);
+    border: #ff8000 1px solid;
+    font-weight: bold;
+}
+.profile_removecucc:hover{
+    color: rgb(38, 42, 53);
+    background-color: #ff8000;
+}
+.kategoriak{
+    font-size: medium;
+    margin-left: 25%;
+    margin-top: 3%;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border-color: #ff8000;
+}
+.kuldesgomb{
+    font-size: medium;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    margin-left: 1%;
+    border: #ff8000 1px solid;
+    font-weight: bold;
+}
+.kuldesgomb:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}
+.keresessubmit{
+    margin-top: 2%;
+    margin-left: 1%;
+    font-size: 150%;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: #ff8000 2px solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.keresessubmit:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}
+::placeholder {
+    color: #ff8000 !important ;
+}
+::-ms-input-placeholder {
+    color: #ff8000 !important;
+}
+input.kereses {
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: #ff8000 2px solid;
+    padding-bottom: 0%;
+    border-bottom: 0%;
+    border-radius: 5px;
+    font-size: 150%;
+    margin-left: 40%;
 }
