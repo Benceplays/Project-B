@@ -242,7 +242,7 @@
           <div class="hozzaszolasok">
             <form method="POST">
             <input type="hidden" name="idcucc2" value="<?php echo $adatok_hozzaszolasok["id"];?>">  
-            <button name="toprofile_img" style="border: none; background-color: rgb(38, 42, 53); margin-top: 2%;"><img class="hozzaszolasok_img" onclick="toprofile()" src="img/<?php echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];?>"></button>
+            <button name="toprofile_img" style="border: none; background-color: rgb(38, 42, 53); margin-top: 2%;"><img class="hozzaszolasok_img" onclick="toprofile()" src="img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];}?>"></button>
             <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p></button>
             </form>
             <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p>   
