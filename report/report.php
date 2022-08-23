@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="server.css">
+    <link rel="stylesheet" href="report.css">
     <script src="../main.js"></script>
-<title>Szerver hirdetés készítés</title>
+<title>Bejelentések</title>
 </head>
 <body>
 
@@ -74,27 +74,47 @@
 
 
     
-  <form action="servermake.php" method="post" >
-    <div class="newhirdetes">
-        <h2 class="orange-text" style="padding: 2%;">Hirdetés létrehozása</h2>
-        <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver neve" type="text" name="servername" style="width: 30%; margin-left:15% ;" required>
-        <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szever IP címe" type="text" name="serverip" id="" style="width: 30%; margin-left:5%;" required>
-        <textarea class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" style="resize:none; width: 80%; height: 25%; margin-left: 10%; margin-top: -2%; margin-top: 5%;" required></textarea>
-        <textarea name="egyeburl" id="egyeburl" class="egyeburl" style="resize:none;" placeholder="További linkeket itt adhatsz meg..."></textarea>
-        <select class="kategoriak" name="servers">
-            <option value="">Válassz egy kategóriát</option>
-            <option value="minecraft" require>Minecraft</option>
-            <option value="csgo" require>Counter Strike Global Offensive</option>
-            <option value="fivem" require>Fivem</option>
-            <option value="mta" require>Multi Theft Auto</option>
-            <option value="rust" require>Rust</option>
-            <option value="cssource" require>Counter Strike Source</option>
+  <form action="reportsend.php" method="post" >
+    <div class="newproblem">
+        <h2 class="orange-text" style="padding: 2%;">Probléma jelentése</h2>
+        <input type="text" id="emailcim" name="emailcim" placeholder="Add meg az email címed">
+        <textarea name="problemdiv" id="problemdiv" class="problemdiv" style="resize:none;" placeholder="A probléma pontos, részletes kifejtése..."></textarea>
+        <select class="kategoriak" id="kategoriak" name="kategoriak">
+            <option >Válassz egy kategóriát</option>
+            <option require>Bejelentkezéssel vagy regisztrációval kapcsolatos hiba</option>
+            <option require>A szerver létrehozásával vagy közzétételével való hiba</option>
+            <option require>A profilom szerkesztésével való probléma</option>
+            <option require>Az előfizetés vásárlásával való probléma</option>
+            <option require>A szerencsekerékkel felmerülő hiba</option>
+            <option require>A problémám nincs a felsorolt listában</option>
         </select>
-        <p style="color:#ff8000; margin-left:10%;">A szerverhez kapcsolódó képeket itt csatolhatod:</p>
-        <button class="hirdetesbutton">Hirdetés létrehozása</button>
+        <button class="problemabutton">Probléma jelentése</button>
+    </div>
+    <div class="myproblems">
+        <h2 style="color:#ff8000; padding: 1%;">Jelentéseim</h2>
+        <?php 
+        $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+        for ($b = 1; $b <= 25; $b++){
+        $adatok = "SELECT id, emailcim, problem, megoldodott, kategoria FROM problem WHERE id = '$b'";
+        $reports = mysqli_query($connect, $adatok);
+        $reportok = mysqli_fetch_assoc($reports);
+        if($reportok['id'] == $b) {?>
+          <div style="
+          border: 2px solid #ff8000;
+          border: 20px;
+          color: #ff8000;
+          width: 90%;
+          margin-left: 5%;
+          margin-top: 5%;
+          ">
+            <h1><?php echo $reportok['emailcim'];?></h1>
+            <p><?php echo $reportok['kategoria'];?></p>
+            <h3><?php echo $reportok['problem'];?></h3>
+          </div>
+      <?php 
+    }} 
+    ?>
     </div>
     </form>
-
-
 </body>
 </html>

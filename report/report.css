@@ -37,57 +37,35 @@ body {
     background-color: #ff8000;
     color: rgb(38, 42, 53);
 }
-.newhirdetes{
+.newproblem{
     width: 50%;
     border: 2px solid #ff8000;
     border: 10%;
     margin-left: 25%;
     margin-top: 5%;
 }
-.newhirdetesinput{
-    background-color: rgb(38, 42, 53);
-    border: 2px solid #ff8000;
-    border-radius: 10px;
-    text-align: start;
-    appearance: auto;
-    text-transform: none;
-    text-indent: 0px;
-    letter-spacing: normal;
-    word-spacing: normal;
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-}
 .orange{
     color: #ff8000;
 }
-.hirdetesbutton{
+.problemabutton{
     color: #ff8000;
     background-color: rgb(38, 42, 53);
     border: 2px solid #ff8000;
     border-radius: 20px;
     width: 25%;
     height: 50px;
-    font-size: 20px;
+    font-size: 100%;
     margin-left: 37.5%;
     margin-top: 2%;
     margin-bottom: 2%;
 
 }
-.hirdetesbutton:hover{
+.problemabutton:hover{
     color: rgb(38, 42, 53);
     background-color: #ff8000;
 }
 .ipcimnew{
     color: #ff8000
-}
-.serverdatas{
-    border: 2px solid #ff8000;
-    color: #ff8000;
-    width: 50%;
-    margin-left: 25%;
-    height: 500px;
 }
 .button {
     background-color: rgb(38, 42, 53);
@@ -107,16 +85,55 @@ body {
 }
 .kategoriak{
     text-align: center;
-    margin-left: 10%;
+    margin-left: 20%;
     margin-bottom: 5%;
     background-color: rgb(38, 42, 53);
     color: #ff8000;
 }
-.egyeburl{
+.problemdiv{
     width: 40%;
     max-width: 40%;
     background-color: rgb(38, 42, 53);
     color: #ff8000;
     margin-left: 10%;
+    border: 2px solid #ff8000;
+    margin-top: 5%;
+}
+.problemdiv:hover{
+    outline: none !important;
+    border-color:  #ff8000;
+    box-shadow: 0 0 10px  #ff8000;
+}
+input:focus { 
+    outline: none !important;
+    border-color:  #ff8000;
+    box-shadow: 0 0 10px  #ff8000;
+}
+input{
+    color:#ff8000 ;
+    background-color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover
+input:-webkit-autofill:active
+input:-webkit-autofill:focus{
+    -webkit-text-fill-color: #ff8000;
+    transition: background-color 5000s ease-in-out 0s;
+}
+.myproblems{
+    border: 2px solid #ff8000;
+    width: 50%;
+    height: 500px;
+    margin-left: 25%;
+    position: relative;
+    margin-top: 5%;
+}
+.divek{
+    border: 2px solid #ff8000;
+    border: 20px;
+    width: 90%;
+    margin-left: 5%;
     margin-top: 5%;
 }

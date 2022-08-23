@@ -182,3 +182,15 @@ body {
     margin-top: 15%;
     margin-right: 5%;
 }
+.nexttoserver{
+    border: 2px solid #ff8000;
+    background-color: rgb(38, 42, 53);
+    border-radius: 20px;
+    color: #ff8000;
+    margin-bottom: 1%;
+}
+.nexttoserver:hover{
+    border: 2px solid #ff8000;
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+}

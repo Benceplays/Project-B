@@ -105,18 +105,74 @@ body {
     background-color: #ff8000;
     color:  rgb(38, 42, 53);
 }
+.egyeburl{
+    background-color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    border-radius: 10px;
+    text-align: start;
+    appearance: auto;
+    text-transform: none;
+    text-indent: 0px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
 .kategoriak{
     text-align: center;
-    margin-left: 10%;
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 25%;
     margin-bottom: 5%;
     background-color: rgb(38, 42, 53);
     color: #ff8000;
 }
-.egyeburl{
-    width: 40%;
-    max-width: 40%;
+.custom-select {
+    font-family: Arial;
+  }
+  
+  .custom-select select {
+    display: none;
+  }
+  
+  .select-selected {
     background-color: rgb(38, 42, 53);
+  }
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #ff8000;
+  }
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #ff8000 transparent;
+    top: 7px;
+  }
+  .select-items div,.select-selected {
     color: #ff8000;
-    margin-left: 10%;
-    margin-top: 5%;
-}
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
+  .select-items {
+    position: absolute;
+    background-color: rgb(38, 42, 53);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
