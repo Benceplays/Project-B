@@ -224,7 +224,11 @@
             echo '<script>alert("Nem vagy bejelentkezve!");</script>';
           }
         }
-        for ($a = 1; $a <= 750; $a++){
+        $conn_idlength  = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+        $query_idlength= "SELECT id FROM $username where id=(select max(id) from $username)";
+        $result_idlength = mysqli_query($conn_idlength, $query_idlength);
+        $adatok_idlength= mysqli_fetch_assoc($result_idlength);
+        for ($a = 1; $a <= $adatok_idlength['id']; $a++){
           $image = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
           $commentconn = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
           $query_hozzaszolasok = "SELECT * FROM $username WHERE id = '$a'";
