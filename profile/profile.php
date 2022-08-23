@@ -138,11 +138,11 @@
         while ($data = mysqli_fetch_assoc($result_img)) {
         ?>
             <img class="pfp" src="<?php
-              if(file_exists("./img/$_SESSION[usernamefirst]")){
-                echo "./img/$_SESSION[usernamefirst]/$data[profile_img]";
+              if($data['profile_img'] == 'default.png'){
+                echo "./img/default.png";
               }
               else{
-                echo "./img/default.png";
+                echo "./img/$_SESSION[usernamefirst]/$data[profile_img]";
             }
              ?>">
          
