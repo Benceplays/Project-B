@@ -77,8 +77,8 @@
   <form action="reportsend.php" method="post" >
     <div class="newproblem">
         <h2 class="orange-text" style="padding: 2%;">Probléma jelentése</h2>
-        <input type="text" id="emailcim" name="emailcim" placeholder="Add meg az email címed">
-        <textarea name="problemdiv" id="problemdiv" class="problemdiv" style="resize:none;" placeholder="A probléma pontos, részletes kifejtése..."></textarea>
+        <input type="text" id="emailcim" name="emailcim" class="emailcim" placeholder="Add meg az email címed">
+        <textarea name="problemdiv" id="problemdiv" class="problemdiv" style="resize:none; width: 70%; margin-left: 15%;" placeholder="A probléma pontos, részletes kifejtése..."></textarea>
         <select class="kategoriak" id="kategoriak" name="kategoriak">
             <option >Válassz egy kategóriát</option>
             <option require>Bejelentkezéssel vagy regisztrációval kapcsolatos hiba</option>
@@ -99,17 +99,12 @@
         $reports = mysqli_query($connect, $adatok);
         $reportok = mysqli_fetch_assoc($reports);
         if($reportok['id'] == $b) {?>
-          <div style="
-          border: 2px solid #ff8000;
-          border: 20px;
-          color: #ff8000;
-          width: 90%;
-          margin-left: 5%;
-          margin-top: 5%;
-          ">
-            <h1><?php echo $reportok['emailcim'];?></h1>
-            <p><?php echo $reportok['kategoria'];?></p>
-            <h3><?php echo $reportok['problem'];?></h3>
+          <div class="kisproblems">
+            <h3><?php echo $reportok['kategoria'];?></h3>
+            <div>
+                <p><?php echo $reportok['problem'];?></p>
+            </div>
+            <p style="text-align:right; margin-top:-10%;"><?php echo $reportok['emailcim'];?></p>
           </div>
       <?php 
     }} 
