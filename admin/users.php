@@ -78,8 +78,13 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
     $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
     if(isset($_POST['profile_remove'])) {
       $idfel = $_POST['idcucc'];
+      $sql_profile =  "SELECT * FROM registration WHERE id='$idfel'";
+      $result_profile = mysqli_query($conn, $sql_profile);
+      $adatok_profile = mysqli_fetch_assoc($result_profile);
+      unlink( "../profile/img/".$adatok_profile['username']."/".$adatok_profile['profile_img']);
       $update_profile_img = "UPDATE registration SET profile_img='default.png' WHERE id='$idfel' ";
       $result_profile_img = mysqli_query($conn, $update_profile_img);
+      $adatok_profile_img = mysqli_fetch_assoc($result_profile_img);
     }
     $sql_maxid =  "SELECT * FROM registration where id=(select max(id) from registration)";
     $result_maxid = mysqli_query($conn, $sql_maxid);

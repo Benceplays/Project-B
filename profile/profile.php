@@ -201,7 +201,7 @@
                 <input class="button4" title="" style="color:transparent" type="file" name="uploadfile"/>
             </div>
             <div >
-                <button class="button3"  type="submit" name="upload">UPLOAD</button>
+                <button class="button3"  type="submit" name="upload">Feltöltés</button>
                 <button class="buttonX" type="submit" name="background_clear">X</button>
             </div>
       </form>
