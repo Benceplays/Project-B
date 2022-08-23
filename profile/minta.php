@@ -116,17 +116,17 @@
         $result_img = mysqli_query($conn, $query_img);
    
         while ($data = mysqli_fetch_assoc($result_img)) {
-        ?>
-            <img class="pfp" src="<?php
-              if(file_exists("./img/$username")){
-                echo "./img/$username/$data[profile_img]";
-              }
-              else{
-                echo "./img/default.png";
+          ?>
+          <img class="pfp" src="<?php
+            if($data['profile_img'] == 'default.png'){
+              echo "./img/default.png";
             }
-             ?>">
-         
-        <?php
+            else{
+              echo "./img/$_SESSION[usernamefirst]/$data[profile_img]";
+          }
+           ?>">
+       
+      <?php
         }
         $query_serversc = "SELECT * FROM servers WHERE playername='$username'";
         $result_serversc = mysqli_query($conn, $query_serversc);
