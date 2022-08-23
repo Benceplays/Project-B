@@ -116,27 +116,24 @@
         $result_img = mysqli_query($conn, $query_img);
    
         while ($data = mysqli_fetch_assoc($result_img)) {
-        ?>
-            <img class="pfp" src="<?php
-              if(file_exists("./img/$username")){
-                echo "./img/$username/$data[profile_img]";
-              }
-              else{
-                echo "./img/default.png";
+          ?>
+          <img class="pfp" src="<?php
+            if($data['profile_img'] == 'default.png'){
+              echo "./img/default.png";
             }
-             ?>">
-         
-        <?php
+            else{
+              echo "./img/$_SESSION[usernamefirst]/$data[profile_img]";
+          }
+           ?>">
+       
+      <?php
         }
-        ?>
-        <!-- <div class="servermain">
-        <div onclick="szerverkatt()" class="firstserver">
-            <p class="servernameinserver">Szerver neve</p>
-            <p class="serverstarinserver">3.5★</p>
-        </div>
-        </div>-->
-         <div class="servermain">
-        <?php
+        $query_serversc = "SELECT * FROM servers WHERE playername='$username'";
+        $result_serversc = mysqli_query($conn, $query_serversc);
+        $adatok_serversc = mysqli_fetch_assoc($result_serversc);
+        if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $username){
+          echo "<div class='servermain'>";
+        }
         for ($i = 1; $i <= 25; $i++){
           $query_servers = "SELECT * FROM servers WHERE id='$i'";
           $result_servers = mysqli_query($conn, $query_servers);
@@ -152,8 +149,11 @@
               <p class="servernameinserver" ><?php echo $adatok_servers['servername']; ?></p>
               <p class="serverstarinserver">Ertekeles</p>
           </div>
-          <?php }} ?>
-         </div>
+          <?php }} 
+          if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $username){
+            echo "</div>";
+          }
+          ?>
          <textarea class="profileleiras" style="resize: none;" rows="4" name="leiras" id="leiras" disabled placeholder="Leírás: " maxlength="500" style="max-width: 600px;"><?php         
         $profile_lekeres = "SELECT leiras FROM registration WHERE username='$username'";
         $profile_lekeres_result=mysqli_query($conn, $profile_lekeres);
@@ -163,14 +163,20 @@
         } 
         ?></textarea>
         <?php 
-        $query_szerkeszt= "SELECT login FROM registration WHERE username='$_SESSION[usernamefirst]'";
+        $query_szerkeszt= "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]'";
         $result_szerkeszt = mysqli_query($conn, $query_szerkeszt);
         $adatok_szerkeszt = mysqli_fetch_assoc($result_szerkeszt);
         if($adatok_szerkeszt['login']==1 and $username == $_SESSION['usernamefirst']){
           echo '<form method="post"><input class="szerkesztes" type="submit" name="szerkesztes" value="Profilom szerkesztése" /></form>';
         }
+        if($adatok_szerkeszt['login']==1 and $username == $_SESSION['usernamefirst'] and $adatok_szerkeszt['rang'] == "Admin"){
+          echo '<form method="post"><input class="adminfelirat" type="submit" name="admingomb" value="Admin rendszer"/></form>';
+        }
         if (isset($_POST['szerkesztes'])) {
           echo "<script>window.location = 'profile.php';</script>";
+        }
+        if (isset($_POST['admingomb'])) {
+          echo "<script>window.location = '../admin/admin.php';</script>";
         }
         ?>
         <div class="commentiras">
@@ -186,6 +192,23 @@
            $sql_torles = "DELETE FROM $username WHERE id='$idfel'";
            mysqli_query($torlesconn, $sql_torles); 
          }
+         if (isset($_POST['toprofile_img'])) {
+          $idfel2 = $_POST['idcucc2'];
+          $lekeres = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+          $sql_lekeres = "SELECT username FROM $username WHERE id='$idfel2'";
+          $result_profile_lekeres = mysqli_query($lekeres, $sql_lekeres);
+          $adatok_lekerdezve= mysqli_fetch_assoc($result_profile_lekeres); 
+          echo '<script>window.location = "',$adatok_lekerdezve['username'],'.php";</script>';
+        }
+        if (isset($_POST['toprofile_name'])) {
+          $idfel2 = $_POST['idcucc2'];
+          $lekeres = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+          $sql_lekeres = "SELECT username FROM $username WHERE id='$idfel2'";
+          $result_profile_lekeres = mysqli_query($lekeres, $sql_lekeres);
+          $adatok_lekerdezve= mysqli_fetch_assoc($result_profile_lekeres); 
+          echo '<script>window.location = "',$adatok_lekerdezve['username'],'.php";</script>';
+        }
+        
         
         if (isset($_POST['hozzaszolas'])) {
           $sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
@@ -201,7 +224,11 @@
             echo '<script>alert("Nem vagy bejelentkezve!");</script>';
           }
         }
-        for ($a = 1; $a <= 750; $a++){
+        $conn_idlength  = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+        $query_idlength= "SELECT id FROM $username where id=(select max(id) from $username)";
+        $result_idlength = mysqli_query($conn_idlength, $query_idlength);
+        $adatok_idlength= mysqli_fetch_assoc($result_idlength);
+        for ($a = 1; $a <= $adatok_idlength['id']; $a++){
           $image = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
           $commentconn = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
           $query_hozzaszolasok = "SELECT * FROM $username WHERE id = '$a'";
@@ -213,18 +240,22 @@
           if($adatok_hozzaszolasok['id'] == $a){
           ?>
           <div class="hozzaszolasok">
-            <img class="hozzaszolasok_img" src="img/<?php echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];?>">
-            <p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p>
+            <form method="POST">
+            <input type="hidden" name="idcucc2" value="<?php echo $adatok_hozzaszolasok["id"];?>">  
+            <button name="toprofile_img" style="border: none; background-color: rgb(38, 42, 53); margin-top: 2%;"><img class="hozzaszolasok_img" onclick="toprofile()" src="img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];}?>"></button>
+            <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p></button>
+            </form>
             <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p>   
-            <textarea class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
+            <textarea id="commentcucc" class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
             <?php
             if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
-              echo '<form method="post">
+              echo '
+              <form method="post">
               <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">  
                 <button class="torlesgomb" type="submit" name="hozzaszolasok_delete">Törlés</button>
               </form>';
             }?>
-            </div>
+          </div>
 
           <?php }}?>  
 

@@ -167,6 +167,19 @@ body {
     background-color: rgb(38, 42, 53);
     color:  #ff8000;
 }
+.adminfelirat{
+    position: absolute;
+    margin-top: -5%;
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    font-weight: bold;
+    font-size: medium;
+}
+.adminfelirat:hover{
+    background-color: rgb(38, 42, 53);
+    color:  #ff8000;
+}
 .commentiras{
     margin-top: 17%;
     margin-left: 5%;
@@ -216,11 +229,9 @@ body {
     border-radius: 5px;
     border: #ff8000 2px solid;
     margin-left: 2%;
-    margin-top: 2%;
 }
 .hozzaszolasok_name{
     margin-left: 15%;
-    margin-top: -8%;
 }
 .hozzaszolasok_date{
     float: right;
@@ -234,8 +245,8 @@ body {
     border: none;
 }
 .torlesgomb{
-    margin-right: -15%;
-    margin-top: -20%;
+    margin-right: -14.2%;
+    margin-top: -30%;
     background-color: #ff8000;
     color: rgb(38, 42, 53);
     border: #ff8000 2px solid;
@@ -249,3 +260,4 @@ body {
     background-color: rgb(38, 42, 53);
     color:  #ff8000;
 }
+  
