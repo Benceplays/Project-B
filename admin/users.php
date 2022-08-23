@@ -99,6 +99,7 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
           <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="adatok_name"><?php echo $adatok_felhasznalokiiras['username'];?></p></button>
           <input type="hidden" name="idcucc" value="<?php echo $adatok_felhasznalokiiras["id"];?>"> 
           <button class="profile_removecucc" name="profile_remove" >Profilkép törlése</button>  
+          <button class="profile_bancucc" name="profile_ban" >Fiók törlése</button>  
         </form>
           <p class="adatok_date"><?php echo $adatok_felhasznalokiiras['date'];?></p> 
           <p class="adatok_rang" <?php 
@@ -129,6 +130,9 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
         echo '<p style="color: red; margin-left: 42%">Nincs ilyen felhasználónév!</p>';
       }
       }
+    if(isset($_POST['profile_ban'])) {
+      /*Késöbb*/
+    }
     if(isset($_POST['profile_remove'])) {
       $idfel = $_POST['idcucc'];
       $sql_profile =  "SELECT * FROM registration WHERE id='$idfel'";
@@ -144,7 +148,6 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
     $idrangok = $_POST['idrang'];
     $update_rangok = "UPDATE registration SET rang='$kategoriak' WHERE id='$idrangok'";
     $result_rangok= mysqli_query($conn, $update_rangok); 
-    echo "<script>window.location = 'users.php';</script>";
     }
     $sql_maxid =  "SELECT * FROM registration where id=(select max(id) from registration)";
     $result_maxid = mysqli_query($conn, $sql_maxid);
@@ -160,6 +163,7 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
                 <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="adatok_name"><?php echo $adatok['username'];?></p></button>
                 <input type="hidden" name="idcucc" value="<?php echo $adatok["id"];?>"> 
                 <button class="profile_removecucc" name="profile_remove" >Profilkép törlése</button>  
+                <button class="profile_bancucc" name="profile_ban" >Fiók törlése</button>  
               </form>
                 <p class="adatok_date"><?php echo $adatok['date'];?></p> 
                 <p class="adatok_rang" <?php 

@@ -159,3 +159,17 @@ input.kereses {
     font-size: 150%;
     margin-left: 40%;
 }
+.profile_bancucc{
+    font-size: medium;
+    margin-top: 5%;
+    margin-left: 38%;
+    position: absolute;
+    color: #ff8000;
+    background-color: rgb(38, 42, 53);
+    border: #ff8000 1px solid;
+    font-weight: bold;
+}
+.profile_bancucc:hover{
+    color: rgb(38, 42, 53);
+    background-color: #ff8000;
+}
