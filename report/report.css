@@ -39,6 +39,7 @@ body {
 }
 .newproblem{
     width: 50%;
+    height: auto;
     border: 2px solid #ff8000;
     border: 10%;
     margin-left: 25%;
@@ -85,17 +86,18 @@ body {
 }
 .kategoriak{
     text-align: center;
-    margin-left: 20%;
+    margin-left: 27.5%;
     margin-bottom: 5%;
     background-color: rgb(38, 42, 53);
     color: #ff8000;
 }
 .problemdiv{
-    width: 40%;
+    min-width: 70%;
+    margin-left: 15%;
     max-width: 40%;
     background-color: rgb(38, 42, 53);
     color: #ff8000;
-    margin-left: 10%;
+    margin-left: 15%;
     border: 2px solid #ff8000;
     margin-top: 5%;
 }
@@ -125,7 +127,7 @@ input:-webkit-autofill:focus{
 .myproblems{
     border: 2px solid #ff8000;
     width: 50%;
-    height: 500px;
+    height: auto;
     margin-left: 25%;
     position: relative;
     margin-top: 5%;
@@ -136,4 +138,37 @@ input:-webkit-autofill:focus{
     width: 90%;
     margin-left: 5%;
     margin-top: 5%;
+}
+.emailcim{
+    width: 70%;
+    margin-left: 15%;
+}
+input{
+    width: 70%;
+    margin-left: 15%;
+}
+::-webkit-scrollbar {
+    width: 9px;
+}
+::-webkit-scrollbar-track {
+    background:  #141414; 
+}
+
+::-webkit-scrollbar-thumb {
+    background:  #ff8000;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:  #ff8000; 
+}
+.kisproblems{
+    border: 2px solid #ff8000;
+    width: 98%;
+    margin-left: 1%;
+    height: auto;
+    margin-top: 2%;
+    color: #ff8000;
+    border-radius: 20px;
+    padding: 2%;
 }

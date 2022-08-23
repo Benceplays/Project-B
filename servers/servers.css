@@ -52,7 +52,7 @@ body {
     border: 2px solid #ff8000;
     background-color: rgb(38, 42, 53);
     border-radius: 20px;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 .maintitles{
     color: #ff8000;
@@ -74,7 +74,7 @@ body {
     margin-left: 25%;
     border: 2px solid #ff8000;
     border-radius: 20px;
-    margin-top: 2%;
+    margin-top: 4%;
     padding: 0.1%;
 }
 .leirasdiv{
@@ -187,10 +187,17 @@ body {
     background-color: rgb(38, 42, 53);
     border-radius: 20px;
     color: #ff8000;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
+    padding: 0.5%;
+    text-decoration:none;
+    margin-top: 20%;
 }
 .nexttoserver:hover{
     border: 2px solid #ff8000;
     background-color: #ff8000;
     color: rgb(38, 42, 53);
+}
+.namediv{
+    max-width: 50%;
+    margin-bottom: 3%;
 }

@@ -84,6 +84,7 @@
       <div class="leirasdiv">
         <p><?php echo $adatok['leiras'];?></p>
       </div>
+      <a class="nexttoserver" href="../szerverek/<?php echo $adatok_b['servername'];?>.php">Tovább a weboldalra →</a>
       </div>
       <?php 
     }} 
@@ -93,9 +94,11 @@
     $adatok_b = mysqli_fetch_assoc($result_b);
     if($adatok_b['id'] == $b and $adatok_b['boosted'] == 0) {?>
       <div style="color: #ff8000;" class="divek">
-      <h1><?php echo $adatok_b['servername'];?></h1>
-      <p><?php echo $adatok_b['playername'];?></p>
-      <h3><?php echo $adatok_b['ipcim'];?></h3>
+      <div class="namediv">
+          <h1><?php echo $adatok_b['servername'];?></h1>
+          <p><?php echo $adatok_b['playername'];?></p>
+          <h3><?php echo $adatok_b['ipcim'];?></h3>
+    </div>
       <div class="leirasdiv">
         <p><?php echo $adatok_b['leiras'];?></p>
       </div>
