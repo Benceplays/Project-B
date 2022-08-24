@@ -73,6 +73,7 @@ body {
     height: 75px;
     margin-top: 2%;
     margin-left: 5%;
+    position: absolute;
 }
 .adatok_date{
     color: #ff8000;
