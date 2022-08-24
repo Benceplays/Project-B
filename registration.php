@@ -4,6 +4,12 @@
 	$password = $_POST['password'];
 	$password2 = $_POST['password2'];
 	$date = date('Y-m-d');
+	$encryptedpass = base64_encode($password);
+
+	$mailto = $email;
+	$subject = "Sikeres regisztráció";
+	$body = "Szia $username! Köszönjük, hogy regisztráltál weboldalunkra, reméljük kellemesen fogod magad érezni.";
+	$headers = "From: wildemhu@wildem.hu";
 
 	$conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 	if($conn->connect_error){
@@ -28,13 +34,14 @@
 					$destinationFilePath = 'profile/'.$username.'.php';
 					copy($filePath, $destinationFilePath);
 					$stmt = $conn->prepare("insert into registration(email, username, password, date, password2) values(?, ?, ?, ?, ?)");
-					$stmt->bind_param("ssssi", $email, $username, $password, $date, $password2);
+					$stmt->bind_param("ssssi", $email, $username, $encryptedpass, $date, $password2);
 					$execval = $stmt->execute();
 					echo $execval;
 					echo '<script>alert("Sikeres regisztráció!")</script>';
 					echo "<script>window.location = 'profile/profile.php';</script>";
 					$stmt->close();
 					$conn->close();
+					mail($mailto, $subject, $body, $headers);
 				}
 				else{
 					echo '<script>alert("Sikertelen regisztráció: Ez a felhasználónév már foglalt!")</script>';

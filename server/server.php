@@ -82,16 +82,16 @@
         <textarea class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" style="resize:none; width: 80%; height: 50%; margin-left: 10%; margin-top: -2%; margin-top: 5%;" required></textarea>
         <textarea name="egyeburl" id="egyeburl" class="newhirdetesinput" style="resize:none; width: 80%; height: 25%; margin-left: 10%; margin-top: -2%; margin-top: 5%;" placeholder="További linkeket itt adhatsz meg..."></textarea>
         <div class="kategoriak">
-        <select name="servers">
-            <option value="0">Válassz egy kategóriát</option>
-            <option value="1" require>Minecraft</option>
-            <option value="2" require>Counter Strike Global Offensive</option>
-            <option value="3" require>Fivem</option>
-            <option value="4" require>Multi Theft Auto</option>
-            <option value="5" require>Rust</option>
-            <option value="6" require>Counter Strike Source</option>
-            <option value="7" require>Nincs a listában</option>
-        </select>
+            <select name="servers">
+                <option value="0">Válassz egy kategóriát</option>
+                <option value="1" require>Minecraft</option>
+                <option value="2" require>Counter Strike Global Offensive</option>
+                <option value="3" require>Fivem</option>
+                <option value="4" require>Multi Theft Auto</option>
+                <option value="5" require>Rust</option>
+                <option value="6" require>Counter Strike Source</option>
+                <option value="7" require>Nincs a listában</option>
+            </select>
         </div>
         <p style="color:#ff8000; margin-left:10%;">A szerverhez kapcsolódó képeket itt csatolhatod:</p>
         <button class="hirdetesbutton">Hirdetés létrehozása</button>

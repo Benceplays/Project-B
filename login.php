@@ -9,6 +9,7 @@ if($conn->connect_error){
     if(isset($_POST['usernamefirst'])){
         $uname = $_POST['usernamefirst'];
         $password = $_POST['passwordfirst'];
+        $decryptedpass = base64_encode($password);
         $_SESSION['loginvaltozo'] = 0;
     
         $sql = "SELECT * FROM registration WHERE username='$uname' AND password='$password'";
