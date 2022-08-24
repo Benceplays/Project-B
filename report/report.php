@@ -79,15 +79,17 @@
         <h2 class="orange-text" style="padding: 2%;">Probléma jelentése</h2>
         <input type="text" id="emailcim" name="emailcim" class="emailcim" placeholder="Add meg az email címed">
         <textarea name="problemdiv" id="problemdiv" class="problemdiv" style="resize:none; width: 70%; margin-left: 15%;" placeholder="A probléma pontos, részletes kifejtése..."></textarea>
-        <select class="kategoriak" id="kategoriak" name="kategoriak">
-            <option >Válassz egy kategóriát</option>
-            <option require>Bejelentkezéssel vagy regisztrációval kapcsolatos hiba</option>
-            <option require>A szerver létrehozásával vagy közzétételével való hiba</option>
-            <option require>A profilom szerkesztésével való probléma</option>
-            <option require>Az előfizetés vásárlásával való probléma</option>
-            <option require>A szerencsekerékkel felmerülő hiba</option>
-            <option require>A problémám nincs a felsorolt listában</option>
-        </select>
+        <div class="kategoriak">
+            <select class="kategoriak" id="kategoriak" name="kategoriak">
+                <option >Válassz egy kategóriát</option>
+                <option require>Bejelentkezéssel vagy regisztrációval kapcsolatos hiba</option>
+                <option require>A szerver létrehozásával vagy közzétételével való hiba</option>
+                <option require>A profilom szerkesztésével való probléma</option>
+                <option require>Az előfizetés vásárlásával való probléma</option>
+                <option require>A szerencsekerékkel felmerülő hiba</option>
+                <option require>A problémám nincs a felsorolt listában</option>
+            </select>
+        </div>
         <button class="problemabutton">Probléma jelentése</button>
     </div>
     <div class="myproblems">
@@ -101,10 +103,10 @@
         if($reportok['id'] == $b) {?>
           <div class="kisproblems">
             <h3><?php echo $reportok['kategoria'];?></h3>
-            <div>
+            <div class="problemakki">
                 <p><?php echo $reportok['problem'];?></p>
             </div>
-            <p style="text-align:right; margin-top:-10%;"><?php echo $reportok['emailcim'];?></p>
+            <p style="text-align:right; margin-top:-10%; margin-bottom: 5%;"><?php echo $reportok['emailcim'];?></p>
           </div>
       <?php 
     }} 
