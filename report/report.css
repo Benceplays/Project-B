@@ -142,6 +142,7 @@ input:-webkit-autofill:focus{
 .emailcim{
     width: 70%;
     margin-left: 15%;
+    margin-top: -50%;
 }
 input{
     width: 70%;
@@ -171,4 +172,17 @@ input{
     color: #ff8000;
     border-radius: 20px;
     padding: 2%;
+}
+.problemakki{
+    width: 60%;
+    min-height: 100px;
+}
+.kategoriak{
+    text-align: center;
+    width: 70%;
+    margin-top: 2%;
+    margin-left: 11%;
+    margin-bottom: 5%;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
 }
