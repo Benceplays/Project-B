@@ -154,14 +154,20 @@
         foreach ($registration as $date) {
         echo '<p class="datum">Fiók létrehozásának dátuma: ',$date['date'],'</p>';
         }
-        ?>
-        <div class="servermain">
-        <?php
-        for ($i = 1; $i <= 25; $i++){
+        $query_serversc = "SELECT * FROM servers WHERE playername='$_SESSION[usernamefirst]'";
+        $result_serversc = mysqli_query($conn, $query_serversc);
+        $adatok_serversc = mysqli_fetch_assoc($result_serversc);
+        if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $_SESSION['usernamefirst'] and $adatok_serversc['elfogadott'] == 1){
+          echo "<div class='servermain'>";
+        }
+        $query_servers_idlength= "SELECT id FROM servers where id=(select max(id) from servers)";
+        $result_servers_idlength = mysqli_query($conn, $query_servers_idlength);
+        $adatok_servers_idlength= mysqli_fetch_assoc($result_servers_idlength);
+        for ($i = 1; $i <= $adatok_servers_idlength['id']; $i++){
           $query_servers = "SELECT * FROM servers WHERE id='$i'";
           $result_servers = mysqli_query($conn, $query_servers);
           $adatok_servers = mysqli_fetch_assoc($result_servers);
-          if($adatok_servers['id'] == $i and $adatok_servers['playername'] == $_SESSION['usernamefirst']){
+          if($adatok_servers['id'] == $i and $adatok_servers['playername'] == $_SESSION['usernamefirst'] and $adatok_servers['elfogadott'] == 1){
           ?>
           <script>
           function szerveratdobas<?php echo $i;?>(){
@@ -172,8 +178,11 @@
               <p class="servernameinserver" ><?php echo $adatok_servers['servername']; ?></p>
               <p class="serverstarinserver">Ertekeles</p>
           </div>
-          <?php }} ?>
-         </div>
+          <?php }} 
+          if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $_SESSION['usernamefirst'] and $adatok_serversc['elfogadott'] == 1){
+            echo "</div>";
+          }
+          ?>
         <form action="profile.php" method="POST">
         <textarea class="profileleiras" style="resize: none;" rows="4" name="leiras" id="leiras" placeholder="Leírás: " maxlength="500" style="max-width: 600px;"><?php         
         $profile_lekeres = "SELECT leiras FROM registration WHERE username='$_SESSION[usernamefirst]'";

@@ -131,14 +131,17 @@
         $query_serversc = "SELECT * FROM servers WHERE playername='$username'";
         $result_serversc = mysqli_query($conn, $query_serversc);
         $adatok_serversc = mysqli_fetch_assoc($result_serversc);
-        if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $username){
+        if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $username  and $adatok_serversc['elfogadott'] == 1){
           echo "<div class='servermain'>";
         }
-        for ($i = 1; $i <= 25; $i++){
+        $query_servers_idlength= "SELECT id FROM servers where id=(select max(id) from servers)";
+        $result_servers_idlength = mysqli_query($conn, $query_servers_idlength);
+        $adatok_servers_idlength= mysqli_fetch_assoc($result_servers_idlength);
+        for ($i = 1; $i <= $adatok_servers_idlength['id']; $i++){
           $query_servers = "SELECT * FROM servers WHERE id='$i'";
           $result_servers = mysqli_query($conn, $query_servers);
           $adatok_servers = mysqli_fetch_assoc($result_servers);
-          if($adatok_servers['id'] == $i and $adatok_servers['playername'] == $username){
+          if($adatok_servers['id'] == $i and $adatok_servers['playername'] == $username and $adatok_servers['elfogadott'] == 1){
           ?>
           <script>
           function szerveratdobas<?php echo $i;?>(){
@@ -150,7 +153,7 @@
               <p class="serverstarinserver">Ertekeles</p>
           </div>
           <?php }} 
-          if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $username){
+          if($adatok_serversc['servername'] != "" and $adatok_serversc['playername'] == $username  and $adatok_serversc['elfogadott'] == 1){
             echo "</div>";
           }
           ?>
