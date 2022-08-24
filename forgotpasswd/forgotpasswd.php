@@ -72,10 +72,26 @@
     
     <div class="loginpanel">
         <h1 class="loginh1">Elfelejtett jelszó</h1>
-        <input class="loginobject" placeholder="Email cím" type="text"><br><br>
+        <input class="loginobject" name="email" id="email" placeholder="Email cím" type="text"><br><br>
         <p class="forgotpasswdtext">Az itt megadott email címedre fogunk küldeni egy jelszó visszaállító email-t.</p>
         <button class="logininbutton">Küldés</button>
     </div>
+
+    <?php 
+    $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+
+    if($conn->connect_error){
+        echo "$conn->connect_error";
+        die("Connection Failed : ". $conn->connect_error);
+    } else {
+        $email = $_POST['email'];
+        $uname = "SELECT username FROM registration WHERE email='$email'";
+        $mailto = $email;
+        $subject = "Jelszó visszaállítás";
+        $body = "Az imént ";
+        $headers = "From: wildemhu@wildem.hu";
+    }
+?>
 
 </body>
 </html>

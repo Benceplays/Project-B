@@ -121,13 +121,13 @@ body {
     overflow-wrap: break-word;
 }
 .kategoriak{
-    text-align: center;
-    width: 50%;
-    margin-top: 2%;
-    margin-left: 25%;
-    margin-bottom: 5%;
-    background-color: rgb(38, 42, 53);
-    color: #ff8000;
+  text-align: center;
+  width: 70%;
+  margin-top: 2%;
+  margin-left: 11%;
+  margin-bottom: 5%;
+  background-color: rgb(38, 42, 53);
+  color: #ff8000;
 }
 .custom-select {
     font-family: Arial;
