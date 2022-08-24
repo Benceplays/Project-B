@@ -23,10 +23,6 @@
 			echo "<script>window.location = '../profile/$_SESSION[usernamefirst].php';</script>";
 			$stmt->close();
 			$conn->close();
-
-	    	$filePath = 'minta.php';
-      		$destinationFilePath = '../szerverek/'.$servername.'.php';
-      		copy($filePath, $destinationFilePath);
 		}
 		else{
 			echo '<script>alert("Nem vagy bejelentkezve");</script>';

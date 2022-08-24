@@ -72,10 +72,10 @@
     <?php
     $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
     for ($i = 1; $i <= 25; $i++){
-    $query = "SELECT boosted, playername, servername, ipcim, leiras, id FROM servers WHERE id = '$i'";
+    $query = "SELECT * FROM servers WHERE id = '$i'";
     $result = mysqli_query($connect, $query);
     $adatok = mysqli_fetch_assoc($result);
-    if($adatok['id'] == $i and $adatok['boosted'] == 1) {
+    if($adatok['id'] == $i and $adatok['boosted'] == 1 and $adatok['elfogadott'] == 1 ) {
       ?>
       <div style="color: #ff8000;" class="divek">
       <h1><?php echo $adatok['servername'];?></h1>
@@ -84,28 +84,26 @@
       <div class="leirasdiv">
         <p><?php echo $adatok['leiras'];?></p>
       </div>
-      <a class="nexttoserver" href="../szerverek/<?php echo $adatok_b['servername'];?>.php">Tovább a weboldalra →</a>
+      <a class="nexttoserver" href="../szerverek/<?php echo $adatok['servername'];?>.php">Tovább a weboldalra →</a>
       </div>
       <?php 
-    }} 
-    for ($b = 1; $b <= 25; $b++){
-    $query_b = "SELECT boosted, playername, servername, ipcim, leiras, id FROM servers WHERE id = '$b'";
-    $result_b = mysqli_query($connect, $query_b);
-    $adatok_b = mysqli_fetch_assoc($result_b);
-    if($adatok_b['id'] == $b and $adatok_b['boosted'] == 0) {?>
-      <div style="color: #ff8000;" class="divek">
-      <div class="namediv">
-          <h1><?php echo $adatok_b['servername'];?></h1>
-          <p><?php echo $adatok_b['playername'];?></p>
-          <h3><?php echo $adatok_b['ipcim'];?></h3>
-    </div>
-      <div class="leirasdiv">
-        <p><?php echo $adatok_b['leiras'];?></p>
-      </div>
-      <a class="nexttoserver" href="../szerverek/<?php echo $adatok_b['servername'];?>.php">Tovább a weboldalra →</a>
-      </div>
-      <?php 
-    }} 
-    ?>
+    }}     
+    for ($a = 1; $a <= 25; $a++){
+      $query_a = "SELECT * FROM servers WHERE id = '$a'";
+      $result_a = mysqli_query($connect, $query_a);
+      $adatok_a = mysqli_fetch_assoc($result_a);
+      if($adatok_a['id'] == $a and $adatok_a['boosted'] == 0 and $adatok_a['elfogadott'] == 1 ) {
+        ?>
+        <div style="color: #ff8000;" class="divek">
+        <h1><?php echo $adatok_a['servername'];?></h1>
+        <p><?php echo $adatok_a['playername'];?></p>
+        <h3><?php echo $adatok_a['ipcim'];?></h3>
+        <div class="leirasdiv">
+          <p><?php echo $adatok_a['leiras'];?></p>
+        </div>
+        <a class="nexttoserver" href="../szerverek/<?php echo $adatok_a['servername'];?>.php">Tovább a weboldalra →</a>
+        </div>
+        <?php 
+      }} ?>
 </body>
 </html>

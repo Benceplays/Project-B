@@ -81,6 +81,12 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
         $elfogadott = 1;
         $update_elfogadott = "UPDATE servers SET elfogadott='$elfogadott' WHERE id='$idfel' ";
         $result_elfogadott = mysqli_query($conn, $update_elfogadott);
+        $server_name = "SELECT servername FROM servers WHERE id='$idfel' ";
+        $result_server_name = mysqli_query($conn, $server_name);
+        $servername = mysqli_fetch_assoc($result_server_name);
+	    $filePath = '../server/minta.php';
+        $destinationFilePath = '../szerverek/'.$servername['servername'].'.php';
+        copy($filePath, $destinationFilePath);
     }
     if(isset($_POST['server_decline'])) {
         $idfel = $_POST['idcucc'];
