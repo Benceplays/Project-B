@@ -131,7 +131,16 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
       }
       }
     if(isset($_POST['profile_ban'])) {
-      /*Késöbb*/
+      /*$idfelban = $_POST['idcucc'];
+      $sql_profile_name =  "SELECT username FROM registration WHERE id='$idfelban'";
+      $result_profile_name = mysqli_query($conn, $sql_profile_name);
+      $adatok_profile_name = mysqli_fetch_assoc($result_profile_name);
+      $sql_profile_ban =  "DELETE FROM registration WHERE id='$idfelban'";
+      $result_profile_ban = mysqli_query($conn, $sql_profile_ban);
+
+      $connprofilecomment = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+      $sql_profile_bancomment =  "DROP TABLE $adatok_profile_name[username]";
+      $result_profile_bancomment = mysqli_query($connprofilecomment, $sql_profile_bancomment);*/ //Hamarosan
     }
     if(isset($_POST['profile_remove'])) {
       $idfel = $_POST['idcucc'];
