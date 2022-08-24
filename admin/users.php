@@ -74,8 +74,74 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
     }
     ?>
   </ul>
+  <form method="post">
+    <input class="kereses" type="search" autocomplete="off" placeholder="Felhasználó keresése" id="felhasznalo" name="felhasznalo">
+    <button class="keresessubmit" type="submit" name="felhasznalosubmit" >Keresés</button>
+  </form>
   <?php 
     $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+    if(isset($_POST['felhasznalosubmit'])) {
+      $felhasznalo = mysqli_real_escape_string($conn, $_POST['felhasznalo']);
+      $sql_felhasznalo =  "SELECT * FROM registration WHERE username LIKE '%$felhasznalo%'";
+      $result_felhasznalo = mysqli_query($conn, $sql_felhasznalo);
+      $queryresults = mysqli_num_rows($result_felhasznalo);
+      if ($queryresults > 0){
+      while($adatok_felhasznalokiiras = mysqli_fetch_assoc($result_felhasznalo)){  
+          ?>
+          <style>
+            .fodiv{
+              display: none;
+            }
+          </style>
+          <div class="felhasznalok">
+          <form method="POST"> 
+          <button name="toprofile_img" style="border: none; background-color: rgb(38, 42, 53);"><img class="adatok_img" onclick="toprofile()" src="../profile/img/<?php if($adatok_felhasznalokiiras['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok_felhasznalokiiras['username'];?>/<?php echo $adatok_felhasznalokiiras['profile_img'];}?>"></button>
+          <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="adatok_name"><?php echo $adatok_felhasznalokiiras['username'];?></p></button>
+          <input type="hidden" name="idcucc" value="<?php echo $adatok_felhasznalokiiras["id"];?>"> 
+          <button class="profile_removecucc" name="profile_remove" >Profilkép törlése</button>  
+          <button class="profile_bancucc" name="profile_ban" >Fiók törlése</button>  
+        </form>
+          <p class="adatok_date"><?php echo $adatok_felhasznalokiiras['date'];?></p> 
+          <p class="adatok_rang" <?php 
+          if($adatok_felhasznalokiiras['rang'] == "Tag"){
+              echo "style='color: #808080 !important;'";
+          }
+          if($adatok_felhasznalokiiras['rang'] == "Admin"){
+            echo "style='color: #00ff1a !important;'";
+          }
+          if($adatok_felhasznalokiiras['rang'] == "Elofizeto"){
+            echo "style='color: #a600ff !important;'";
+          }
+          ?>><?php echo $adatok_felhasznalokiiras['rang'];?></p> 
+          <form method="post">
+          <select class="kategoriak" name="kategoriak">
+            <option require>Tag</option>
+            <option require>Elofizeto</option>
+            <option require>Admin</option>
+          </select>
+          <input type="hidden" name="idrang" value="<?php echo $adatok_felhasznalokiiras["id"];?>"> 
+          <button class="kuldesgomb" name="kuldes">Feltöltés</button>
+          </form>
+      </div>
+          <?php
+          }
+        }
+      else{
+        echo '<p style="color: red; margin-left: 42%">Nincs ilyen felhasználónév!</p>';
+      }
+      }
+    if(isset($_POST['profile_ban'])) {
+      /*$idfelban = $_POST['idcucc'];
+      $sql_profile_name =  "SELECT username FROM registration WHERE id='$idfelban'";
+      $result_profile_name = mysqli_query($conn, $sql_profile_name);
+      $adatok_profile_name = mysqli_fetch_assoc($result_profile_name);
+      $sql_profile_ban =  "DELETE FROM registration WHERE id='$idfelban'";
+      $result_profile_ban = mysqli_query($conn, $sql_profile_ban);
+
+      $connprofilecomment = new mysqli('localhost','wildemhu_profile_comments','Kuglifej231','wildemhu_profile_comments');
+      $sql_profile_bancomment =  "DROP TABLE $adatok_profile_name[username]";
+      $result_profile_bancomment = mysqli_query($connprofilecomment, $sql_profile_bancomment);*/ //Hamarosan
+    }
     if(isset($_POST['profile_remove'])) {
       $idfel = $_POST['idcucc'];
       $sql_profile =  "SELECT * FROM registration WHERE id='$idfel'";
@@ -86,6 +152,26 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
       $result_profile_img = mysqli_query($conn, $update_profile_img);
       $adatok_profile_img = mysqli_fetch_assoc($result_profile_img);
     }
+    if(isset($_POST['toprofile_img'])) {
+      $idfelname = $_POST['idcucc'];
+      $sql_profilename =  "SELECT username FROM registration WHERE id='$idfelname'";
+      $result_profilename = mysqli_query($conn, $sql_profilename);
+      $adatok_profilename = mysqli_fetch_assoc($result_profilename);
+      echo "<script>window.location = '../profile/".$adatok_profilename['username'].".php';</script>";
+    }
+    if(isset($_POST['toprofile_name'])) {
+      $idfelname = $_POST['idcucc'];
+      $sql_profilename =  "SELECT username FROM registration WHERE id='$idfelname'";
+      $result_profilename = mysqli_query($conn, $sql_profilename);
+      $adatok_profilename = mysqli_fetch_assoc($result_profilename);
+      echo "<script>window.location = '../profile/".$adatok_profilename['username'].".php';</script>";
+    }
+    if(isset($_POST['kuldes'])) {
+    $kategoriak = $_POST['kategoriak'];
+    $idrangok = $_POST['idrang'];
+    $update_rangok = "UPDATE registration SET rang='$kategoriak' WHERE id='$idrangok'";
+    $result_rangok= mysqli_query($conn, $update_rangok); 
+    }
     $sql_maxid =  "SELECT * FROM registration where id=(select max(id) from registration)";
     $result_maxid = mysqli_query($conn, $sql_maxid);
     $adatok_maxid= mysqli_fetch_assoc($result_maxid);
@@ -94,12 +180,13 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
         $result = mysqli_query($conn, $query);
         $adatok = mysqli_fetch_assoc($result);
         if($adatok['id'] == $a){?>
-            <div class="felhasznalok">
+            <div class="felhasznalok fodiv">
                 <form method="POST"> 
                 <button name="toprofile_img" style="border: none; background-color: rgb(38, 42, 53);"><img class="adatok_img" onclick="toprofile()" src="../profile/img/<?php if($adatok['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok['username'];?>/<?php echo $adatok['profile_img'];}?>"></button>
                 <button name="toprofile_name" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="adatok_name"><?php echo $adatok['username'];?></p></button>
                 <input type="hidden" name="idcucc" value="<?php echo $adatok["id"];?>"> 
-                <button name="profile_remove" >Profilkép törlése</button>  
+                <button class="profile_removecucc" name="profile_remove" >Profilkép törlése</button>  
+                <button class="profile_bancucc" name="profile_ban" >Fiók törlése</button>  
               </form>
                 <p class="adatok_date"><?php echo $adatok['date'];?></p> 
                 <p class="adatok_rang" <?php 
@@ -113,7 +200,15 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
                   echo "style='color: #a600ff !important;'";
                 }
                 ?>><?php echo $adatok['rang'];?></p> 
-                <p>ASD</p> 
+                <form method="post">
+                <select class="kategoriak" name="kategoriak">
+                  <option require>Tag</option>
+                  <option require>Elofizeto</option>
+                  <option require>Admin</option>
+                </select>
+                <input type="hidden" name="idrang" value="<?php echo $adatok["id"];?>"> 
+                <button class="kuldesgomb" name="kuldes">Feltöltés</button>
+                </form>
             </div>
             
         <?php }
