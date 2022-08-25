@@ -92,26 +92,6 @@
         </div>
         <button class="problemabutton">Probléma jelentése</button>
     </div>
-    <div class="myproblems">
-        <h2 style="color:#ff8000; padding: 1%;">Jelentéseim</h2>
-        <?php 
-        $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
-        for ($b = 1; $b <= 25; $b++){
-        $adatok = "SELECT id, emailcim, problem, megoldodott, kategoria FROM problem WHERE id = '$b'";
-        $reports = mysqli_query($connect, $adatok);
-        $reportok = mysqli_fetch_assoc($reports);
-        if($reportok['id'] == $b) {?>
-          <div class="kisproblems">
-            <h3><?php echo $reportok['kategoria'];?></h3>
-            <div class="problemakki">
-                <p><?php echo $reportok['problem'];?></p>
-            </div>
-            <p style="text-align:right; margin-top:-10%; margin-bottom: 5%;"><?php echo $reportok['emailcim'];?></p>
-          </div>
-      <?php 
-    }} 
-    ?>
-    </div>
     </form>
 </body>
 </html>
