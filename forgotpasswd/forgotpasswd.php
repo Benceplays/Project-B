@@ -70,40 +70,15 @@
     ?>
   </ul>
 
-  
-  <div class="loginpanel">
+  <form action="forgotpasswdsend.php" method="post">
+   <div class="loginpanel">
         <h1 class="loginh1">Elfelejtett jelszó</h1>
-        <form method="POST">
-          <input class="loginobject" name="emailcim" id="email" placeholder="Email cím" type="text"><br><br>
-        </form>
+          <input class="loginobject" type="text" name="emailaddress" id="emailaddress" placeholder="Email cím" type="text" require><br><br>
         <p class="forgotpasswdtext">Az itt megadott email címedre fogunk küldeni egy jelszó visszaállító email-t.</p>
-        <button onclick="emailsend()" class="logininbutton" >Küldés</button>
+        <button name="kuldesgomb" class="logininbutton" >Küldés</button>
     </div>
-  <?php 
-    $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
-
-    if($conn->connect_error){
-        echo "$conn->connect_error";
-        die("Connection Failed : ". $conn->connect_error);
-    } else {
-        $email = $_POST['emailcim'];
-        $uname = "SELECT username FROM registration WHERE email='$email'";
-        $result=mysqli_query($conn, $uname);
-        if(mysqli_num_rows($result)!==0){
-            $mailto = $email;
-            $subject = "Jelszó visszaállítás";
-            $body = "Szia $uname! Az imént kéreémezted a jelszavad visszaállítását, ezt itt teheted meg.";
-            $headers = "From: wildemhu@wildem.hu";
-        }
-    }
-?>
-
-<script>
-  function emailsend(){
-    <?php echo "mail($mailto, $subject, $body, $headers);"?>
-    window.location = '../index.php';
-  }
-</script>
+  </form>
+  
 
 </body>
 </html>

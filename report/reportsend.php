@@ -19,5 +19,14 @@
 			echo "<script>window.location = 'report.php';</script>";
 			$stmt->close();
 			$conn->close();
+			$uname = "SELECT username FROM registration WHERE email='$email'";
+        	$result=mysqli_query($conn, $uname);
+        	$adatok = mysqli_fetch_assoc($result);
+        	$username = $adatok['username'];
+        	$subject = "Probléma jelentve";
+        	$body = "Szia $username! Az imént problémát jelentettél, hamarosan értesítünk a probléma lehetséges okairól.";
+        	$headers = "From: wildemhu@wildem.hu";
+			mail($emailcim, $subject, $body, $headers);
+          	echo "<script>window.location = '../index.php';</script>";
 	}
     ?>
