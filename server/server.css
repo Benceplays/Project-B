@@ -176,3 +176,26 @@ body {
   .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
   }
+  ::-webkit-scrollbar {
+    width: 9px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background:  #141414; 
+
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background:  #ff8000;
+    border-radius: 5px;  
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+    background:  #ff8000; 
+    }
+    .kategoria{
+      font-size: medium;
+      background-color: rgb(38, 42, 53);
+      color: #ff8000;
+      border-color: #ff8000;
+  }

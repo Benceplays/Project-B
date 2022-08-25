@@ -73,29 +73,29 @@
   </ul>
 
 
-    
   <form action="servermake.php" method="post" >
     <div class="newhirdetes">
         <h2 class="orange-text" style="padding: 2%;">Hirdetés létrehozása</h2>
         <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver neve" type="text" name="servername" style="width: 30%; margin-left:15% ;" required>
         <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szever IP címe" type="text" name="serverip" id="" style="width: 30%; margin-left:5%;" required>
-        <textarea class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" style="resize:none; width: 80%; height: 50%; margin-left: 10%; margin-top: -2%; margin-top: 5%;" required></textarea>
-        <textarea name="egyeburl" id="egyeburl" class="newhirdetesinput" style="resize:none; width: 80%; height: 25%; margin-left: 10%; margin-top: -2%; margin-top: 5%;" placeholder="További linkeket itt adhatsz meg..."></textarea>
+        <textarea class="newhirdetesinput orange-text" required autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" style="resize:none; width: 80%; height: 50%; margin-left: 10%; margin-top: -2%; margin-top: 5%;"></textarea>
         <div class="kategoriak">
-            <select name="servers">
-                <option value="0">Válassz egy kategóriát</option>
-                <option value="1" require>Minecraft</option>
-                <option value="2" require>Counter Strike Global Offensive</option>
-                <option value="3" require>Fivem</option>
-                <option value="4" require>Multi Theft Auto</option>
+            <select name="servers" class="kategoria" required>
+                <option value="">Válassz egy kategóriát</option>
+                <option value="1" require>Fivem</option>
+                <option value="2" require>Minecraft</option>
+                <option value="3" require>Multi Theft Auto</option>
+                <option value="4" require>Counter Strike Global Offensive</option>
                 <option value="5" require>Rust</option>
-                <option value="6" require>Counter Strike Source</option>
-                <option value="7" require>Nincs a listában</option>
+                <option value="6" require>Redm</option>
+                <option value="7" require>Counter Strike Source</option>
+                <option value="0" require>Nincs a listában</option>
             </select>
         </div>
         <p style="color:#ff8000; margin-left:10%;">A szerverhez kapcsolódó képeket itt csatolhatod:</p>
         <button class="hirdetesbutton">Hirdetés létrehozása</button>
-    </div>
+        <input class="buttonfile" style="color:transparent" type="file" name="uploadfile"/>
+        </div>
     </form>
 
 

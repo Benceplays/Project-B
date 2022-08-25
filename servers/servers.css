@@ -51,7 +51,7 @@ body {
     margin-left: 25%;
     border: 2px solid #ff8000;
     background-color: rgb(38, 42, 53);
-    border-radius: 20px;
+    border-radius: 5px;
     margin-top: 5%;
 }
 .maintitles{
@@ -73,8 +73,8 @@ body {
     height: 150px;
     margin-left: 25%;
     border: 2px solid #ff8000;
-    border-radius: 20px;
-    margin-top: 4%;
+    border-radius: 5px;
+    margin-top: 2%;
     padding: 0.1%;
 }
 .leirasdiv{
@@ -182,22 +182,31 @@ body {
     margin-top: 15%;
     margin-right: 5%;
 }
-.nexttoserver{
-    border: 2px solid #ff8000;
-    background-color: rgb(38, 42, 53);
-    border-radius: 20px;
-    color: #ff8000;
-    margin-bottom: 2%;
-    padding: 0.5%;
-    text-decoration:none;
-    margin-top: 20%;
-}
-.nexttoserver:hover{
-    border: 2px solid #ff8000;
-    background-color: #ff8000;
-    color: rgb(38, 42, 53);
-}
 .namediv{
     max-width: 50%;
     margin-bottom: 3%;
+}
+.keresessubmit{
+    margin-top: 2%;
+    margin-left: 1%;
+    font-size: 150%;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: #ff8000 2px solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.keresessubmit:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}
+input.kereses {
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: #ff8000 2px solid;
+    padding-bottom: 0%;
+    border-bottom: 0%;
+    border-radius: 5px;
+    font-size: 150%;
+    margin-left: 40%;
 }
