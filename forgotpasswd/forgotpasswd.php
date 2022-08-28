@@ -76,6 +76,10 @@
           <input class="loginobject" type="text" name="emailaddress" id="emailaddress" placeholder="Email cím" type="text" require><br><br>
         <p class="forgotpasswdtext">Az itt megadott email címedre fogunk küldeni egy jelszó visszaállító email-t.</p>
         <button name="kuldesgomb" class="logininbutton" >Küldés</button>
+        <?php
+        $str=rand();
+        $randvalt = md5($str);
+        ?>
     </div>
   </form>
   
