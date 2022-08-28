@@ -4,17 +4,13 @@
         echo "$conn->connect_error";
         die("Connection Failed : ". $conn->connect_error);
     } else {
-        $str=rand();
         include "forgotpasswd.php";
         include '../login.php'; 
-        session_start();
-        $email = $_POST['emailaddress'];
-        $_SESSION['email'] = $email;
         $uname = "SELECT username FROM registration WHERE email='$email'";
         $result=mysqli_query($conn, $uname);
         $adatok = mysqli_fetch_assoc($result);
+        $email = $_POST['emailaddress'];
         $username = $adatok['username'];
-        $_SESSION['usernamesecond'] = $username;
         $mailto = $email;
         $subject = "Jelszó visszaállítás";
         $body = "Szia $username! Az imént kérelémezted a jelszavad visszaállítását, ezt itt teheted meg. \n http://wildem.hu/forgotsites/".$randvalt.".php";
