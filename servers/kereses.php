@@ -75,49 +75,58 @@
     <input class="kereses" type="search" autocomplete="off" placeholder="Szerver keresése" id="szerverkeresestext" name="szerverkeresestext">
     <button class="keresesgomb" type="submit" name="szerverkereses">Keresés</button>
     <h1 style="color: rgb(38, 42, 53); background-color: #ff8000; padding-bottom: 0.3%; ">Kategóriák:</h1>
-    <div style="margin-bottom: 4%;">
-    <ul style="list-style-type: none; color: #ff8000; font-weight: bold; float:left; display:inline; padding:0%; width:100%">
-        <li class="li">
-            <label>
-                <input type="checkbox" <?php if (!empty($_POST['fivem'])): ?> checked="checked"<?php endif; ?>   name="fivem"/>Fivem
-            </label>
-        </li>
-        <li class="li">
-            <label>
-                <input type="checkbox" <?php if (!empty($_POST['minecraft'])): ?> checked="checked"<?php endif; ?> name="minecraft"/>Minecraft
-            </label>
-        </li>
-        <li class="li">
-            <label>
-                <input type="checkbox" <?php if (!empty($_POST['mta'])): ?> checked="checked"<?php endif; ?> name="mta"/>Multi Theft Auto
-            </label>
-        </li>
-        <li class="li">
-            <label>
-                <input type="checkbox" <?php if (!empty($_POST['csgo'])): ?> checked="checked"<?php endif; ?> name="csgo"/>CSGO
-            </label>
-        </li>
-        <li class="li">
-            <label>
-                <input type="checkbox" <?php if (!empty($_POST['rust'])): ?> checked="checked"<?php endif; ?> name="rust"/>Rust
-            </label>
-        </li>
-        <li class="li">
-            <label>
-                <input type="checkbox" <?php if (!empty($_POST['redm'])): ?> checked="checked"<?php endif; ?> name="redm"/>Redm
-            </label>
-        </li>
-        <li class="li">
-            <label>
-                <input type="checkbox" <?php if (!empty($_POST['css'])): ?> checked="checked"<?php endif; ?> name="css"/>Counter Strike Source
-            </label>
-        </li>
-        <li class="li">
-            <label>
-                <input type="checkbox" <?php if (!empty($_POST['egyeb'])): ?> checked="checked"<?php endif; ?> name="egyeb"/>Egyéb
-            </label>
-        </li>
-    </ul>
+
+    <div class="container">
+      <div class="row">
+        <label>
+        <input type="checkbox" <?php if (!empty($_POST['fivem'])): ?> checked="checked"<?php endif; ?>   name="fivem"/>
+          <div class="icon-box">
+            <span>Fivem</span>
+          </div>
+        </label>
+        <label>
+        <input type="checkbox" <?php if (!empty($_POST['minecraft'])): ?> checked="checked"<?php endif; ?> name="minecraft"/>
+          <div class="icon-box">
+            <span>Minecraft</span>
+          </div>
+        </label>
+        <label>
+        <input type="checkbox" <?php if (!empty($_POST['mta'])): ?> checked="checked"<?php endif; ?> name="mta"/>
+          <div class="icon-box">
+            <span>Multi Theft Auto</span>
+          </div>
+        </label>
+        <label>
+        <input type="checkbox" <?php if (!empty($_POST['csgo'])): ?> checked="checked"<?php endif; ?> name="csgo"/>
+          <div class="icon-box">
+            <span>CSGO</span>
+          </div>
+        </label>
+        <label>
+        <input type="checkbox" <?php if (!empty($_POST['rust'])): ?> checked="checked"<?php endif; ?> name="rust"/>
+          <div class="icon-box">
+            <span>Rust</span>
+          </div>
+        </label>
+        <label>
+        <input type="checkbox" <?php if (!empty($_POST['redm'])): ?> checked="checked"<?php endif; ?> name="redm"/>
+          <div class="icon-box">
+            <span>Redm</span>
+          </div>
+        </label>
+        <label>
+        <input type="checkbox" <?php if (!empty($_POST['css'])): ?> checked="checked"<?php endif; ?> name="css"/>
+          <div class="icon-box">
+            <span>Counter Strike Source</span>
+          </div>
+        </label>
+        <label>
+        <input type="checkbox" <?php if (!empty($_POST['egyeb'])): ?> checked="checked"<?php endif; ?> name="egyeb"/>
+          <div class="icon-box">
+            <span>Egyéb</span>
+          </div>
+        </label>
+      </div>
     </div>
   </form>
     <?php
@@ -158,9 +167,6 @@
               </div>";
           }
         }
-        else{
-            echo '<p style="color: red; margin-left: %">Nincs ilyen szerver a megadott kategóriá(k)ban!</p>';
-        }
       }
       if(isset($_POST['fivem'])) {
         ?>
@@ -186,9 +192,6 @@
               </a>
               </div>";
           }
-        }
-        else{
-            echo '<p style="color: red; margin-left: 50%">Nincs ilyen szerver a megadott kategóriá(k)ban!</p>';
         }
       }
       if(isset($_POST['minecraft'])) {
@@ -216,9 +219,6 @@
               </div>";
           }
         }
-        else{
-            echo '<p style="color: red; margin-left: 50%">Nincs ilyen szerver a megadott kategóriá(k)ban!</p>';
-        }
       }
       if(isset($_POST['mta'])) {
         ?>
@@ -244,9 +244,6 @@
               </a>
               </div>";
           }
-        }
-        else{
-          echo '<p style="color: red; margin-left: 50%">Nincs ilyen szerver a megadott kategóriá(k)ban!</p>';
         }
       }
       if(isset($_POST['csgo'])) {
@@ -274,9 +271,6 @@
               </div>";
           }
         }
-        else{
-          echo '<p style="color: red; margin-left: 50%">Nincs ilyen szerver a megadott kategóriá(k)ban!</p>';
-        }
       }
       if(isset($_POST['rust'])) {
         ?>
@@ -302,9 +296,6 @@
               </a>
               </div>";
           }
-        }
-        else{
-          echo '<p style="color: red; margin-left: 50%">Nincs ilyen szerver a megadott kategóriá(k)ban!</p>';
         }
       }
       if(isset($_POST['redm'])) {
@@ -332,9 +323,6 @@
               </div>";
           }
         }
-        else{
-          echo '<p style="color: red; margin-left: 50%">Nincs ilyen szerver a megadott kategóriá(k)ban!</p>';
-        }
       }
       if(isset($_POST['css'])) {
         ?>
@@ -361,9 +349,6 @@
               </div>";
           }
         }
-        else{
-          echo '<p style="color: red; margin-left: 50%">Nincs ilyen szerver a megadott kategóriá(k)ban!</p>';
-        }
       }
 
       $result_szervertext = mysqli_query($connect, $sql_szervertext);
@@ -383,7 +368,7 @@
         }
       }
       else{
-        echo '<p style="color: red; margin-left: 50%">Nincs ilyen szerver!</p>';
+        echo '<p style="color: red;width: 100%; background-color:rgb(38, 42, 53); border: 2px solid red; font-size: 125%; padding: 0.2%; padding-left: 0.5%;">Nincs ilyen szerver!</p>';
       }
     }
     $sql_kezdo =  "SELECT * FROM servers WHERE elfogadott='1'";

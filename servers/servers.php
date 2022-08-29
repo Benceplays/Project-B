@@ -70,6 +70,7 @@
     }
     ?>
   </ul>
+    <div class="egesz">
     <input class="kereses" type="search" autocomplete="off" placeholder="Szerver keresése" id="search" name="search">
     <a href="kereses.php"><img src="filters.png" width="50px" style="margin-top: -0.5%;"></a>
     <div id="output"></div>
@@ -106,5 +107,6 @@
               </div>";
         }
      ?>
+     </div>
 </body>
 </html>
