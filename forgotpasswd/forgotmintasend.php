@@ -5,17 +5,19 @@
         echo "$conn->connect_error";
         die("Connection Failed : ". $conn->connect_error);
     } else {
-        include "forgotpasswdsend.php";
-        $randvaltozo = $randvalt;
-        $mailto = $email;
+        include "forgotpasswd.php";
         $subject = "Jelszó megváltoztatás";
         $body = "Sikeresen megváltoztattad a jelszavad!";
         $headers = "From: wildemhu@wildem.hu";
-        $file_pointer = fopen("../forgotsites/".$randvaltozo.".php", 'w+');
+        $email = $_POST['emailaddress'];
+        echo '<script>alert($email);</script>';
+        $valtle = "SELECT randstr FROM registration WHERE email='$email' ";
+        $result_valt = mysqli_query($conn, $valtle);
+        $data = mysqli_fetch_assoc($result_valt);
         if(isset($_POST['valtoztatasgomb'])){
-          mail($mailto, $subject, $body, $headers);
+          mail($email, $subject, $body, $headers);
           echo "<script>window.location = '../index.php';</script>";
+          unlink("../forgotsites/".$data['randstr'].".php");
         }
-        fclose($file_pointer);
       }
 ?>
