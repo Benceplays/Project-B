@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="servers.css">
-    <script src="main.js"></script>
+    <script src="../main.js"></script>
 <title>Szerver hirdetések</title>
 </head>
 <body>   
@@ -69,83 +70,41 @@
     }
     ?>
   </ul>
-  <form method="post">
-    <input class="kereses" type="search" autocomplete="off" placeholder="Szerver keresése" id="szerverkeresestext" name="szerverkeresestext">
-    <button class="keresessubmit" type="submit" name="szerverkereses" >Keresés</button>
-  </form>
-    <?php
-    $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
-    if(isset($_POST['szerverkereses'])) {
-      ?>
-      <style>
-        .fodiv{
-          display: none;
-        }
-      </style>
-      <?php
-      $szervertext = mysqli_real_escape_string($connect, $_POST['szerverkeresestext']);
-      $sql_szervertext =  "SELECT * FROM servers WHERE servername LIKE '%$szervertext%' AND elfogadott=1";
-      $result_szervertext = mysqli_query($connect, $sql_szervertext);
-      $query_szervertext = mysqli_num_rows($result_szervertext);
-      if ($query_szervertext > 0){
-        while($adatok_szervertext = mysqli_fetch_assoc($result_szervertext)){
-              ?>
-              <a href="../szerverek/<?php echo $adatok_szervertext['servername'];?>.php" style="text-decoration: none;">
-              <div style="color: #ff8000;" class="divek">
-              <h1><?php echo $adatok_szervertext['servername'];?></h1>
-              <p><?php echo $adatok_szervertext['playername'];?></p>
-              <h3><?php echo $adatok_szervertext['ipcim'];?></h3>
-              <div class="leirasdiv">
-                <p><?php echo $adatok_szervertext['leiras'];?></p>
-              </div>
+    <input class="kereses" type="search" autocomplete="off" placeholder="Szerver keresése" id="search" name="search">
+    <a href="kereses.php"><img src="filters.png" width="50px" style="margin-top: -0.5%;"></a>
+    <div id="output"></div>
+     <script type="text/javascript">
+      $(document).ready(function(){
+        $("#search").keyup(function(){
+          $.ajax({
+            type:'POST',
+            url: 'search.php',
+            data:{
+              name:$("#search").val(),
+            },
+            success:function(data){
+              $("#output").html(data);
+            }
+          });
+        });
+      });
+     </script>
+     <?php 
+      $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+      $sql_servers =  "SELECT * FROM servers WHERE elfogadott='1'";
+      $result_servers = mysqli_query($connect, $sql_servers);
+             while($row = mysqli_fetch_assoc($result_servers)){
+              echo" <div style='color: #ff8000;' class='divek fodiv'>
+              <a href='../szerverek/".$row['servername'].".php' style='text-decoration: none; color: #ff8000;'>
+              <h1>".$row['servername']."</h1>
+              <p>".$row['playername']."</p>
+              <h3>".$row['ipcim']."</h3>
+              <div class='leirasdiv'>
+                <p>".$row['leiras']."</p>
               </div>
               </a>
-              <?php 
+              </div>";
         }
-      }
-      else{
-        echo '<p style="color: red; margin-left: 42%">Nincs ilyen szerver!</p>';
-      }
-    }
-
-    $sql_maxid =  "SELECT * FROM servers where id=(select max(id) from servers)";
-    $result_maxid = mysqli_query($connect, $sql_maxid);
-    $adatok_maxid= mysqli_fetch_assoc($result_maxid);
-    for ($i = 1; $i <= $adatok_maxid['id']; $i++){
-    $query = "SELECT * FROM servers WHERE id = '$i'";
-    $result = mysqli_query($connect, $query);
-    $adatok = mysqli_fetch_assoc($result);
-    if($adatok['id'] == $i and $adatok['boosted'] == 1 and $adatok['elfogadott'] == 1 ) {
-      ?>
-      <a class="fodiv" href="../szerverek/<?php echo $adatok['servername'];?>.php" style="text-decoration: none;">
-      <div style="color: #ff8000;" class="divek">
-      <h1><?php echo $adatok['servername'];?></h1>
-      <p><?php echo $adatok['playername'];?></p>
-      <h3><?php echo $adatok['ipcim'];?></h3>
-      <div class="leirasdiv">
-        <p><?php echo $adatok['leiras'];?></p>
-      </div>
-      </div>
-      </a>
-      <?php 
-    }}     
-    for ($a = 1; $a <= $adatok_maxid['id']; $a++){
-      $query_a = "SELECT * FROM servers WHERE id = '$a'";
-      $result_a = mysqli_query($connect, $query_a);
-      $adatok_a = mysqli_fetch_assoc($result_a);
-      if($adatok_a['id'] == $a and $adatok_a['boosted'] == 0 and $adatok_a['elfogadott'] == 1 ) {
-        ?>
-        <a class="fodiv" href="../szerverek/<?php echo $adatok_a['servername'];?>.php" style="text-decoration: none;">
-        <div style="color: #ff8000;" class="divek">
-        <h1><?php echo $adatok_a['servername'];?></h1>
-        <p><?php echo $adatok_a['playername'];?></p>
-        <h3><?php echo $adatok_a['ipcim'];?></h3>
-        <div class="leirasdiv">
-          <p><?php echo $adatok_a['leiras'];?></p>
-        </div>
-        </div>
-        </a>
-        <?php 
-      }} ?>
+     ?>
 </body>
 </html>
