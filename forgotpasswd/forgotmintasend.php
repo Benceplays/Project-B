@@ -5,19 +5,28 @@
         echo "$conn->connect_error";
         die("Connection Failed : ". $conn->connect_error);
     } else {
-        include "forgotpasswd.php";
+        include "forgotpasswdsend.php";
+        $namenow = $_POST['namenow'];
+        $forgotpasswd = $_POST['forgotpasswd'];
+        $forgotpasswd2 = $_POST['forgotpasswd2'];
+        $encryptedpass = base64_encode($forgotpasswd);
+        $encryptedpass2 = base64_encode($forgotpasswd2);
         $subject = "Jelszó megváltoztatás";
         $body = "Sikeresen megváltoztattad a jelszavad!";
         $headers = "From: wildemhu@wildem.hu";
-        $email = $_POST['emailaddress'];
-        echo '<script>alert($email);</script>';
-        $valtle = "SELECT randstr FROM registration WHERE email='$email' ";
+        $valtle = "SELECT randstr, email FROM registration WHERE username='$namenow' ";
         $result_valt = mysqli_query($conn, $valtle);
         $data = mysqli_fetch_assoc($result_valt);
-        if(isset($_POST['valtoztatasgomb'])){
-          mail($email, $subject, $body, $headers);
-          echo "<script>window.location = '../index.php';</script>";
-          unlink("../forgotsites/".$data['randstr'].".php");
+        $mailto = $data['email'];
+        if ($encryptedpass == $encryptedpass2 && $encryptedpass != ""){
+          if(isset($_POST['valtoztatasgomb'])){
+            mail($mailto, $subject, $body, $headers);
+            echo "<script>window.location = '../index.php';</script>";
+            unlink("../forgotsites/".$data['randstr'].".php");
+          }
         }
+      else{
+        echo "<script>window.location = '.$data['randstr'].php';</script>";
+      }
       }
 ?>
