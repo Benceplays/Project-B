@@ -9,12 +9,12 @@ if($conn->connect_error){
     if(isset($_POST['usernamefirst'])){
         $uname = $_POST['usernamefirst'];
         $password = $_POST['passwordfirst'];
-        $decryptedpass = base64_encode($password);
+        $encryptedpass = base64_encode($password);
         $_SESSION['loginvaltozo'] = 0;
     
-        $sql = "SELECT * FROM registration WHERE username='$uname' AND password='$password'";
+        $sql = "SELECT * FROM registration WHERE username='$uname' AND password='$encryptedpass'";
         $login_username = "SELECT * FROM registration WHERE username='$uname'";
-        $login_password = "SELECT * FROM registration WHERE password='$password'";
+        $login_password = "SELECT * FROM registration WHERE password='$encryptedpass'";
         $result2=mysqli_query($conn, $login_username);
         $result3=mysqli_query($conn, $login_password);
         $result=mysqli_query($conn, $sql);

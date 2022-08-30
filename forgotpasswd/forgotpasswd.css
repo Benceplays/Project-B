@@ -35,7 +35,8 @@ body {
 }
 .loginpanel{
     width: 25%;
-    height: 300px;
+    height: auto;
+    padding: 5%;
     margin-left: 37.5%;
     background-color: rgb(38, 42, 53);
     border:2px solid #ff8000;
@@ -56,6 +57,7 @@ body {
     background-color: rgb(38, 42, 53);
     border: 2px solid #ff8000;
     margin-left: 37%;
+    margin-bottom: 1%;
     width: 25%;
     height: 15%;
     border-radius: 5px;
