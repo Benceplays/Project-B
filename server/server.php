@@ -71,14 +71,15 @@
     }
     ?>
   </ul>
+  <div class="egesz">
 
 
   <form action="servermake.php" method="post" >
     <div class="newhirdetes">
         <h2 class="orange-text" style="padding: 2%;">Hirdetés létrehozása</h2>
-        <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver neve" type="text" name="servername" style="width: 30%; margin-left:15% ;" required>
+        <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver neve" type="text" name="servername" style="width: 30%; margin-left:17.5% ;" required>
         <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szever IP címe" type="text" name="serverip" id="" style="width: 30%; margin-left:5%;" required>
-        <textarea class="newhirdetesinput orange-text" required autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" style="resize:none; width: 80%; height: 50%; margin-left: 10%; margin-top: -2%; margin-top: 5%;"></textarea>
+        <textarea class="newhirdetesinput orange-text" required autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" maxlength="2500" style="resize:none; width: 80%; height: 50%; margin-left: 10%; margin-top: -2%; margin-top: 5%;"></textarea>
         <div class="kategoriak">
             <select name="servers" class="kategoria" required>
                 <option value="">Válassz egy kategóriát</option>
@@ -95,9 +96,19 @@
         <p style="color:#ff8000; margin-left:10%;">A szerverhez kapcsolódó képeket itt csatolhatod:</p>
         <button class="hirdetesbutton">Hirdetés létrehozása</button>
         <input class="buttonfile" style="color:transparent" type="file" name="uploadfile"/>
-        </div>
     </form>
-
+    <form method="POST">
+    <p style="color:#ff8000; margin-left:10%;">További link csatolása:</p>
+    <input class="newhirdetesinput" style="color:#ff8000; margin-left:10%;" autocomplete="off" type="url" placeholder="URL"  name="links"/>
+    </form>
+    <?php
+      if(isset($_POST['links'])) {
+        $linkek = $_POST['links'];
+        echo '<a href="'.$linkek.'" target="_blank">'.$linkek.'</a>';
+      }
+    ?>
+    </div>
+  </div>
 
 </body>
 </html>
