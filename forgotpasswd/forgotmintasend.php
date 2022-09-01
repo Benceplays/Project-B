@@ -23,10 +23,12 @@
             mail($mailto, $subject, $body, $headers);
             echo "<script>window.location = '../index.php';</script>";
             unlink("../forgotsites/".$data['randstr'].".php");
+            $passwdfel = "UPDATE registration SET password='$encryptedpass' WHERE username='$namenow'";
+            mysqli_query($conn, $passwdfel); 
           }
         }
       else{
-        echo "<script>window.location = '.$data['randstr'].php';</script>";
+        echo "<script>window.location = '$data[randstr].php';</script>";
       }
       }
 ?>
