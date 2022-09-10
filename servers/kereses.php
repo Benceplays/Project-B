@@ -129,6 +129,7 @@
       </div>
     </div>
   </form>
+  <table style="width: 100%;">
     <?php
     $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
     if(isset($_POST['szerverkereses'])) {
@@ -155,16 +156,41 @@
         $query_egyeb = mysqli_num_rows($result_egyeb);
         if ($query_egyeb > 0){
           while($row_egyeb = mysqli_fetch_assoc($result_egyeb)){
-              echo" <div style='color: #ff8000;' class='divek'>
-              <a href='../szerverek/".$row_egyeb['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-              <h1>".$row_egyeb['servername']."</h1>
-              <p>".$row_egyeb['playername']."</p>
-              <h3>".$row_egyeb['ipcim']."</h3>
-              <div class='leirasdiv'>
-                <p>".$row_egyeb['leiras']."</p>
-              </div>
-              </a>
-              </div>";
+            $result_image_egyeb = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_egyeb[playername]'");
+            $adatok_image_egyeb= mysqli_fetch_assoc($result_image_egyeb);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_egyeb['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_egyeb['profile_img']=="default.png"){echo 'default.png';} else{echo $row_egyeb['playername'];?>/<?php echo $adatok_image_egyeb['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_egyeb['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_egyeb['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_egyeb['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image_egyeb['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image_egyeb['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image_egyeb['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_egyeb['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_egyeb['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_egyeb['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_egyeb['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_egyeb['ertekeles_szam'] != 0 or $row_egyeb['ertekeles_fo'] != 0){echo '★'.round($row_egyeb['ertekeles_szam'] / $row_egyeb['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
           }
         }
       }
@@ -181,16 +207,41 @@
         $query_fivem = mysqli_num_rows($result_fivem);
         if ($query_fivem > 0){
           while($row_fivem= mysqli_fetch_assoc($result_fivem)){
-              echo" <div style='color: #ff8000;' class='divek'>
-              <a href='../szerverek/".$row_fivem['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-              <h1>".$row_fivem['servername']."</h1>
-              <p>".$row_fivem['playername']."</p>
-              <h3>".$row_fivem['ipcim']."</h3>
-              <div class='leirasdiv'>
-                <p>".$row_fivem['leiras']."</p>
-              </div>
-              </a>
-              </div>";
+            $result_image_fivem = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_fivem[playername]'");
+            $adatok_image_fivem= mysqli_fetch_assoc($result_image_fivem);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_fivem['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_fivem['profile_img']=="default.png"){echo 'default.png';} else{echo $row_fivem['playername'];?>/<?php echo $adatok_image_fivem['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_fivem['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_fivem['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_fivem['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image_fivem['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image_fivem['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image_fivem['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_fivem['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_fivem['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_fivem['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_fivem['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_fivem['ertekeles_szam'] != 0 or $row_fivem['ertekeles_fo'] != 0){echo '★'.round($row_fivem['ertekeles_szam'] / $row_fivem['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
           }
         }
       }
@@ -207,16 +258,41 @@
         $query_minecraft = mysqli_num_rows($result_minecraft);
         if ($query_minecraft > 0){
           while($row_minecraft= mysqli_fetch_assoc($result_minecraft)){
-              echo" <div style='color: #ff8000;' class='divek'>
-              <a href='../szerverek/".$row_fivem['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-              <h1>".$row_minecraft['servername']."</h1>
-              <p>".$row_minecraft['playername']."</p>
-              <h3>".$row_minecraft['ipcim']."</h3>
-              <div class='leirasdiv'>
-                <p>".$row_minecraft['leiras']."</p>
-              </div>
-              </a>
-              </div>";
+            $result_image_minecraft = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_minecraft[playername]'");
+            $adatok_image_minecraft= mysqli_fetch_assoc($result_image_minecraft);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_minecraft['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_minecraft['profile_img']=="default.png"){echo 'default.png';} else{echo $row_minecraft['playername'];?>/<?php echo $adatok_image_minecraft['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_minecraft['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_minecraft['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_minecraft['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image_minecraft['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image_minecraft['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image_minecraft['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_minecraft['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_minecraft['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_minecraft['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_minecraft['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_minecraft['ertekeles_szam'] != 0 or $row_minecraft['ertekeles_fo'] != 0){echo '★'.round($row_minecraft['ertekeles_szam'] / $row_minecraft['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
           }
         }
       }
@@ -233,16 +309,41 @@
         $query_mta = mysqli_num_rows($result_mta);
         if ($query_mta > 0){
           while($row_mta= mysqli_fetch_assoc($result_mta)){
-              echo" <div style='color: #ff8000;' class='divek'>
-              <a href='../szerverek/".$row_mta['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-              <h1>".$row_mta['servername']."</h1>
-              <p>".$row_mta['playername']."</p>
-              <h3>".$row_mta['ipcim']."</h3>
-              <div class='leirasdiv'>
-                <p>".$row_mta['leiras']."</p>
-              </div>
-              </a>
-              </div>";
+            $result_image_mta = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_mta[playername]'");
+            $adatok_image_mta= mysqli_fetch_assoc($result_image_mta);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_mta['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_mta['profile_img']=="default.png"){echo 'default.png';} else{echo $row_mta['playername'];?>/<?php echo $adatok_image_mta['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_mta['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_mta['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_mta['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image_mta['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image_mta['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image_mta['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_mta['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_mta['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_mta['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_mta['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_mta['ertekeles_szam'] != 0 or $row_mta['ertekeles_fo'] != 0){echo '★'.round($row_mta['ertekeles_szam'] / $row_mta['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
           }
         }
       }
@@ -259,16 +360,41 @@
         $query_csgo = mysqli_num_rows($result_csgo);
         if ($query_csgo > 0){
           while($row_csgo= mysqli_fetch_assoc($result_csgo)){
-              echo" <div style='color: #ff8000;' class='divek'>
-              <a href='../szerverek/".$row_csgo['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-              <h1>".$row_csgo['servername']."</h1>
-              <p>".$row_csgo['playername']."</p>
-              <h3>".$row_csgo['ipcim']."</h3>
-              <div class='leirasdiv'>
-                <p>".$row_csgo['leiras']."</p>
-              </div>
-              </a>
-              </div>";
+            $result_image_csgo = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_csgo[playername]'");
+            $adatok_image_csgo= mysqli_fetch_assoc($result_image_csgo);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_csgo['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_csgo['profile_img']=="default.png"){echo 'default.png';} else{echo $row_csgo['playername'];?>/<?php echo $adatok_image_csgo['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_csgo['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_csgo['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_csgo['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image_csgo['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image_csgo['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image_csgo['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_csgo['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_csgo['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_csgo['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_csgo['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_csgo['ertekeles_szam'] != 0 or $row_csgo['ertekeles_fo'] != 0){echo '★'.round($row_csgo['ertekeles_szam'] / $row_csgo['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
           }
         }
       }
@@ -285,16 +411,41 @@
         $query_rust = mysqli_num_rows($result_rust);
         if ($query_rust > 0){
           while($row_rust= mysqli_fetch_assoc($result_rust)){
-              echo" <div style='color: #ff8000;' class='divek'>
-              <a href='../szerverek/".$row_rust['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-              <h1>".$row_rust['servername']."</h1>
-              <p>".$row_rust['playername']."</p>
-              <h3>".$row_rust['ipcim']."</h3>
-              <div class='leirasdiv'>
-                <p>".$row_rust['leiras']."</p>
-              </div>
-              </a>
-              </div>";
+            $result_image_rust = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_rust[playername]'");
+            $adatok_image_rust= mysqli_fetch_assoc($result_image_rust);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_rust['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_rust['profile_img']=="default.png"){echo 'default.png';} else{echo $row_rust['playername'];?>/<?php echo $adatok_image_rust['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_rust['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_rust['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_rust['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image_rust['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image_rust['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image_rust['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_rust['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_rust['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_rust['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_rust['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_rust['ertekeles_szam'] != 0 or $row_rust['ertekeles_fo'] != 0){echo '★'.round($row_rust['ertekeles_szam'] / $row_rust['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
           }
         }
       }
@@ -311,16 +462,41 @@
         $query_redm = mysqli_num_rows($result_redm);
         if ($query_redm > 0){
           while($row_redm= mysqli_fetch_assoc($result_redm)){
-              echo" <div style='color: #ff8000;' class='divek'>
-              <a href='../szerverek/".$row_redm['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-              <h1>".$row_redm['servername']."</h1>
-              <p>".$row_redm['playername']."</p>
-              <h3>".$row_redm['ipcim']."</h3>
-              <div class='leirasdiv'>
-                <p>".$row_redm['leiras']."</p>
-              </div>
-              </a>
-              </div>";
+            $result_image_redm = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_redm[playername]'");
+            $adatok_image_redm= mysqli_fetch_assoc($result_image_redm);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_redm['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_redm['profile_img']=="default.png"){echo 'default.png';} else{echo $row_redm['playername'];?>/<?php echo $adatok_image_redm['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_redm['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_redm['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_redm['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image_redm['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image_redm['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image_redm['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_redm['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_redm['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_redm['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_redm['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_redm['ertekeles_szam'] != 0 or $row_redm['ertekeles_fo'] != 0){echo '★'.round($row_redm['ertekeles_szam'] / $row_redm['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
           }
         }
       }
@@ -337,16 +513,41 @@
         $query_css = mysqli_num_rows($result_css);
         if ($query_css > 0){
           while($row_css= mysqli_fetch_assoc($result_css)){
-              echo" <div style='color: #ff8000;' class='divek'>
-              <a href='../szerverek/".$row_css['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-              <h1>".$row_css['servername']."</h1>
-              <p>".$row_css['playername']."</p>
-              <h3>".$row_css['ipcim']."</h3>
-              <div class='leirasdiv'>
-                <p>".$row_css['leiras']."</p>
-              </div>
-              </a>
-              </div>";
+            $result_image_css = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_css[playername]'");
+            $adatok_image_css= mysqli_fetch_assoc($result_image_css);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_css['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_css['profile_img']=="default.png"){echo 'default.png';} else{echo $row_css['playername'];?>/<?php echo $adatok_image_css['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_css['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_css['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_css['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image_css['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image_css['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image_css['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_css['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_css['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_css['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_css['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_css['ertekeles_szam'] != 0 or $row_css['ertekeles_fo'] != 0){echo '★'.round($row_css['ertekeles_szam'] / $row_css['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
           }
         }
       }
@@ -355,16 +556,41 @@
       $query_szervertext = mysqli_num_rows($result_szervertext);
       if ($query_szervertext > 0){
         while($row = mysqli_fetch_assoc($result_szervertext)){
-            echo" <div style='color: #ff8000;' class='divek fodiv'>
-            <a href='../szerverek/".$row['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-            <h1>".$row['servername']."</h1>
-            <p>".$row['playername']."</p>
-            <h3>".$row['ipcim']."</h3>
-            <div class='leirasdiv'>
-              <p>".$row['leiras']."</p>
-            </div>
-            </a>
-            </div>";
+          $result_image_alap = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row[playername]'");
+          $adatok_image_alap= mysqli_fetch_assoc($result_image_alap);
+          ?>
+          <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek fodiv'>
+          <td style="width: 125px;"><a href="../profile/<?php echo $row['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_alap['profile_img']=="default.png"){echo 'default.png';} else{echo $row['playername'];?>/<?php echo $adatok_image_alap['profile_img'];}?>"></a></td>
+          <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row['servername'];?></a></h4>
+          <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+            <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+            <a href="../profile/<?php echo $row['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+              <?php if($adatok_image_alap['rang'] == "Tag"){ 
+              echo "color: #808080 !important;";
+              }
+              if($adatok_image_alap['rang'] == "Admin"){
+                echo "color: #00ff1a !important;";
+              }
+              if($adatok_image_alap['rang'] == "Elofizeto"){
+                echo "color: #a600ff !important;";
+              }
+              ?>"><?php echo $row['playername'];?></p></a>
+            </li>
+            <li style="float:left; margin-top: 1%;"><p> - </p>
+            </li>
+            <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+              <p><?php echo $row['date'];?></p>
+            </li>
+            <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+              <p><?php echo $row['ipcim'];?></p>
+            </li>
+          </ul>
+          <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+          <p style="margin: 0%;">Vélemények: <?php echo $row['ertekeles_fo'];?></p>
+          <p style="margin: 0%;">Értékelés: <?php if($row['ertekeles_szam'] != 0 or $row['ertekeles_fo'] != 0){echo '★'.round($row['ertekeles_szam'] / $row['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+        </td>
+        </tr>
+          <?php
         }
       }
       else{
@@ -374,18 +600,52 @@
     $sql_kezdo =  "SELECT * FROM servers WHERE elfogadott='1'";
     $result_kezdo = mysqli_query($connect, $sql_kezdo);
            while($row_kezdo = mysqli_fetch_assoc($result_kezdo)){
-            echo" <div style='color: #ff8000;' class='divek kezdocucc'>
-            <a href='../szerverek/".$row_kezdo['servername'].".php' style='text-decoration: none; color: #ff8000;'>
-            <h1>".$row_kezdo['servername']."</h1>
-            <p>".$row_kezdo['playername']."</p>
-            <h3>".$row_kezdo['ipcim']."</h3>
-            <div class='leirasdiv'>
-              <p>".$row_kezdo['leiras']."</p>
-            </div>
-            </a>
-            </div>";
+            $result_image = mysqli_query($connect, "SELECT * FROM registration WHERE username='$row_kezdo[playername]'");
+            $adatok_image= mysqli_fetch_assoc($result_image);
+            ?>
+            <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek kezdocucc'>
+            <td style="width: 125px;"><a href="../profile/<?php echo $row_kezdo['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $row_kezdo['playername'];?>/<?php echo $adatok_image['profile_img'];}?>"></a></td>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_kezdo['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_kezdo['servername'];?></a></h4>
+            <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+              <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
+              <a href="../profile/<?php echo $row_kezdo['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
+                <?php if($adatok_image['rang'] == "Tag"){ 
+                echo "color: #808080 !important;";
+                }
+                if($adatok_image['rang'] == "Admin"){
+                  echo "color: #00ff1a !important;";
+                }
+                if($adatok_image['rang'] == "Elofizeto"){
+                  echo "color: #a600ff !important;";
+                }
+                ?>"><?php echo $row_kezdo['playername'];?></p></a>
+              </li>
+              <li style="float:left; margin-top: 1%;"><p> - </p>
+              </li>
+              <li style="float:left; margin-left: 0.7%; margin-top: 1%;"> 
+                <p><?php echo $row_kezdo['date'];?></p>
+              </li>
+              <li style="float:left; margin-left: 25%; margin-top: 1%;"> 
+                <p><?php echo $row_kezdo['ipcim'];?></p>
+              </li>
+            </ul>
+            <td style="border-left: #ff8000 1px solid; padding-left: 15px;">
+            <p style="margin: 0%;">Vélemények: <?php echo $row_kezdo['ertekeles_fo'];?></p>
+            <p style="margin: 0%;">Értékelés: <?php if($row_kezdo['ertekeles_szam'] != 0 or $row_kezdo['ertekeles_fo'] != 0){echo '★'.round($row_kezdo['ertekeles_szam'] / $row_kezdo['ertekeles_fo'], 2);} else{echo '★0';}?></p>
+          </td>
+          </tr>
+            <?php
       }
     ?>
+    </table>
   </div>
+  <style>
+  .divek_name:hover{
+    text-decoration: underline;
+  }
+  .divek_servername:hover{
+    text-decoration: underline;
+  }
+</style>
 </body>
 </html>

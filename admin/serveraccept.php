@@ -84,9 +84,13 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
         $server_name = "SELECT servername FROM servers WHERE id='$idfel' ";
         $result_server_name = mysqli_query($conn, $server_name);
         $servername = mysqli_fetch_assoc($result_server_name);
-	    $filePath = '../server/minta.php';
+	      $filePath = '../server/minta.php';
         $destinationFilePath = '../szerverek/'.$servername['servername'].'.php';
         copy($filePath, $destinationFilePath);
+          $tableconn  = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
+					$table = "CREATE TABLE $servername[servername] ( id INT NOT NULL AUTO_INCREMENT , username VARCHAR(16) NOT NULL , ertekeles INT(11) NOT NULL , date DATE NOT NULL , comment VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;";
+          $tableconn->query($table);
+					$tableconn->close();
     }
     if(isset($_POST['server_decline'])) {
         $idfel = $_POST['idcucc'];

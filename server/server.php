@@ -73,12 +73,11 @@
   </ul>
   <div class="egesz">
 
-
-  <form action="servermake.php" method="post" >
+  <form method="POST" enctype="multipart/form-data" action="server.php" >
     <div class="newhirdetes">
         <h2 class="orange-text" style="padding: 2%;">Hirdetés létrehozása</h2>
-        <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver neve" type="text" name="servername" style="width: 30%; margin-left:17.5% ;" required>
-        <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szever IP címe" type="text" name="serverip" id="" style="width: 30%; margin-left:5%;" required>
+        <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver neve" type="text" name="servername" maxlength="40" style="width: 30%; margin-left:17.5% ;" required>
+        <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szever IP címe" type="text" maxlength="40" name="serverip" id="" style="width: 30%; margin-left:5%;" required>
         <textarea class="newhirdetesinput orange-text" required autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" maxlength="2500" style="resize:none; width: 80%; height: 50%; margin-left: 10%; margin-top: -2%; margin-top: 5%;"></textarea>
         <div class="kategoriak">
             <select name="servers" class="kategoria" required>
@@ -92,23 +91,62 @@
                 <option value="7" require>Counter Strike Source</option>
                 <option value="0" require>Nincs a listában</option>
             </select>
-        </div>
-        <p style="color:#ff8000; margin-left:10%;">A szerverhez kapcsolódó képeket itt csatolhatod:</p>
-        <button class="hirdetesbutton">Hirdetés létrehozása</button>
-        <input class="buttonfile" style="color:transparent" type="file" name="uploadfile"/>
+            </div>
+        <ul style="list-style: none;display:inline-block; width: 100%; padding:0%">
+          <li style="float:left; width:40%">
+            <p style="color:#ff8000; margin-left:25%; margin-top: 0%; ">A szerverhez kapcsolódó képeket itt csatolhatod:</p>
+          </li>
+          <li style="float:left; width:60%"> 
+            <input class="buttonfile" style="color:#ff8000; width: 32.5%;" type="file" name="uploadfile[]" multiple/>
+          </li>
+        </ul>
+        <button class="hirdetesbutton" name="submithirdetes">Hirdetés létrehozása</button>
     </form>
-    <form method="POST">
-    <p style="color:#ff8000; margin-left:10%;">További link csatolása:</p>
-    <input class="newhirdetesinput" style="color:#ff8000; margin-left:10%;" autocomplete="off" type="url" placeholder="URL"  name="links"/>
-    </form>
-    <?php
-      if(isset($_POST['links'])) {
-        $linkek = $_POST['links'];
-        echo '<a href="'.$linkek.'" target="_blank">'.$linkek.'</a>';
-      }
-    ?>
     </div>
   </div>
+  
+  <?php
+  if (isset($_POST['submithirdetes'])) {
+	include '../login.php';
+	$servername = $_POST['servername'];
+	session_start();
+	$_SESSION['servernametwo'] = $servername;
+	$serverip = $_POST['serverip'];
+	$serverleiras = $_POST['serverleiras'];
+	$kategoria = $_POST['servers'];
+	$boosted = 0;
+  $filename = $_FILES['uploadfile']['name'];
+  $tempname = $_FILES['uploadfile']['tmp_name'];
+  $countfiles = count($_FILES['uploadfile']['name']);
+  $date = date('Y-m-d');
+ 
+
+	$conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+		$sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
+		$result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
+		if(mysqli_num_rows($result_szerverlekerdezes)==1){
+      if($filename != ""){
+        mkdir("../szerverek/img/$servername");
+        for($i=0;$i<$countfiles;$i++){
+          $files = $filename[$i];
+          move_uploaded_file($tempname[$i],'../szerverek/img/'.$servername.'/'.$files);
+        }
+       }  
+			$stmt = $conn->prepare("insert into servers(servername, ipcim, leiras, date, playername, kategoria, boosted) values(?, ?, ?, ?, ?, ?, ?)");
+			$stmt->bind_param("ssssssi", $servername, $serverip, $serverleiras, $date, $_SESSION['usernamefirst'], $kategoria, $boosted);
+			$execval = $stmt->execute();
+			echo $execval;
+			echo '<script>alert("Sikeresen létrehozva a hirdetés");</script>';
+			echo "<script>window.location = '../profile/$_SESSION[usernamefirst].php';</script>";
+			$stmt->close();
+			$conn->close();
+    }
+		else{
+			echo '<script>alert("Nem vagy bejelentkezve");</script>';
+			echo "<script>window.location = '../server/server.php';</script>";
+		}
+  }
+?>
 
 </body>
 </html>
