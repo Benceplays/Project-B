@@ -7,6 +7,7 @@
   <title>Elfelejtett jelszó</title>
 </head>
 <body>
+  <form action="forgotmintasend.php" method="post">
     <div>
       <?php 
         session_start();
@@ -38,5 +39,6 @@
         }
       ?>
     </div>
+    </form>
 </body>
 </html>

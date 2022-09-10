@@ -73,7 +73,6 @@
   <form action="../forgotpasswd/forgotmintasend.php" method="post">
   <div class="loginpanel">
         <h1 class="loginh1">Elfelejtett jelszó</h1>
-        <input class="loginobject" type="text" name="namenow" id="namenow" placeholder="Jelenlegi felhasználóneved" require><br><br>
         <input class="loginobject" type="password" name="forgotpasswd" id="forgotpasswd" placeholder="Új jelszó" require><br><br>
         <input class="loginobject" type="password" name="forgotpasswd2" id="forgotpasswd2" placeholder="Új jelszó még egyszer" require><br><br>
         <button name="valtoztatasgomb" class="logininbutton" >Küldés</button>
