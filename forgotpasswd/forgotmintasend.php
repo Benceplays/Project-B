@@ -6,11 +6,12 @@
         die("Connection Failed : ". $conn->connect_error);
     } else {
         include "forgotpasswdsend.php";
-        $email = "nemeth.csaba.bence@]mail.com";/*fontos mert ha ez megvan akkor mukodik minden*/ 
+        $email = $mailto;/*fontos mert ha ez megvan akkor mukodik minden*/ 
         $forgotpasswd = $_POST['forgotpasswd'];
         $forgotpasswd2 = $_POST['forgotpasswd2'];
         $encryptedpass = base64_encode($forgotpasswd);
         $encryptedpass2 = base64_encode($forgotpasswd2);
+        $randstr = $data['randstr'];
         $subject = "Jelszó megváltoztatás";
         $body = "Sikeresen megváltoztattad a jelszavad!";
         $headers = "From: wildemhu@wildem.hu";
@@ -21,7 +22,7 @@
           if(isset($_POST['valtoztatasgomb'])){
             mail($email, $subject, $body, $headers);
             echo "<script>window.location = '../index.php';</script>";
-            unlink("../forgotsites/".$data['randstr'].".php");
+            unlink("../forgotsites/".$randstr.".php");
             $passwdfel = "UPDATE registration SET password='$encryptedpass' WHERE email='$email'";
             mysqli_query($conn, $passwdfel);
           }

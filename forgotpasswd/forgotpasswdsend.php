@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elfelejtett jelszó</title>
 </head>
-<body>
-  <form action="forgotmintasend.php" method="post">
+<body onload="kuldes()">
     <div>
       <?php 
         session_start();
@@ -39,6 +38,5 @@
         }
       ?>
     </div>
-    </form>
 </body>
 </html>
