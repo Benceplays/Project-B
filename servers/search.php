@@ -24,7 +24,7 @@
               <input type="hidden" name="idcucc2" value="<?php echo $row["id"];?>">  
               <td style="width: 125px;"><button name='toprofile' style='border: none; background-color: rgb(38, 42, 53);'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $row['playername'];?>/<?php echo $adatok_image['profile_img'];}?>"></button></td>
               </form>
-              <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row['servername'];?></a></h4>
+              <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row['servername'];?></a></h4>
               <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
                 <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
                 <a href="../profile/<?php echo $row['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 

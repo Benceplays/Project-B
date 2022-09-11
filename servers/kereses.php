@@ -161,7 +161,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_egyeb['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_egyeb['profile_img']=="default.png"){echo 'default.png';} else{echo $row_egyeb['playername'];?>/<?php echo $adatok_image_egyeb['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_egyeb['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_egyeb['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_egyeb['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_egyeb['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_egyeb['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -212,7 +212,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_fivem['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_fivem['profile_img']=="default.png"){echo 'default.png';} else{echo $row_fivem['playername'];?>/<?php echo $adatok_image_fivem['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_fivem['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_fivem['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_fivem['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_fivem['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_fivem['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -263,7 +263,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_minecraft['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_minecraft['profile_img']=="default.png"){echo 'default.png';} else{echo $row_minecraft['playername'];?>/<?php echo $adatok_image_minecraft['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_minecraft['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_minecraft['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_minecraft['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_minecraft['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_minecraft['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -314,7 +314,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_mta['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_mta['profile_img']=="default.png"){echo 'default.png';} else{echo $row_mta['playername'];?>/<?php echo $adatok_image_mta['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_mta['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_mta['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_mta['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_mta['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_mta['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -365,7 +365,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_csgo['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_csgo['profile_img']=="default.png"){echo 'default.png';} else{echo $row_csgo['playername'];?>/<?php echo $adatok_image_csgo['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_csgo['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_csgo['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_csgo['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_csgo['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_csgo['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -416,7 +416,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_rust['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_rust['profile_img']=="default.png"){echo 'default.png';} else{echo $row_rust['playername'];?>/<?php echo $adatok_image_rust['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_rust['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_rust['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_rust['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_rust['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_rust['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -467,7 +467,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_redm['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_redm['profile_img']=="default.png"){echo 'default.png';} else{echo $row_redm['playername'];?>/<?php echo $adatok_image_redm['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_redm['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_redm['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_redm['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_redm['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_redm['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -518,7 +518,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_css['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_css['profile_img']=="default.png"){echo 'default.png';} else{echo $row_css['playername'];?>/<?php echo $adatok_image_css['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_css['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_css['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_css['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_css['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_css['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -561,7 +561,7 @@
           ?>
           <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek fodiv'>
           <td style="width: 125px;"><a href="../profile/<?php echo $row['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image_alap['profile_img']=="default.png"){echo 'default.png';} else{echo $row['playername'];?>/<?php echo $adatok_image_alap['profile_img'];}?>"></a></td>
-          <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row['servername'];?></a></h4>
+          <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row['servername'];?></a></h4>
           <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
             <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
             <a href="../profile/<?php echo $row['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
@@ -605,7 +605,7 @@
             ?>
             <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px;' class='divek kezdocucc'>
             <td style="width: 125px;"><a href="../profile/<?php echo $row_kezdo['playername'];?>.php" style=' margin:0%; text-decoration:none;'><img style="border-radius: 5px; border: #ff8000 2px solid;margin-left: 25%; margin-top: 2%;" width="75px" height="75px" src="../profile/img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $row_kezdo['playername'];?>/<?php echo $adatok_image['profile_img'];}?>"></a></td>
-            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_kezdo['servername'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_kezdo['servername'];?></a></h4>
+            <td style="width:70%;"><h4 style="margin: 0%;width: fit-content;" class="divek_servername"><a href="../szerverek/<?php echo $row_kezdo['id'];?>.php" style=' padding: 0%; margin:0%; color: #ff8000; text-decoration:none;'><?php echo $row_kezdo['servername'];?></a></h4>
             <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
               <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
               <a href="../profile/<?php echo $row_kezdo['playername'];?>.php" style='padding:0%;border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; text-decoration:none;'><p class='divek_name' style="margin: 0%; 
