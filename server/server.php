@@ -125,13 +125,6 @@
 		$sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
 		$result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
 		if(mysqli_num_rows($result_szerverlekerdezes)==1){
-      if($filename != ""){
-        mkdir("../szerverek/img/$servername");
-        for($i=0;$i<$countfiles;$i++){
-          $files = $filename[$i];
-          move_uploaded_file($tempname[$i],'../szerverek/img/'.$servername.'/'.$files);
-        }
-       }  
 			$stmt = $conn->prepare("insert into servers(servername, ipcim, leiras, date, playername, kategoria, boosted) values(?, ?, ?, ?, ?, ?, ?)");
 			$stmt->bind_param("ssssssi", $servername, $serverip, $serverleiras, $date, $_SESSION['usernamefirst'], $kategoria, $boosted);
 			$execval = $stmt->execute();
@@ -139,7 +132,18 @@
 			echo '<script>alert("Sikeresen létrehozva a hirdetés");</script>';
 			echo "<script>window.location = '../profile/$_SESSION[usernamefirst].php';</script>";
 			$stmt->close();
-			$conn->close();
+      $sql_szervereklekerdezes =  "SELECT * FROM servers WHERE servername='$servername' AND ipcim='$serverip'";
+      $result_szervereklekerdezes=mysqli_query($conn, $sql_szervereklekerdezes);
+      $szerverek = mysqli_fetch_assoc($result_szervereklekerdezes);
+
+      if($filename != ""){
+        mkdir("../szerverek/img/$szerverek[id]");
+        for($i=0;$i<$countfiles;$i++){
+          $files = $filename[$i];
+          move_uploaded_file($tempname[$i],'../szerverek/img/'.$szerverek["id"].'/'.$files);
+        }
+       }  
+      $conn->close();
     }
 		else{
 			echo '<script>alert("Nem vagy bejelentkezve");</script>';
