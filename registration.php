@@ -52,6 +52,13 @@
 	else{
 	echo '<script>alert("Sikertelen regisztráció!")</script>';
 	echo "<script>window.location = 'login/logincucc.php';</script>";
+	$problemdiv = "Nem sikerült létrehozni felhasználót.";
+    $kategoriak = "Regisztrációval kapcsolatos probléma.";
+    $conn1 = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+    $stmt = $conn1->prepare("insert into systemproblem(problem, kategoria) values(?, ?)");
+    $stmt->bind_param("si", $problemdiv, $kategoriak);
+    $stmt->close();
+    $conn1->close();
 	}
 }
 ?>
