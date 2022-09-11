@@ -78,7 +78,7 @@
         <h2 class="orange-text" style="padding: 2%;">Hirdetés létrehozása</h2>
         <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szerver neve" type="text" name="servername" maxlength="40" style="width: 30%; margin-left:17.5% ;" required>
         <input class="newhirdetesinput orange-text" autocomplete="off" placeholder="A szever IP címe" type="text" maxlength="40" name="serverip" id="" style="width: 30%; margin-left:5%;" required>
-        <textarea class="newhirdetesinput orange-text" required autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" maxlength="2500" style="resize:none; width: 80%; height: 50%; margin-left: 10%; margin-top: -2%; margin-top: 5%;"></textarea>
+        <textarea class="newhirdetesinput orange-text" required autocomplete="off" placeholder="A szerver leírása" type="text" name="serverleiras" maxlength="2500" rows="6" style="resize:none; width: 80%; height: 50%; margin-left: 10%; margin-top: -2%; margin-top: 5%;"></textarea>
         <div class="kategoriak">
             <select name="servers" class="kategoria" required>
                 <option value="">Válassz egy kategóriát</option>

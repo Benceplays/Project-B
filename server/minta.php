@@ -70,8 +70,11 @@
   <div class="egesz">
 <?php
 $pathcucc = basename($_SERVER['SCRIPT_FILENAME']);
-$username = pathinfo($pathcucc, PATHINFO_FILENAME);
+$idinfo = pathinfo($pathcucc, PATHINFO_FILENAME);
 $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+$username_result=mysqli_query($conn, "SELECT * FROM servers WHERE id='$idinfo'");
+$username_assoc = mysqli_fetch_assoc($username_result);
+$username = $username_assoc['servername'];
 	if($conn->connect_error){
 		echo "$conn->connect_error";
 		die("Connection Failed : ". $conn->connect_error);
@@ -102,8 +105,8 @@ $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
     </form>
         <h2 class="servernamenew"><?php echo $data['servername']; ?></h2>
         <h2 class="ipcimnew">IP cím:<?php echo $data['ipcim']; ?></h2>
-        <div class="leirasdivtwo">
-            <h2 class="leirasnew"><?php echo $data['leiras']; ?></h2>
+        <div class="leirasdivtwo" style="max-width: 50%;">
+            <span class="leirasnew"><?php echo $data['leiras']; ?></span>
         </div>
 
         <div class="commentiras">
@@ -132,11 +135,11 @@ $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
             $comment = $_POST['comment'];
             $date_comment = date('Y-m-d');
             $conn_comment  = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments'); 
-            $sql_comment = "INSERT INTO $username(username, comment, date, ertekeles) VALUES ('$_SESSION[usernamefirst]', '$comment', '$date_comment', '$_POST[ertekeles]')";
+            $sql_comment = "INSERT INTO id_$idinfo(username, comment, date, ertekeles) VALUES ('$_SESSION[usernamefirst]', '$comment', '$date_comment', '$_POST[ertekeles]')";
             $result_comment = mysqli_query($conn_comment, $sql_comment);
             mysqli_query($conn, "UPDATE servers SET ertekeles_fo= $data_ertekeles[ertekeles_fo] + 1 WHERE servername='$username'");
             mysqli_query($conn, "UPDATE servers SET ertekeles_szam= $data_ertekeles[ertekeles_szam] + $_POST[ertekeles] WHERE servername='$username'");
-            echo "<script>window.location = '".$username.".php';</script>";
+            echo "<script>window.location = '".$idinfo.".php';</script>";
           }
           else{ 
             echo '<script>alert("Nem vagy bejelentkezve!");</script>';
@@ -145,18 +148,18 @@ $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
         if (isset($_POST['hozzaszolasok_delete'])) {
           $idfel = $_POST['idcucc'];
           $torlesconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
-          $result_ertekeles_torles=mysqli_query($torlesconn, "SELECT * FROM $username WHERE id='$idfel'");
+          $result_ertekeles_torles=mysqli_query($torlesconn, "SELECT * FROM id_$idinfo WHERE id='$idfel'");
           $adatok_ertekeles_torles=mysqli_fetch_assoc($result_ertekeles_torles);
           $result_ertekeles_torles2=mysqli_query($conn, "SELECT * FROM servers WHERE servername='$username'");
           $adatok_ertekeles_torles2=mysqli_fetch_assoc($result_ertekeles_torles2);
           mysqli_query($conn, "UPDATE servers SET ertekeles_fo=$adatok_ertekeles_torles2[ertekeles_fo] - 1 WHERE servername='$username'");
           mysqli_query($conn, "UPDATE servers SET ertekeles_szam=$adatok_ertekeles_torles2[ertekeles_szam] - $adatok_ertekeles_torles[ertekeles] WHERE servername='$username'");
-          $sql_torles = "DELETE FROM $username WHERE id='$idfel'";
+          $sql_torles = "DELETE FROM id_$idinfo WHERE id='$idfel'";
           mysqli_query($torlesconn, $sql_torles); 
-          echo "<script>window.location = '".$username.".php';</script>";
+          echo "<script>window.location = '".$idinfo.".php';</script>";
         }
         $conn_idlengths  = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
-        $query_idlengths= "SELECT id FROM $username where id=(select max(id) from $username)";
+        $query_idlengths= "SELECT id FROM id_$idinfo where id=(select max(id) from id_$idinfo)";
         $result_idlengths = mysqli_query($conn_idlengths, $query_idlengths);
         $adatok_idlengths= mysqli_fetch_assoc($result_idlengths);
         $query_szerkeszt= "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]'";
@@ -165,7 +168,7 @@ $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
         for ($a = 1; $a <= $adatok_idlengths['id']; $a++){ 
           $image = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
           $commentconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
-          $query_hozzaszolasok = "SELECT * FROM $username WHERE id = '$a'";
+          $query_hozzaszolasok = "SELECT * FROM id_$idinfo WHERE id = '$a'";
           $result_hozzaszolasok = mysqli_query($commentconn, $query_hozzaszolasok);
           $adatok_hozzaszolasok = mysqli_fetch_assoc($result_hozzaszolasok);
           $query_image = "SELECT * FROM registration WHERE username='$adatok_hozzaszolasok[username]'";
@@ -192,7 +195,7 @@ $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
             ?>><?php echo $adatok_image['rang'];?>
             </p>
             <p class="hozzaszolasok_star"><?php echo '★'.$adatok_hozzaszolasok['ertekeles'];?></p> 
-            <textarea id="commentcucc" class="hozzaszolasok_text" rows="6" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea> 
+            <span class="leirasnew" id="commentcucc" class="hozzaszolasok_text" ><?php echo $adatok_hozzaszolasok['comment'];?></span>
             <?php
             if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
               echo '
