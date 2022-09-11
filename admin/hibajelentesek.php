@@ -8,12 +8,14 @@
 </head>
 <body>
     <h1 style="text-align:center;">Hiba jelentések</h1>
+    <button onclick="manualon()">Manuális problémák</button>
+    <button onclick="autoon()">System problémák</button>
     <?php
     $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
-      $sql_servers =  "SELECT * FROM servers";
+      $sql_servers =  "SELECT * FROM problem";
       $result_servers = mysqli_query($connect, $sql_servers);
              while($row = mysqli_fetch_assoc($result_servers)){
-                $alldata = "SELECT * FROM servers WHERE id='$row[id]'";
+                $alldata = "SELECT * FROM problem WHERE id='$row[id]'";
                 $result_image = mysqli_query($connect, $alldata);
                 $datas= mysqli_fetch_assoc($result_image);
               ?>
@@ -21,7 +23,8 @@
               <form method="POST">
               <input type="hidden" name="idcucc2" value="<?php echo $row["id"];?>">  
               </form>
-              <div class="divek">
+              <!--Itt kezdődik a kinézete-->
+              <div class="divek" id="manual">
               <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
                 <li style="float:left;  margin-right: 0.7%; margin-top: 1%;">
                     <p><?php echo $datas['id'];?></p>
@@ -42,5 +45,22 @@
               </div>
               </tr>
              <?php }?>
+             <tr>
+             <div class="divek" id="auto">
+                    <p>asd</p>
+              </div>
+             </tr>
+             <script>
+                var i = document.getElemengById('manual');
+                var l = document.getElementById('auto');
+                function manualon(){
+                    i.style.display = "block";
+                    l.style.display = "none";
+                }
+                function autoon(){
+                    i.style.display = "none";
+                    l.style.display = "block";
+                }
+             </script>
 </body>
 </html>
