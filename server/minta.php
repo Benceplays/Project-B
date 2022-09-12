@@ -106,7 +106,7 @@ $username = $username_assoc['servername'];
         <h2 class="servernamenew"><?php echo $data['servername']; ?></h2>
         <h2 class="ipcimnew">IP cím:<?php echo $data['ipcim']; ?></h2>
         <div class="leirasdivtwo" style="max-width: 50%;">
-            <span class="leirasnew"><?php echo $data['leiras']; ?></span>
+        <div style="height: auto;"><?php echo $data['leiras']; ?></div>
         </div>
 
         <div class="commentiras">
@@ -195,7 +195,7 @@ $username = $username_assoc['servername'];
             ?>><?php echo $adatok_image['rang'];?>
             </p>
             <p class="hozzaszolasok_star"><?php echo '★'.$adatok_hozzaszolasok['ertekeles'];?></p> 
-            <span class="leirasnew" id="commentcucc" class="hozzaszolasok_text" ><?php echo $adatok_hozzaszolasok['comment'];?></span>
+            <div id="commentcucc" class="hozzaszolasok_text" style="height:auto;"><?php echo $adatok_hozzaszolasok['comment'];?></div>
             <?php
             if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
               echo '
