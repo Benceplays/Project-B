@@ -1,10 +1,18 @@
+<?php 
+include '../login.php';
+$query_szerkeszt= "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]'";
+$result_szerkeszt = mysqli_query($conn, $query_szerkeszt);
+$adatok_szerkeszt = mysqli_fetch_assoc($result_szerkeszt);
+if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="hibabejelentések.css">
-    <title>Hiba bejelentések</title>
+    <title>Felhasználók kezelése</title>
+    <link rel="stylesheet" href="hibajelentesek.css">
+    <script src="../main.js"></script>
 </head>
 <body>
 <ul class="ul">
@@ -107,7 +115,7 @@
                         $megoldott = "Még nincs megoldva";
                     }
                     ?>
-                    <p class="megoldodott"><?php echo $megoldott;?></p>
+                    <p class="megoldodott"><?php echo "$megoldott";?></p>
                 </li>
               </ul>
               </div>
@@ -115,3 +123,7 @@
              <?php }?>
 </body>
 </html>
+<?php }
+else{
+    echo "<script>window.location = '../index.php';</script>";
+}?>

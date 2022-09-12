@@ -1,6 +1,10 @@
 body{
     background-color: rgb(38, 42, 53);
     color: #ff8000;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
 }
 .divek{
     color: #ff8000;
@@ -65,4 +69,20 @@ margin-top: -1%;
 .li-a:hover {
     background-color: #ff8000;
     color: rgb(38, 42, 53);
+}
+.button {
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    padding: 15px 32px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-weight: bold;
+  }
+.button:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
 }

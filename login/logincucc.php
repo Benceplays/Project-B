@@ -16,6 +16,9 @@
     <li class="li">
       <ul style="padding: 0;"><a class="li-a" href="../elofizetes/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
     </li>
+    <li class="li">
+      <ul style="padding: 0;"><a class="li-a" href="../report/report.php" id="subscriber">Hiba bejelentés</a></ul>
+    </li>
     
     <li class="li" onmouseover="beadol()" onmouseout="kiadol()">
     <script>
