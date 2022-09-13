@@ -70,7 +70,17 @@
     }
     ?>
   </ul>
-<?php 
+      <form action="forgotpasswdlogic.php" method="post">
+    <div class="activationdiv">
+        <h1  >Elfelejtett jelszó</h1>
+        <h3>Aktivációs kódod:</h3>
+        <input class="activationcode" type="text" name="activationcode" id="activationcode" placeholder="Aktivációs kód" type="text" require><br><br>
+        <input class="loginobject" type="password" name="forgotpasswd" id="forgotpasswd" placeholder="Új jelszó" require><br><br>
+        <input class="loginobject" type="password" name="forgotpasswd2" id="forgotpasswd2" placeholder="Új jelszó még egyszer" require><br><br>
+        <button name="activationbutton" class="activationbutton">Küldés</button>
+    </div>
+    </form>
+    <?php 
         $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
         if($conn->connect_error){
           echo "$conn->connect_error";
@@ -94,21 +104,6 @@
             mysqli_query($conn, $valtchange); 
           }
         }
-      ?>
-      <form action="forgotpasswdlogic.php" method="post">
-    <div class="activationdiv">
-        <h1  >Elfelejtett jelszó</h1>
-        <h3>Aktivációs kódod:</h3>
-        <input class="activationcode" type="text" name="activationcode" id="activationcode" placeholder="Aktivációs kód" type="text" require><br><br>
-        <input class="loginobject" type="password" name="forgotpasswd" id="forgotpasswd" placeholder="Új jelszó" require><br><br>
-        <input class="loginobject" type="password" name="forgotpasswd2" id="forgotpasswd2" placeholder="Új jelszó még egyszer" require><br><br>
-        <button name="activationbutton" class="activationbutton">Küldés</button>
-        <?php
-        $mailto = $email;
-        ?>
-    </div>
-    </form>
-    <?php
     $subjecttwo = "Sikeres jelszó változtatás";
     $bodytwo = "Sikeres jelszó változtatás.";
     $headerstwo = "From: support.wildemhu@wildem.hu";
@@ -118,9 +113,9 @@
     $encryptedpass2 = base64_encode($forgotpasswd2);
 
     if(isset($_POST['activationbutton'])){
-                mail($mailto, $subjecttwo, $bodytwo, $headerstwo);
+                mail($email, $subjecttwo, $bodytwo, $headerstwo);
                 echo "<script>window.location = '../index.php';</script>";
-                $passwdfel = "UPDATE registration SET password='$encryptedpass' WHERE email='$mailto'";
+                $passwdfel = "UPDATE registration SET password='$encryptedpass' WHERE email='$email'";
                 mysqli_query($conn, $passwdfel);
     }
     ?>
