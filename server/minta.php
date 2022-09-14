@@ -119,11 +119,11 @@ $username = $username_assoc['servername'];
             </p>
     </div>
     <div>
-      <p style=" display: inline-block; margin-left:3%">Értékelés</p>
+      <p style=" display: inline-block; margin-left:3%">Értékelés:</p>
       <p class="server_star" style="display: inline-block; float: right; margin-right:3%"><?php if($data['ertekeles_szam'] != 0 or $data['ertekeles_fo'] != 0){echo '★'.round($data['ertekeles_szam'] / $data['ertekeles_fo'], 2).'('.$data['ertekeles_fo'].')';} else{echo '★0';}?></p>
     </div>
     <div>
-      <p style=" display: inline-block; margin-left:3%">Csatlakozott</p>
+      <p style=" display: inline-block; margin-left:3%">Csatlakozott:</p>
       <p style="display: inline-block; float: right; margin-right:3%"><?php echo $data_profile_img['date']; ?></p>
     </div>
   </div>
