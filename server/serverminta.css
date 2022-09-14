@@ -42,11 +42,11 @@
     margin-bottom: 3%;
 }
 .hozzaszolasok_img{
-    width: 50px;
-    height: 50px;
+    width: 50%;
+    height: 50%;
     border-radius: 5px;
     border: #ff8000 2px solid;
-    margin-left: 2%;
+    margin-left: 0%;
     margin-top: 2%;
 }
 .hozzaszolasok_name{
@@ -92,12 +92,25 @@
     color:  #ff8000;
 }
 .egesz{
+    margin-top: 1%;
     margin-left: 20%;
     margin-right: 20%;
 }
-
+.own_all{
+    border: #3b4253 1px solid;
+}
+ 
 body {
-    background-color: rgb(38, 42, 53);
+    background-color: #1e212a;
+    color: #ff8000;
+}
+.own_description{
+    background-color: #262a35;
+    border-right: #3b4253 1px solid;
+}
+.own_profile{
+    background-color: #313644;
+    float: right;
 }
 .orange-text{
     color: #ff8000;
@@ -145,7 +158,6 @@ body {
     background:  #ff8000; 
     }
 .serverdatas{
-    border: 2px solid #ff8000;
     color: #ff8000;
     width: 100%;
     margin: 0%;
@@ -156,7 +168,6 @@ body {
 .servernamenew{
     font-size: 35px;
     padding: 1%;
-    margin-top: 2%;
 }
 .playernamenew{
     font-size: 20px;
@@ -231,8 +242,8 @@ body {
     color: rgb(38, 42, 53);
 }
 .leirasdivtwo{
-    border: 2px solid #ff8000;
     color: #ff8000;
-    margin-top: 15%;
-    margin-right: 5%;
+    margin-top: 1%;
+    margin-left: 2%;
+    padding-bottom: 1%;
 }

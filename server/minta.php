@@ -68,6 +68,7 @@
     ?>
   </ul>
   <div class="egesz">
+    <div class="own_all" style="width: 100%; display: inline-block;">
 <?php
 $pathcucc = basename($_SERVER['SCRIPT_FILENAME']);
 $idinfo = pathinfo($pathcucc, PATHINFO_FILENAME);
@@ -97,17 +98,45 @@ $username = $username_assoc['servername'];
     }
         
 		?>
+  <div class="own_profile" style="width: 25%; float: right;">
 		<div class="serverdatas">
-    <p class="server_star"><?php if($data['ertekeles_szam'] != 0 or $data['ertekeles_fo'] != 0){echo '★'.round($data['ertekeles_szam'] / $data['ertekeles_fo'], 2).'('.$data['ertekeles_fo'].')';} else{echo '★0';}?></p>
     <form method="POST">
-    <button name="toprofile_own" style="border: none; background-color: rgb(38, 42, 53);"><img class="hozzaszolasok_img" src="../profile/img/<?php if($data_profile_img['profile_img']=="default.png"){echo 'default.png';} else{echo $data_profile_img['username'];?>/<?php echo $data_profile_img['profile_img'];}?>"></button>
-    <button name="toprofile_own" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold;"><p class="playernamenew"><?php echo $data['playername']; ?></p></button>
+    <button name="toprofile_own" style="border: none; background-color: #313644;"><img class="hozzaszolasok_img" src="../profile/img/<?php if($data_profile_img['profile_img']=="default.png"){echo 'default.png';} else{echo $data_profile_img['username'];?>/<?php echo $data_profile_img['profile_img'];}?>"></button>
+    <div style="text-align:center">
+      <button name="toprofile_own" style="border: none; background-color: #313644; color: #ff8000; font-size: medium; font-weight:bold;"><p class="playernamenew"><?php echo $data['playername']; ?></p></button>
+    </div>
+    <div style="text-align:center">
+    <p <?php if($data_profile_img['rang'] == "Tag"){ 
+                echo "style='color: #808080 !important;'";
+            }
+            if($data_profile_img['rang'] == "Admin"){
+              echo "style='color: #00ff1a !important;'";
+            }
+            if($data_profile_img['rang'] == "Elofizeto"){
+              echo "style='color: #a600ff !important;'";
+            }
+            ?>><?php echo $data_profile_img['rang'];?>
+            </p>
+    </div>
+    <div>
+      <p style=" display: inline-block; margin-left:3%">Értékelés</p>
+      <p class="server_star" style="display: inline-block; float: right; margin-right:3%"><?php if($data['ertekeles_szam'] != 0 or $data['ertekeles_fo'] != 0){echo '★'.round($data['ertekeles_szam'] / $data['ertekeles_fo'], 2).'('.$data['ertekeles_fo'].')';} else{echo '★0';}?></p>
+    </div>
+    <div>
+      <p style=" display: inline-block; margin-left:3%">Csatlakozott</p>
+      <p style="display: inline-block; float: right; margin-right:3%"><?php echo $data_profile_img['date']; ?></p>
+    </div>
+  </div>
+  </div>
+  <div class="own_description" style="width: 75%;">
     </form>
         <h2 class="servernamenew"><?php echo $data['servername']; ?></h2>
         <h2 class="ipcimnew">IP cím:<?php echo $data['ipcim']; ?></h2>
         <div class="leirasdivtwo" style="max-width: 50%;">
         <div style="height: auto;"><?php echo $data['leiras']; ?></div>
         </div>
+    </div>
+    </div>
 
         <div class="commentiras">
            <div>
@@ -206,10 +235,7 @@ $username = $username_assoc['servername'];
             }?>
           </div>
 
-          <?php }}?>   
+          <?php }}}?>
     </div>
-	<?php
-	}?>
-  </div>
 </body>
 </html>
