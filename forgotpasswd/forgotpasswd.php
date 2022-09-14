@@ -73,43 +73,12 @@
     ?>
   </ul>
 
-  <form action="forgotmintasend.php" method="post">
+  <form action="forgotpasswdlogic.php" method="post">
    <div class="loginpanel">
         <h1 class="loginh1">Elfelejtett jelszó</h1>
           <input class="loginobject" type="text" name="emailaddress" id="emailaddress" placeholder="Email cím" type="text" require><br><br>
         <p class="forgotpasswdtext">Az itt megadott email címedre fogunk küldeni egy jelszó visszaállító email-t.</p>
         <button name="kuldesgomb" class="logininbutton" >Küldés</button>
-        <?php
-        $str=rand();
-        $randvalt = md5($str);
-        session_start();
-        $conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
-        if($conn->connect_error){
-          echo "$conn->connect_error";
-          die("Connection Failed : ". $conn->connect_error);
-        }
-        else {
-          include '../login.php'; 
-          $email = $_POST['emailaddress'];
-          $mailto = $email;
-          $uname = "SELECT username FROM registration WHERE email='$email'";
-          $result=mysqli_query($conn, $uname);
-          $adatok = mysqli_fetch_assoc($result);
-          $username = $adatok['username'];
-          $subject = "Jelszó visszaállítás";
-          $body = "Szia $username! Az imént kérelémezted a jelszavad visszaállítását, ezt itt teheted meg. \n http://wildem.hu/forgotsites/".$randvalt.".php";
-          $headers = "From: wildemhu@wildem.hu";
-          if(isset($_POST['kuldesgomb'])){
-            mail($email, $subject, $body, $headers);
-            echo "<script>window.location = '../index.php';</script>";
-            $filePath = 'forgotminta.php';
-				    $destinationFilePath = '../forgotsites/'.$randvalt.'.php';
-				    copy($filePath, $destinationFilePath);
-            $valtchange = "UPDATE registration SET randstr='$randvalt' WHERE username='$username'";
-            mysqli_query($conn, $valtchange); 
-          }
-        }
-      ?>
     </div>
   </form>
 </body>
