@@ -130,6 +130,7 @@ $username = $username_assoc['servername'];
   </div>
   <div class="own_description" style="width: 75%;">
     </form>
+        <p class="serverdate"><?php echo $data['date']; ?></p>
         <h2 class="servernamenew"><?php echo $data['servername']; ?></h2>
         <h2 class="ipcimnew">IP cím:<?php echo $data['ipcim']; ?></h2>
         <div class="leirasdivtwo" style="max-width: 50%;">
@@ -208,10 +209,10 @@ $username = $username_assoc['servername'];
           <div class="hozzaszolasok">
           <form method="POST">
             <input type="hidden" name="idcucc2" value="<?php echo $adatok_hozzaszolasok["id"];?>">  
-            <button name="toprofile" style="border: none; background-color: rgb(38, 42, 53); margin-top: 2%;"><img class="hozzaszolasok_img" src="../profile/img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];}?>"></button>
-            <button name="toprofile" style="border: none; background-color: rgb(38, 42, 53); color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p></button>
+            <button name="toprofile" style="border: none; background-color: #262a35; margin-top: 2%;"><img class="hozzaszolasok_img2" src="../profile/img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];}?>"></button>  
+            <button name="toprofile" style="border: none; background-color: #262a35; color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p></button>
             </form>
-            <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p>   
+            <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p> 
             <p class="hozzaszolasok_rang" <?php if($adatok_image['rang'] == "Tag"){ 
                 echo "style='color: #808080 !important;'";
             }
@@ -236,6 +237,5 @@ $username = $username_assoc['servername'];
           </div>
 
           <?php }}}?>
-    </div>
 </body>
 </html>

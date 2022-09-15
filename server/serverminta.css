@@ -35,6 +35,7 @@
     color: #ff8000 !important;
 }
 .hozzaszolasok{
+    background-color: #262a35;
     border: 2px solid#ff8000;
     width: 35%;
     border-radius: 5px;
@@ -70,7 +71,7 @@
     margin-bottom: 0%;
 }
 .hozzaszolasok_text{
-    background-color:rgb(38, 42, 53);
+    background-color:#262a35;
     color:  #ff8000;
     width: 98%;
     border: none;
@@ -246,4 +247,11 @@ body {
     margin-top: 1%;
     margin-left: 2%;
     padding-bottom: 1%;
+}
+.hozzaszolasok_img2{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: #ff8000 2px solid;
+    background-color: #262a35;
 }
