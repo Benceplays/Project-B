@@ -131,6 +131,14 @@ $username = $username_assoc['servername'];
   <div class="own_description" style="width: 75%;">
     </form>
         <p class="serverdate"><?php echo $data['date']; ?></p>
+        <?php
+        $files = glob("img/".$idinfo."/*.*");
+        for ($i = 0; $i < count($files); $i++) {
+            $image = $files[$i];
+            echo '<img style="max-width: 95%;" src="'.$image .'"/>'."<br /><br />";
+        
+        }
+        ?>
         <h2 class="servernamenew"><?php echo $data['servername']; ?></h2>
         <h2 class="ipcimnew">IP cím:<?php echo $data['ipcim']; ?></h2>
         <div class="leirasdivtwo" style="max-width: 50%;">
