@@ -97,7 +97,7 @@
             <p style="color:#ff8000; margin-left:25%; margin-top: 0%; ">A szerverhez kapcsolódó képeket itt csatolhatod:</p>
           </li>
           <li style="float:left; width:60%"> 
-            <input class="buttonfile" style="color:#ff8000; width: 32.5%;" type="file" name="uploadfile[]" multiple/>
+            <input class="buttonfile" style="color:#ff8000; width: 32.5%;" type="file" name="uploadfile[]" multiple  accept=".png, .jpg, .jpeg" />
           </li>
         </ul>
         <button class="hirdetesbutton" name="submithirdetes">Hirdetés létrehozása</button>
@@ -148,7 +148,13 @@
         mkdir("../szerverek/img/$szerverek[id]");
         for($i=0;$i<$countfiles;$i++){
           $files = $filename[$i];
-          move_uploaded_file($tempname[$i],'../szerverek/img/'.$szerverek["id"].'/'.$files);
+          $folder = '../szerverek/img/'.$szerverek["id"].'/'.$files;
+          $targetFilePath = $folder . $files;
+          $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+          $allowTypes = array('jpg','png','jpeg');
+          if(in_array($fileType, $allowTypes)){
+            move_uploaded_file($tempname[$i],'../szerverek/img/'.$szerverek["id"].'/'.$files);
+          }
         }
       } 
       $conn->close();
