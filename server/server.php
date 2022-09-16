@@ -124,8 +124,16 @@
 	$conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 		$sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
 		$result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
+    $sql_servers =  "SELECT * FROM servers WHERE playername='$_SESSION[usernamefirst]'";
+		$result_servers=mysqli_query($conn, $sql_servers);
 		if(mysqli_num_rows($result_szerverlekerdezes)==1){
-			$stmt = $conn->prepare("insert into servers(servername, ipcim, leiras, date, playername, kategoria, boosted) values(?, ?, ?, ?, ?, ?, ?)");
+      while($rows = mysqli_fetch_assoc($result_servers)){
+        if($rows['playername'] == $_SESSION['usernamefirst']){ 
+          $namecounts += 1;
+        }
+      }
+      if($namecounts < 3){
+      $stmt = $conn->prepare("insert into servers(servername, ipcim, leiras, date, playername, kategoria, boosted) values(?, ?, ?, ?, ?, ?, ?)");
 			$stmt->bind_param("ssssssi", $servername, $serverip, $serverleiras, $date, $_SESSION['usernamefirst'], $kategoria, $boosted);
 			$execval = $stmt->execute();
 			echo $execval;
@@ -142,8 +150,13 @@
           $files = $filename[$i];
           move_uploaded_file($tempname[$i],'../szerverek/img/'.$szerverek["id"].'/'.$files);
         }
-       }  
+      } 
       $conn->close();
+      } 
+      else{
+        echo '<script>alert("Nem készíthetsz új szerverhirdetést! Maximum 3!");</script>';
+        echo "<script>window.location = '../server/server.php';</script>";
+      }
     }
 		else{
 			echo '<script>alert("Nem vagy bejelentkezve");</script>';
