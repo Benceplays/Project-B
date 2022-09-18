@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="../server/serverminta.css">
 </head>
 <body>
+<style>
+.underline:hover{
+  text-decoration: underline !important;
+}
+</style>
 <ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
@@ -85,25 +90,15 @@ $username = $username_assoc['servername'];
         $data = mysqli_fetch_assoc($result);
         $result_profile_img=mysqli_query($conn, "SELECT * FROM registration WHERE username='$data[playername]'");
         $data_profile_img=mysqli_fetch_assoc($result_profile_img);
-    if (isset($_POST['toprofile'])) {
-      $idfel2 = $_POST['idcucc2'];
-      $lekeres = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
-      $sql_lekeres = "SELECT username FROM $username WHERE id='$idfel2'";
-      $result_profile_lekeres = mysqli_query($lekeres, $sql_lekeres);
-      $adatok_lekerdezve= mysqli_fetch_assoc($result_profile_lekeres); 
-      echo '<script>window.location = "../profile/',$adatok_lekerdezve['username'],'.php";</script>';
-    }
-    if (isset($_POST['toprofile_own'])) {
-      echo '<script>window.location = "../profile/',$data['playername'],'.php";</script>';
-    }
         
 		?>
   <div class="own_profile" style="width: 25%; float: right;">
 		<div class="serverdatas">
-    <form method="POST">
-    <button name="toprofile_own" style="border: none; background-color: #313644;"><img class="hozzaszolasok_img" src="../profile/img/<?php if($data_profile_img['profile_img']=="default.png"){echo 'default.png';} else{echo $data_profile_img['username'];?>/<?php echo $data_profile_img['profile_img'];}?>"></button>
-    <div style="text-align:center">
-      <button name="toprofile_own" style="border: none; background-color: #313644; color: #ff8000; font-size: medium; font-weight:bold;"><p class="playernamenew"><?php echo $data['playername']; ?></p></button>
+    <div style="width: 100%; text-align:center">
+      <a href="../profile/<?php echo $data['playername'];?>.php" style="margin:0%"  style="width: 100%;"><img class="hozzaszolasok_img" src="../profile/img/<?php if($data_profile_img['profile_img']=="default.png"){echo 'default.png';} else{echo $data_profile_img['username'];?>/<?php echo $data_profile_img['profile_img'];}?>"></a>
+    </div>
+    <div style="width: 100%; text-align:center">
+      <a href="../profile/<?php echo $data['playername'];?>.php" class="underline" style="width: 100%; margin:0%;color: #ff8000; text-decoration: none;font-size:x-large: ; font-weight:bold;"><?php echo $data['playername'];?></a>
     </div>
     <div style="text-align:center">
     <p <?php if($data_profile_img['rang'] == "Tag"){ 
@@ -129,7 +124,6 @@ $username = $username_assoc['servername'];
   </div>
   </div>
   <div class="own_description" style="width: 75%;">
-    </form>
         <p class="serverdate"><?php echo $data['date']; ?></p>
         <?php
         $files = glob("img/".$idinfo."/*.*");
@@ -147,9 +141,21 @@ $username = $username_assoc['servername'];
     </div>
     </div>
 
-        <div class="commentiras">
+        <div class="commentiras" style="padding: 10px;">
            <div>
            <form method="post">
+            <?php 
+            $result_comment_login=mysqli_query($conn, "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'");
+            $data_comment_profile = mysqli_fetch_assoc($result_comment_login);
+            if(mysqli_num_rows($result_comment_login)==1){  
+              ?>
+              <img height="85px" width="85px" style="border: 2px solid #ff8000; border-radius:5px" src="../profile/img/<?php if($data_comment_profile['profile_img']=="default.png"){echo 'default.png';} else{echo $_SESSION['usernamefirst'];?>/<?php echo $data_comment_profile['profile_img'];}?>">
+            <?php
+            }
+            else{
+              echo '<img height="85px" width="85px" style="border: 2px solid #ff8000;border-radius:5px" src="../profile/img/default.png">'; 
+            }
+            ?>
             <select name="ertekeles" required>
               <option value="">Válassz értékelést</option>
               <option value="1" require>1</option>
@@ -159,7 +165,7 @@ $username = $username_assoc['servername'];
               <option value="5" require>5</option>
              </select>
            </div>
-            <textarea class="comment_text" type="text" name="comment" placeholder="Írj hozzászólást..." style="resize: none;" rows="8" cols="50" required maxlength="500"></textarea>
+            <textarea class="comment_text" type="text" name="comment" rows="1" placeholder="Írj hozzászólást..." style="resize: none;" required maxlength="1500"></textarea>
             <input class="comment_send" type="submit" name="hozzaszolas" value="Hozzászólás elküldése" />
           </form>
         </div>
@@ -169,6 +175,7 @@ $username = $username_assoc['servername'];
           $result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
           $result_ertekeles = mysqli_query($conn, "SELECT * FROM servers WHERE servername='$username'");
           $data_ertekeles = mysqli_fetch_assoc($result_ertekeles);
+          $data_commentnumber = mysqli_fetch_assoc($result_szerverlekerdezes);
           if(mysqli_num_rows($result_szerverlekerdezes)==1){
             $comment = $_POST['comment'];
             $date_comment = date('Y-m-d');
@@ -177,6 +184,7 @@ $username = $username_assoc['servername'];
             $result_comment = mysqli_query($conn_comment, $sql_comment);
             mysqli_query($conn, "UPDATE servers SET ertekeles_fo= $data_ertekeles[ertekeles_fo] + 1 WHERE servername='$username'");
             mysqli_query($conn, "UPDATE servers SET ertekeles_szam= $data_ertekeles[ertekeles_szam] + $_POST[ertekeles] WHERE servername='$username'");
+            mysqli_query($conn, "UPDATE registration SET comment_number= $data_commentnumber[comment_number] + 1 WHERE username='$_SESSION[usernamefirst]'");
             echo "<script>window.location = '".$idinfo.".php';</script>";
           }
           else{ 
@@ -190,8 +198,11 @@ $username = $username_assoc['servername'];
           $adatok_ertekeles_torles=mysqli_fetch_assoc($result_ertekeles_torles);
           $result_ertekeles_torles2=mysqli_query($conn, "SELECT * FROM servers WHERE servername='$username'");
           $adatok_ertekeles_torles2=mysqli_fetch_assoc($result_ertekeles_torles2);
+          $result_server_request2=mysqli_query($conn, "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]'");
+          $data_comment_number_delete =mysqli_fetch_assoc($result_server_request2);
           mysqli_query($conn, "UPDATE servers SET ertekeles_fo=$adatok_ertekeles_torles2[ertekeles_fo] - 1 WHERE servername='$username'");
           mysqli_query($conn, "UPDATE servers SET ertekeles_szam=$adatok_ertekeles_torles2[ertekeles_szam] - $adatok_ertekeles_torles[ertekeles] WHERE servername='$username'");
+          mysqli_query($conn, "UPDATE registration SET comment_number= $data_comment_number_delete[comment_number] - 1 WHERE username='$_SESSION[usernamefirst]'");
           $sql_torles = "DELETE FROM id_$idinfo WHERE id='$idfel'";
           mysqli_query($torlesconn, $sql_torles); 
           echo "<script>window.location = '".$idinfo.".php';</script>";
@@ -214,36 +225,41 @@ $username = $username_assoc['servername'];
           $adatok_image= mysqli_fetch_assoc($result_image);
           if($adatok_hozzaszolasok['id'] == $a){
           ?>
-          <div class="hozzaszolasok">
-          <form method="POST">
-            <input type="hidden" name="idcucc2" value="<?php echo $adatok_hozzaszolasok["id"];?>">  
-            <button name="toprofile" style="border: none; background-color: #262a35; margin-top: 2%;"><img class="hozzaszolasok_img2" src="../profile/img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];}?>"></button>  
-            <button name="toprofile" style="border: none; background-color: #262a35; color: #ff8000; font-size: medium; font-weight:bold; position:absolute; margin-top:0.7%;"><p class="hozzaszolasok_name"><?php echo $adatok_hozzaszolasok['username'];?></p></button>
-            </form>
-            <p class="hozzaszolasok_date"><?php echo $adatok_hozzaszolasok['date'];?></p> 
-            <p class="hozzaszolasok_rang" <?php if($adatok_image['rang'] == "Tag"){ 
-                echo "style='color: #808080 !important;'";
-            }
-            if($adatok_image['rang'] == "Admin"){
-              echo "style='color: #00ff1a !important;'";
-            }
-            if($adatok_image['rang'] == "Elofizeto"){
-              echo "style='color: #a600ff !important;'";
-            }
-            ?>><?php echo $adatok_image['rang'];?>
-            </p>
-            <p class="hozzaszolasok_star"><?php echo '★'.$adatok_hozzaszolasok['ertekeles'];?></p> 
-            <div id="commentcucc" class="hozzaszolasok_text" style="height:auto;"><?php echo $adatok_hozzaszolasok['comment'];?></div>
-            <?php
-            if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
-              echo '
-              <form method="post">
-              <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">  
-                <button class="torlesgomb" type="submit" name="hozzaszolasok_delete">Törlés</button>
-              </form>';
-            }?>
-          </div>
+            <div class="hozzaszolasok">
+              <div style="display:inline-block; width:100%"> 
+                <div style="float:left">
+                <a href="../profile/<?php echo $adatok_hozzaszolasok['username'];?>.php" style=" margin:0%;"><img class="hozzaszolasok_img2" src="../profile/img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];}?>"></a> 
+                </div>
+                <div style="display:flex; padding-top: 8px;"> 
+                    <a href="../profile/<?php echo $adatok_hozzaszolasok['username'];?>.php" class="hozzaszolasok_name underline" style="margin 0%;font-size: medium; font-weight:bold;color:#ff8000;text-decoration:none"><?php echo $adatok_hozzaszolasok['username'];?></a>
+                    <p class="hozzaszolasok_date" style="color: #808080 !important;"><?php echo $adatok_hozzaszolasok['date'];?></p> 
+                </div>
+                <div style="display:flex;">
+                <p class="hozzaszolasok_rang" <?php if($adatok_image['rang'] == "Tag"){ 
+                    echo "style='color: #808080 !important;'";
+                  }
+                  if($adatok_image['rang'] == "Admin"){
+                    echo "style='color: #00ff1a !important;'";
+                  }
+                  if($adatok_image['rang'] == "Elofizeto"){
+                    echo "style='color: #a600ff !important;'";
+                  }
+                  ?>><?php echo $adatok_image['rang'];?>
+                  </p>
+                  <p class="hozzaszolasok_star"><?php echo '★'.$adatok_hozzaszolasok['ertekeles'];?></p> 
+                </div>
+              </div>
+              <div id="commentcucc" class="hozzaszolasok_text" style="height:auto;"><?php echo $adatok_hozzaszolasok['comment'];?></div>
+              <?php
+              if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
+                echo '
+                <form method="post">
+                <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">  
+                  <button class="torlesgomb" type="submit" name="hozzaszolasok_delete">Törlés</button>
+                </form>';
+              }?>
+            </div>
 
-          <?php }}}?>
+        <?php }}}?>
 </body>
 </html>

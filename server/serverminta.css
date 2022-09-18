@@ -1,14 +1,16 @@
 .commentiras{
-    margin-top: 17%;
-    margin-left: 5%;
-    margin-bottom: 2%;
+    margin-top: 1%;
+    width: 100%;
+    margin-bottom: 1%;
+    background-color: #262a35;
+    border: 1px solid #3b4253;
 }
 .comment_text{
     background-color: rgb(38, 42, 53);
     color:  #ff8000;
     border: #ff8000 2px solid;
     border-radius: 5px;
-    width: 22%;
+    width: 65%;
 }
 .comment_send {
     background-color: #ff8000;
@@ -36,38 +38,34 @@
 }
 .hozzaszolasok{
     background-color: #262a35;
-    border: 2px solid#ff8000;
-    width: 35%;
-    border-radius: 5px;
-    margin-left: 30%;
-    margin-bottom: 3%;
+    border: 1px solid #3b4253;
+    width: 100%;
+    margin-bottom: 1%;
+    padding: 1%;
 }
 .hozzaszolasok_img{
-    width: 50%;
-    height: 50%;
+    width: 70%;
+    height: 70%;
     border-radius: 5px;
     border: #ff8000 2px solid;
     margin-left: 0%;
     margin-top: 2%;
 }
 .hozzaszolasok_name{
-    margin-left: 15%;
-    margin-top: -8%;
+    margin-left: 0%;
 }
 .hozzaszolasok_rang{
-    position: absolute;
-    margin-top: -1.2%;
-    margin-left: 4%;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 .hozzaszolasok_star{
-    float: right;
-    margin-top: -3%;
-    margin-right: 3%;
+    font-size: medium;
+    font-weight: bold;
+    margin-left: auto;
+    margin-bottom: 0%;
 }
 .hozzaszolasok_date{
-    float: right;
-    margin-top: -10%;
-    margin-right: 2%;
+    margin-left: auto;
     margin-bottom: 0%;
 }
 .hozzaszolasok_text{
@@ -93,7 +91,7 @@
     color:  #ff8000;
 }
 .egesz{
-    margin-top: 1%;
+    margin-top: 75px;
     margin-left: 20%;
     margin-right: 20%;
 }
@@ -117,6 +115,9 @@ body {
     color: #ff8000;
 }
 .ul {
+    width: 100%;
+    position: fixed;
+    top: 0%;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -249,8 +250,9 @@ body {
     padding-bottom: 1%;
 }
 .hozzaszolasok_img2{
-    width: 50px;
-    height: 50px;
+    width: 85px;
+    height: 85px;
+    margin-right: 10px;
     border-radius: 5px;
     border: #ff8000 2px solid;
     background-color: #262a35;

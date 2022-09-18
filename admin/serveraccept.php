@@ -88,7 +88,7 @@ if($adatok_szerkeszt['login']==1 and  $adatok_szerkeszt['rang'] == "Admin"){
         $destinationFilePath = '../szerverek/'.$servername['id'].'.php';
         copy($filePath, $destinationFilePath); 
         $tableconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
-				$table = "CREATE TABLE id_$servername[id] ( id INT NOT NULL AUTO_INCREMENT , username VARCHAR(16) NOT NULL , ertekeles INT(11) NOT NULL , date DATE NOT NULL , comment VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;";
+				$table = "CREATE TABLE id_$servername[id] ( id INT NOT NULL AUTO_INCREMENT , username VARCHAR(16) NOT NULL , ertekeles INT(11) NOT NULL , date DATE NOT NULL , comment VARCHAR(1500) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;";
         $tableconn->query($table);
 				$tableconn->close();
     }
