@@ -1,30 +1,34 @@
 .commentiras{
     margin-top: 1%;
     width: 100%;
+    min-height: 105px;
     margin-bottom: 1%;
     background-color: #262a35;
     border: 1px solid #3b4253;
 }
 .comment_text{
+    margin-left: 15px;
+    margin-top: 25px;
     background-color: rgb(38, 42, 53);
     color:  #ff8000;
-    border: #ff8000 2px solid;
-    border-radius: 5px;
-    width: 65%;
+    border: none;
+    border-bottom: #ff8000 1px solid;
+    width: 50%;
+    overflow: hidden;
+}
+.comment_text:focus{
+    outline: none !important;
 }
 .comment_send {
     background-color: #ff8000;
     color: rgb(38, 42, 53);
-    padding: 4px 6px;
+    padding: 0.1% 0.5%;
     border: 2px solid #ff8000;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    margin-left: 1%;
-    margin-top: 2.5%;
     font-weight: bold;
-    position: absolute;
   }
 .comment_send:hover{
     background-color:rgb(38, 42, 53);
@@ -42,6 +46,7 @@
     width: 100%;
     margin-bottom: 1%;
     padding: 1%;
+    padding-top: 1% !important;
 }
 .hozzaszolasok_img{
     width: 70%;
@@ -65,30 +70,19 @@
     margin-bottom: 0%;
 }
 .hozzaszolasok_date{
-    margin-left: auto;
     margin-bottom: 0%;
 }
-.hozzaszolasok_text{
+.comments_text{
     background-color:#262a35;
     color:  #ff8000;
     width: 98%;
     border: none;
+    overflow: hidden;
 }
 .torlesgomb{
-    margin-right: -15%;
-    margin-top: -20%;
-    background-color: #ff8000;
-    color: rgb(38, 42, 53);
-    border: #ff8000 2px solid;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    float: right;
-}
-.torlesgomb:hover{
-    background-color: rgb(38, 42, 53);
-    color:  #ff8000;
+    background-color:#262a35;
+    border: none;
+    padding: 0%;
 }
 .egesz{
     margin-top: 75px;

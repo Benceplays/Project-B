@@ -5,15 +5,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <link rel="stylesheet" href="../server/serverminta.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body onload="comments();" >
 <style>
 .underline:hover{
   text-decoration: underline !important;
 }
 </style>
+<script>
+function comments()
+{ 
+  var elements = document.getElementsByClassName("comments_title");
+  for(var i=0; i<elements.length; i++) {
+      elements[i].style.height =  elements[i].scrollHeight +'px';
+  }
+}
+</script>
 <ul class="ul">
     <li class="li" ><a class="li-a" href="../index.php">Kezdőlap</a></li>
     <li class="li">
@@ -149,11 +159,11 @@ $username = $username_assoc['servername'];
             $data_comment_profile = mysqli_fetch_assoc($result_comment_login);
             if(mysqli_num_rows($result_comment_login)==1){  
               ?>
-              <img height="85px" width="85px" style="border: 2px solid #ff8000; border-radius:5px" src="../profile/img/<?php if($data_comment_profile['profile_img']=="default.png"){echo 'default.png';} else{echo $_SESSION['usernamefirst'];?>/<?php echo $data_comment_profile['profile_img'];}?>">
+              <img height="85px" width="85px" style="border: 2px solid #ff8000; border-radius:5px; float:left" src="../profile/img/<?php if($data_comment_profile['profile_img']=="default.png"){echo 'default.png';} else{echo $_SESSION['usernamefirst'];?>/<?php echo $data_comment_profile['profile_img'];}?>">
             <?php
             }
             else{
-              echo '<img height="85px" width="85px" style="border: 2px solid #ff8000;border-radius:5px" src="../profile/img/default.png">'; 
+              echo '<img height="85px" width="85px" style="border: 2px solid #ff8000;border-radius:5px; float:left" src="../profile/img/default.png">'; 
             }
             ?>
             <select name="ertekeles" required>
@@ -165,11 +175,12 @@ $username = $username_assoc['servername'];
               <option value="5" require>5</option>
              </select>
            </div>
-            <textarea class="comment_text" type="text" name="comment" rows="1" placeholder="Írj hozzászólást..." style="resize: none;" required maxlength="1500"></textarea>
-            <input class="comment_send" type="submit" name="hozzaszolas" value="Hozzászólás elküldése" />
+            <textarea class="comment_text" type="text" name="comment" rows="1" placeholder="Írj hozzászólást..." style="resize: none;" required maxlength="1500" oninput="this.style.height = ''; this.style.height = this.scrollHeight +'px'"></textarea>
+            <input class="comment_send" type="submit" name="hozzaszolas" value="Hozzászólás" />
           </form>
         </div>
         <?php
+          $deleteconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
          if (isset($_POST['hozzaszolas'])) {
           $sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
           $result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
@@ -193,8 +204,7 @@ $username = $username_assoc['servername'];
         }
         if (isset($_POST['hozzaszolasok_delete'])) {
           $idfel = $_POST['idcucc'];
-          $torlesconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
-          $result_ertekeles_torles=mysqli_query($torlesconn, "SELECT * FROM id_$idinfo WHERE id='$idfel'");
+          $result_ertekeles_torles=mysqli_query($deleteconn, "SELECT * FROM id_$idinfo WHERE id='$idfel'");
           $adatok_ertekeles_torles=mysqli_fetch_assoc($result_ertekeles_torles);
           $result_ertekeles_torles2=mysqli_query($conn, "SELECT * FROM servers WHERE servername='$username'");
           $adatok_ertekeles_torles2=mysqli_fetch_assoc($result_ertekeles_torles2);
@@ -204,7 +214,7 @@ $username = $username_assoc['servername'];
           mysqli_query($conn, "UPDATE servers SET ertekeles_szam=$adatok_ertekeles_torles2[ertekeles_szam] - $adatok_ertekeles_torles[ertekeles] WHERE servername='$username'");
           mysqli_query($conn, "UPDATE registration SET comment_number= $data_comment_number_delete[comment_number] - 1 WHERE username='$_SESSION[usernamefirst]'");
           $sql_torles = "DELETE FROM id_$idinfo WHERE id='$idfel'";
-          mysqli_query($torlesconn, $sql_torles); 
+          mysqli_query($deleteconn, $sql_torles); 
           echo "<script>window.location = '".$idinfo.".php';</script>";
         }
         $conn_idlengths  = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
@@ -230,9 +240,18 @@ $username = $username_assoc['servername'];
                 <div style="float:left">
                 <a href="../profile/<?php echo $adatok_hozzaszolasok['username'];?>.php" style=" margin:0%;"><img class="hozzaszolasok_img2" src="../profile/img/<?php if($adatok_image['profile_img']=="default.png"){echo 'default.png';} else{echo $adatok_hozzaszolasok['username'];?>/<?php echo $adatok_image['profile_img'];}?>"></a> 
                 </div>
-                <div style="display:flex; padding-top: 8px;"> 
+                <div style="display:flex; padding-top: 8px"> 
                     <a href="../profile/<?php echo $adatok_hozzaszolasok['username'];?>.php" class="hozzaszolasok_name underline" style="margin 0%;font-size: medium; font-weight:bold;color:#ff8000;text-decoration:none"><?php echo $adatok_hozzaszolasok['username'];?></a>
-                    <p class="hozzaszolasok_date" style="color: #808080 !important;"><?php echo $adatok_hozzaszolasok['date'];?></p> 
+                    <p class="hozzaszolasok_date" style="color: #808080 !important; margin-left: 1%;"><?php echo $adatok_hozzaszolasok['date'];?></p> 
+                    <?php
+                  if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
+                    echo '
+                    <form method="post" style="    margin-left: auto;">
+                    <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">  
+                      <button type="submit" class="torlesgomb" style="font-size:24px;color:#ff8000;" name="comment_edit">Edit</button>
+                      <button type="submit" class="fa fa-trash-o torlesgomb" style="font-size:24px;color:#ff8000;" name="hozzaszolasok_delete"></button>
+                    </form>';
+                  }?>
                 </div>
                 <div style="display:flex;">
                 <p class="hozzaszolasok_rang" <?php if($adatok_image['rang'] == "Tag"){ 
@@ -249,15 +268,7 @@ $username = $username_assoc['servername'];
                   <p class="hozzaszolasok_star"><?php echo '★'.$adatok_hozzaszolasok['ertekeles'];?></p> 
                 </div>
               </div>
-              <div id="commentcucc" class="hozzaszolasok_text" style="height:auto;"><?php echo $adatok_hozzaszolasok['comment'];?></div>
-              <?php
-              if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
-                echo '
-                <form method="post">
-                <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">  
-                  <button class="torlesgomb" type="submit" name="hozzaszolasok_delete">Törlés</button>
-                </form>';
-              }?>
+              <textarea class="comments_title comments_text" name="comments_text" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea>
             </div>
 
         <?php }}}?>
