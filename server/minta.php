@@ -182,12 +182,14 @@ $username = $username_assoc['servername'];
         <?php
           $deleteconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
          if (isset($_POST['hozzaszolas'])) {
+          $result_comments_number=mysqli_query($deleteconn, "SELECT * FROM id_$idinfo WHERE username='$_SESSION[usernamefirst]'");
           $sql_szerverlekerdezes =  "SELECT * FROM registration WHERE username='$_SESSION[usernamefirst]' AND login='$_SESSION[loginvaltozo]'";
           $result_szerverlekerdezes=mysqli_query($conn, $sql_szerverlekerdezes);
           $result_ertekeles = mysqli_query($conn, "SELECT * FROM servers WHERE servername='$username'");
           $data_ertekeles = mysqli_fetch_assoc($result_ertekeles);
           $data_commentnumber = mysqli_fetch_assoc($result_szerverlekerdezes);
           if(mysqli_num_rows($result_szerverlekerdezes)==1){
+            if(mysqli_num_rows($result_comments_number)!==1){
             $comment = $_POST['comment'];
             $date_comment = date('Y-m-d');
             $conn_comment  = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments'); 
@@ -197,11 +199,21 @@ $username = $username_assoc['servername'];
             mysqli_query($conn, "UPDATE servers SET ertekeles_szam= $data_ertekeles[ertekeles_szam] + $_POST[ertekeles] WHERE servername='$username'");
             mysqli_query($conn, "UPDATE registration SET comment_number= $data_commentnumber[comment_number] + 1 WHERE username='$_SESSION[usernamefirst]'");
             echo "<script>window.location = '".$idinfo.".php';</script>";
+            }
+            else{ 
+              echo '<script>alert("Már írtál hozzászólást!");</script>';
+            }
           }
           else{ 
             echo '<script>alert("Nem vagy bejelentkezve!");</script>';
           }
         }
+        /*if (isset($_POST['comment_edit'])) { 
+          $id_from_comments = $_POST['idcucc'];
+          $result_edit_comments=mysqli_query($deleteconn, "SELECT * FROM id_$idinfo WHERE id='$id_from_comments'");
+          $date_edit_comments=mysqli_fetch_assoc($result_edit_comments);
+          echo "<script>window.location = '".$idinfo.".php';</script>"; 
+        }*/
         if (isset($_POST['hozzaszolasok_delete'])) {
           $idfel = $_POST['idcucc'];
           $result_ertekeles_torles=mysqli_query($deleteconn, "SELECT * FROM id_$idinfo WHERE id='$idfel'");
