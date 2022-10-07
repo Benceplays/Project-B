@@ -26,6 +26,7 @@ if($conn->connect_error){
                     $result_update = mysqli_query($conn, $update);
                     echo "<script>window.location = 'index.php';</script>";
                     echo"Sikeresen bejelentkeztél";
+                    header('Location: http://wildem.hu/profile/profile.php');
                 }
             else{
                 if(mysqli_num_rows($result2)!==1){
