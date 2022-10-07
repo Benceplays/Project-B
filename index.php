@@ -16,7 +16,7 @@
   <ul class="ul">
     <li class="li" ><a class="li-a" href="index.php">Kezdőlap</a></li>
     <li class="li">
-      <ul style="padding: 0;"><a class="li-a" href="elofizetes/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
+      <ul style="padding: 0;"><a class="li-a" href="elofizetese/elofizetesek.php" id="subscriber">Előfizetések</a></ul>
     </li>
     <li class="li">
       <ul style="padding: 0;"><a class="li-a" href="report/report.php" id="subscriber">Hiba bejelentés</a></ul>
@@ -58,7 +58,7 @@
           $resultlogin_update = mysqli_query($conn, $update_login);
           echo "<script>window.location = 'index.php';</script>";
         }
-        echo '<li class="li" style="float: right;" onmouseover="loginpanel()" onmouseout="loginoutpanel()"><ul style="padding: 0;"><a class="li-a" href="#">', $_SESSION["usernamefirst"], '</a><li id="login-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="profile/profile.php">Profilom</a></li>   
+        echo '<li class="li" style="float: right;" onmouseover="loginpanel()" onmouseout="loginoutpanel()"><ul style="padding: 0;"><a class="li-a" href="#">', $_SESSION["usernamefirst"], '</a><li id="login-menu2" style="list-style-type: none;display:none; "><a class="li-a" href="profile/'.$_SESSION["usernamefirst"].'.php">Profilom</a></li>   
         <li id="login-menu1" style="list-style-type: none; display:none"><form method="post"><input class="button" type="submit" name="kilepes" class="kilepes" value="Kilépés" /></form></li></ul></li>';
         echo '<script>
         function loginpanel() {
