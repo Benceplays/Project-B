@@ -11,13 +11,14 @@
 <title>Elfelejtett jelszó</title>
 </head>
 <body>
-  <form action="forgotpasswd.php" method="post">
-   <div class="loginpanel">
-        <h1 class="loginh1">Elfelejtett jelszó</h1>
+  <form class="formok" action="forgotpasswd.php" method="post">
+      <a href="../login/logincucc.php" class="backbutton">&#11013;Vissza a bejelentkezéshez</a>
+      <div class="loginpanel">
+          <h1 class="loginh1">Elfelejtett jelszó</h1>
           <input class="loginobject" type="text" name="emailaddress" id="emailaddress" placeholder="Email cím" type="text" require><br><br>
-        <p class="forgotpasswdtext">Az itt megadott email címedre fogunk küldeni egy jelszó visszaállító email-t.</p>
-        <button name="kuldesgomb" class="logininbutton" >Küldés</button>
-    </div>
+          <p class="forgotpasswdtext">Az itt megadott email címedre fogunk küldeni egy jelszó visszaállító email-t.</p>
+          <button name="kuldesgomb" class="logininbutton" >Küldés</button>
+      </div>
   </form>
 </body>
 </html>
@@ -43,10 +44,10 @@ else {
         $_SESSION["username"] = $username;
 
         if(isset($_POST['kuldesgomb'])){
-        mail($email, $subject, $body, $headers);
-        echo "<script>window.location = '../forgotpasswd/forgotpasswdlogic.php';</script>";
-        $valtchange = "UPDATE registration SET randstr='$activation' WHERE username='$username'";
-        mysqli_query($conn, $valtchange);
+            mail($email, $subject, $body, $headers);
+            echo "<script>window.location = '../forgotpasswd/forgotactivation.php';</script>";
+            $valtchange = "UPDATE registration SET randstr='$activation' WHERE username='$username'";
+            mysqli_query($conn, $valtchange);
         }
     }
 ?>
