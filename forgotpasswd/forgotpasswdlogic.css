@@ -5,32 +5,6 @@ body {
     margin-left: 0%;
     margin-right: 0%;
  }
- .ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:rgb(38, 42, 53);
-    border-bottom: #ff8000 2px solid;
-}
-  
-.li {
-    float: left;
-}
-  
-.li-a {
-    display: block;
-    color: #ff8000;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-weight: bold;
-}
-  
-.li-a:hover {
-    background-color: #ff8000;
-    color: rgb(38, 42, 53);
-}
 .activationdiv{
     border: 2px solid #ff8000;
     text-align: center;
@@ -39,4 +13,62 @@ body {
     color: #ff8000;
     height: 500px;
     margin-top: 5%;
+}
+.formok{
+    margin-top: 2%;
+}
+.backbutton{
+    background-color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    color: #ff8000;
+    border-radius: 10px;
+    margin-left: 5%;
+    font-size: 100%;
+    text-decoration: none;
+    padding: 0.3%;
+}
+.backbutton:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+}
+::placeholder {
+    color: #ff8000 !important ;
+    font-size: large;
+}
+::-ms-input-placeholder {
+    color: #ff8000 !important;
+   }
+
+   input:focus { 
+    outline: none !important;
+    border-color:  #ff8000;
+    box-shadow: 0 0 10px  #ff8000;
+}
+input{
+    color:#ff8000 ;
+    font-size: large;
+    background-color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover
+input:-webkit-autofill:active
+input:-webkit-autofill:focus{
+    -webkit-text-fill-color: #ff8000;
+    transition: background-color 5000s ease-in-out 0s;
+}
+.activationbutton{
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    font-size: large;
+    border: 2px solid #ff8000;
+    border-radius: 5px;
+}
+.activationbutton:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
 }

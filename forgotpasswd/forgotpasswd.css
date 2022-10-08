@@ -127,3 +127,21 @@ input{
     background-color: #ff8000;
     color:  rgb(38, 42, 53);
 }
+.formok{
+    margin-top: 2%;
+}
+.backbutton{
+    background-color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    color: #ff8000;
+    border-radius: 10px;
+    margin-left: 5%;
+    font-size: 100%;
+    text-decoration: none;
+    padding: 0.3%;
+}
+.backbutton:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+}
