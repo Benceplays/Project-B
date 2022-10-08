@@ -208,9 +208,6 @@ $username = $username_assoc['servername'];
             echo '<script>alert("Nem vagy bejelentkezve!");</script>';
           }
         }
-        if (isset($_POST['comment_edits'])) { 
-          echo "<script>document.getElementById('comment_".$_POST['idcucc']."').disabled=true;</script>";
-        }
         if (isset($_POST['comment_edit'])) { 
           $id_from_comments = $_POST['idcucc'];
           $comments_texts = $_POST['comments_texts'];
@@ -278,7 +275,7 @@ $username = $username_assoc['servername'];
                   <p class="hozzaszolasok_star"><?php echo '★'.$adatok_hozzaszolasok['ertekeles'];?></p> 
                 </div> 
               </div>
-              <textarea class="comments_title comments_text" name="comments_texts" id="comment_<?php echo $adatok_hozzaszolasok["id"];?>" style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea>
+              <textarea class="comments_title comments_text" name="comments_texts" style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea>
               <?php if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){echo '</form>';}?>
             </div>
 
