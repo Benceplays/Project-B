@@ -87,7 +87,7 @@
         <button class="logininbutton" style="margin-bottom: 5%;" id="logi">Bejelentkezés</button>
     </div>
     </form>
-    <form action="../registration.php" method="post" >
+    <form action="../registrationactivate.php" method="post" >
     <div id="registerbut" class="loginpanel" style="display: none; height: 50%;">
         <h1 class="loginh1" >Regisztráció</h1>
         <input class="loginobject"  placeholder="Email cím" type="text" name="email" id="email">
@@ -105,8 +105,7 @@
         <div id="message2" class="displaycucc" style="margin-left: 13%; margin-top: 2%; color: red">
           <p>A jelszavak nem egyeznek</p>
       </div>  
-        <button type="submit" class="logininbutton" style="margin-left: 60%; padding:1%; margin-bottom: 5%;" id="reg-button">Regisztráció</button>
-
+        <button type="submit" class="logininbutton" style="margin-left: 60%; padding:1%; margin-bottom: 5%;" id="reg-button" name="reg-button">Regisztráció</button>
   </div>       
 </form>
 

@@ -96,5 +96,9 @@
         <button class="problemabutton">Probléma jelentése</button>
     </div>
     </form>
+    <div class="myproblem">
+        <h2>Saját jelentéseim</h2>
+        <input type="text" placeholder="Email cím">
+    </div>
 </body>
 </html>

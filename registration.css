@@ -1,0 +1,64 @@
+body{
+    background-color: rgb(38, 42, 53);
+}
+
+.registrationinput{
+    background-color: rgb(38, 42, 53);
+    margin-top: 5%;
+    width: 50%;
+    margin-left: 25%;
+    min-height: 40px;
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+    font-size: 150%;
+    color: #ff8000;
+    text-align: center;
+    letter-spacing: 1em;
+}
+.maindiv{
+    border: 2px solid #ff8000;
+    border-radius: 20px;
+    margin-top: 10%;
+    width: 25%;
+    min-height: 300px;
+    margin-left: 40%;
+}
+.registrationcode{
+    color: #ff8000;
+    text-align: center;
+    margin-top: 5%;
+}
+.registration-button{
+	background-color: rgb(38, 42, 53);
+	color: #ff8000;
+	border: 2px solid #ff8000;
+	border-radius: 10px;
+	width: 25%;
+	margin-top: 1%;
+	min-height: 50px;
+	margin-left: 37.5%;
+}
+.registration-button:hover{
+	background-color: #ff8000;
+	color: rgb(38, 42, 53);
+	border: 2px solid #ff8000;
+}
+.backbutton{
+    background-color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+    color: #ff8000;
+    border-radius: 10px;
+    margin-left: 5%;
+    font-size: 100%;
+    text-decoration: none;
+    padding: 0.3%;
+    margin-top: 2%;
+}
+.backbutton:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+    border: 2px solid #ff8000;
+}
+.formok{
+    margin-top: 2%;
+}
