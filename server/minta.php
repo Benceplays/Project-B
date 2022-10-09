@@ -208,12 +208,11 @@ $username = $username_assoc['servername'];
             echo '<script>alert("Nem vagy bejelentkezve!");</script>';
           }
         }
-        /*if (isset($_POST['comment_edit'])) { 
+        if (isset($_POST['comment_edit'])) { 
           $id_from_comments = $_POST['idcucc'];
-          $result_edit_comments=mysqli_query($deleteconn, "SELECT * FROM id_$idinfo WHERE id='$id_from_comments'");
-          $date_edit_comments=mysqli_fetch_assoc($result_edit_comments);
-          echo "<script>window.location = '".$idinfo.".php';</script>"; 
-        }*/
+          $comments_texts = $_POST['comments_texts'];
+          mysqli_query($deleteconn, "UPDATE id_$idinfo SET comment='$comments_texts' WHERE id=$id_from_comments"); 
+        }
         if (isset($_POST['hozzaszolasok_delete'])) {
           $idfel = $_POST['idcucc'];
           $result_ertekeles_torles=mysqli_query($deleteconn, "SELECT * FROM id_$idinfo WHERE id='$idfel'");
@@ -225,8 +224,7 @@ $username = $username_assoc['servername'];
           mysqli_query($conn, "UPDATE servers SET ertekeles_fo=$adatok_ertekeles_torles2[ertekeles_fo] - 1 WHERE servername='$username'");
           mysqli_query($conn, "UPDATE servers SET ertekeles_szam=$adatok_ertekeles_torles2[ertekeles_szam] - $adatok_ertekeles_torles[ertekeles] WHERE servername='$username'");
           mysqli_query($conn, "UPDATE registration SET comment_number= $data_comment_number_delete[comment_number] - 1 WHERE username='$_SESSION[usernamefirst]'");
-          $sql_torles = "DELETE FROM id_$idinfo WHERE id='$idfel'";
-          mysqli_query($deleteconn, $sql_torles); 
+          mysqli_query($deleteconn, "DELETE FROM id_$idinfo WHERE id='$idfel'"); 
           echo "<script>window.location = '".$idinfo.".php';</script>";
         }
         $conn_idlengths  = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
@@ -239,11 +237,9 @@ $username = $username_assoc['servername'];
         for ($a = 1; $a <= $adatok_idlengths['id']; $a++){ 
           $image = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
           $commentconn = new mysqli('localhost','wildemhu_servercomments','Kuglifej231','wildemhu_servercomments');
-          $query_hozzaszolasok = "SELECT * FROM id_$idinfo WHERE id = '$a'";
-          $result_hozzaszolasok = mysqli_query($commentconn, $query_hozzaszolasok);
+          $result_hozzaszolasok = mysqli_query($commentconn, "SELECT * FROM id_$idinfo WHERE id = '$a'");
           $adatok_hozzaszolasok = mysqli_fetch_assoc($result_hozzaszolasok);
-          $query_image = "SELECT * FROM registration WHERE username='$adatok_hozzaszolasok[username]'";
-          $result_image = mysqli_query($image, $query_image);
+          $result_image = mysqli_query($image, "SELECT * FROM registration WHERE username='$adatok_hozzaszolasok[username]'");
           $adatok_image= mysqli_fetch_assoc($result_image);
           if($adatok_hozzaszolasok['id'] == $a){
           ?>
@@ -258,11 +254,10 @@ $username = $username_assoc['servername'];
                     <?php
                   if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){
                     echo '
-                    <form method="post" style="    margin-left: auto;">
-                    <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">  
-                      <button type="submit" class="torlesgomb" style="font-size:24px;color:#ff8000;" name="comment_edit">Edit</button>
-                      <button type="submit" class="fa fa-trash-o torlesgomb" style="font-size:24px;color:#ff8000;" name="hozzaszolasok_delete"></button>
-                    </form>';
+                    <form method="post" style="margin-left: auto;">
+                    <input type="hidden" name="idcucc" value="',$adatok_hozzaszolasok["id"],'">
+                    <button type="submit" class="torlesgomb" style="font-size:24px;color:#ff8000;" name="comment_edit">Edit</button>
+                    <button type="submit" class="fa fa-trash-o torlesgomb" style="font-size:24px;color:#ff8000;" name="hozzaszolasok_delete"></button>';
                   }?>
                 </div>
                 <div style="display:flex;">
@@ -278,9 +273,10 @@ $username = $username_assoc['servername'];
                   ?>><?php echo $adatok_image['rang'];?>
                   </p>
                   <p class="hozzaszolasok_star"><?php echo '★'.$adatok_hozzaszolasok['ertekeles'];?></p> 
-                </div>
+                </div> 
               </div>
-              <textarea class="comments_title comments_text" name="comments_text" disabled style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea>
+              <textarea class="comments_title comments_text" name="comments_texts" style="resize: none;"><?php echo $adatok_hozzaszolasok['comment'];?></textarea>
+              <?php if($adatok_szerkeszt['login']==1 and $adatok_hozzaszolasok['username'] == $_SESSION['usernamefirst']){echo '</form>';}?>
             </div>
 
         <?php }}}?>
