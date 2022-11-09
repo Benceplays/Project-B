@@ -185,3 +185,51 @@ input{
     background-color: rgb(38, 42, 53);
     color: #ff8000;
 }
+.problemgetbutton {
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: 2px solid #ff8000;
+    padding: 15px 32px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-weight: bold;
+  }
+.problemgetbutton:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}
+.divek{
+    color: #ff8000;
+    width: 70%;
+    height: 150px;
+    margin-left: 15%;
+    border: 2px solid #ff8000;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+.idid{
+    margin-top: -0.1%;
+    font-weight: bold;
+    padding: 1%;
+}
+.email{
+    margin-top: -2%;
+    font-weight: bold;
+    padding: 1%;
+}
+.problema{
+    font-weight: bold;
+    margin-top: -200px;
+    padding-left: 2%;
+}
+.problemadiv{
+    width: 50%;
+    margin-left: 50%;
+    margin-top: 7.5%;
+    border: 2px solid #ff8000;
+    height: 150px;
+}

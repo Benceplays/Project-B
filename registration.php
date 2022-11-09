@@ -1,15 +1,5 @@
 <?php
-	$email = $_POST['email'];
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$password2 = $_POST['password2'];
 	$date = date('Y-m-d');
-	$encryptedpass = base64_encode($password);
-
-	$mailto = $email;
-	$subject = "Sikeres regisztráció";
-	$body = "Szia $username! Köszönjük, hogy regisztráltál weboldalunkra, reméljük kellemesen fogod magad érezni.";
-	$headers = "From: wildemhu@wildem.hu";
 
 	$conn = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
 	if($conn->connect_error){
@@ -21,8 +11,13 @@
 		$username = $_SESSION['usernamebe'];
 		$password = $_SESSION['passwordbe'];
 		$password2 = $_SESSION['password2be'];
+		$encryptedpass = base64_encode($password);
 		$regcode = $_POST['registrationcheck'];
 		$regactivation = $_SESSION['regactivation'];
+		$mailto = $email;
+		$subject = "Sikeres regisztráció";
+		$body = "Szia $username! Köszönjük, hogy regisztráltál weboldalunkra, reméljük kellemesen fogod magad érezni.";
+		$headers = "From: wildemhu@wildem.hu";
 		if($email != "" and strpos($email, '@') !== false and $username != "" and $password != "" and $password != "" and $password == $password2){
 		$query_all = "SELECT email, username FROM registration";
     	$result_all = mysqli_query($conn, $query_all);

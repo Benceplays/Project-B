@@ -96,9 +96,62 @@
         <button class="problemabutton">Probléma jelentése</button>
     </div>
     </form>
+    <form action="report.php" method="post">
     <div class="myproblem">
         <h2>Saját jelentéseim</h2>
-        <input type="text" placeholder="Email cím">
-    </div>
+        <input type="text" name="emailinput" placeholder="Email cím">
+        <button name="problemgetbutton" class="problemgetbutton">Lekérdezés</button>
+        <div>
+    </form>
+        <?php
+        if(isset($_POST['problemgetbutton'])){
+          $connect = new mysqli('localhost','wildemhu_csgo','Kuglifej231','wildemhu_csgo');
+          $email = $_POST['emailinput'];
+          $sql_servers =  "SELECT * FROM problem";
+          $result_servers = mysqli_query($connect, $sql_servers);
+             while($row = mysqli_fetch_assoc($result_servers)){
+                $alldata = "SELECT * FROM problem WHERE emailcim='$email' && id='$row[id]'";
+                $result_image = mysqli_query($connect, $alldata);
+                $datas= mysqli_fetch_assoc($result_image);
+              ?>
+              <tr style='color: #ff8000; width: 100%; height: 125px;  border-spacing: 30px; border:2px solid #ff8000;' class='divek'>
+              <form method="POST">
+              <input type="hidden" name="idcucc2" value="<?php echo $row["id"];?>">
+              </form>
+              <!--Itt kezdődik a kinézete-->
+              <div class="divek">
+              <ul style="list-style: none; padding:0%; margin:0%;display: inline; width: 50%;">
+                <li>
+                    <p class="idid"><?php echo $datas['id'];?></p>
+                </li>
+                <li>
+                    <p class="email"><?php echo $datas['emailcim'];?></p>
+                </li>
+                <li> 
+                    <div class="problemadiv">
+                    <p class="problema"><?php echo $datas['problem'];?></p>
+                    </div>
+                </li>
+                <li> 
+                    <p class="kategoria"><?php echo $datas['kategoria'];?></p>
+                </li>
+                <li> 
+                    <?php 
+                    $megoldott = "nincseldontve";
+                    if ($datas['megoldodott'] == 1){
+                        $megoldott = "Megoldódott";
+                    }
+                    else{
+                        $megoldott = "Még nincs megoldva";
+                    }
+                    ?>
+                    <p class="megoldodott"><?php echo "$megoldott";?></p>
+                </li>
+              </ul>
+              </div>
+              </tr>
+             <?php }}?>
+        </div>
+      </div>
 </body>
 </html>

@@ -28,7 +28,7 @@
     else {
     session_start();
     $regactivation = random_int(100000, 999999);
-    $email = $_SESSION['emailbe'];
+    $email = $_POST['email'];
     $subject = "Regisztráció hitelesítése";
     $body = "Szia! Az imént az email-ed felhasználásával létrehoztál egy fiókot. \nItt találod az aktivációs kódod: $regactivation";
     $headers = "From: support.wildemhu@wildem.hu";
