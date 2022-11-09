@@ -1,0 +1,127 @@
+body{
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(38, 42, 53);
+    border-bottom: #ff8000 2px solid;
+}
+  
+.li {
+    float: left;
+}
+  
+.li-a {
+    display: block;
+    color: #ff8000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+  
+.li-a:hover {
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+}
+.orange-text{
+    color: #ff8000;
+}
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background:  #141414; 
+
+}
+    
+::-webkit-scrollbar-thumb {
+    background:  #ff8000;
+    border-radius: 5px;  
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:  #ff8000; 
+}
+.kuldesgomb{
+    font-size: medium;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    margin-left: 1%;
+    border: #ff8000 1px solid;
+    font-weight: bold;
+}
+.kuldesgomb:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}
+.keresessubmit{
+    margin-top: 2%;
+    margin-left: 1%;
+    font-size: 150%;
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: #ff8000 2px solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.keresessubmit:hover{
+    background-color: #ff8000;
+    color:  rgb(38, 42, 53);
+}
+::placeholder {
+    color: #ff8000 !important ;
+}
+::-ms-input-placeholder {
+    color: #ff8000 !important;
+}
+input.kereses {
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: #ff8000 2px solid;
+    padding-bottom: 0%;
+    border-bottom: 0%;
+    border-radius: 5px;
+    font-size: 150%;
+    margin-left: 40%;
+}
+.adatok_img{
+    border: #ff8000 2px solid;
+    width: 75px;
+    height: 75px;
+    margin-top: 2%;
+    margin-left: 5%;
+    position: absolute;
+}
+.adatok_date{
+    color: #ff8000;
+    font-weight: bold;
+    margin-left: 90%;
+}
+.adatok_rang{
+    margin-left: 30%;
+    font-weight: bold;
+}
+.adatok_name{
+    margin-top: 2%;
+}
+.felhasznalok{
+    width: 50%;
+    border: #ff8000 2px solid;
+    background-color: rgb(38, 42, 53);
+    margin-bottom: 2%;
+    margin-top: 2%;
+    margin-left: 25%;
+    padding: 1%;
+    padding-bottom: 1%;
+    min-height: 100px;
+}
