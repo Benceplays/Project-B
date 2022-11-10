@@ -1,0 +1,104 @@
+body {
+    background-color: rgb(38, 42, 53);
+}
+
+.orange-text{
+    color: #ff8000;
+}
+::placeholder{
+    color: #ff8000;
+}
+:-ms-input-placeholder{
+    color: #ff8000;
+}
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(38, 42, 53);
+    border-bottom: #ff8000 2px solid;
+}
+  
+.li {
+    float: left;
+}
+  
+.li-a {
+    display: block;
+    color: #ff8000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.li-a:hover {
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+}
+::-webkit-scrollbar {
+    width: 9px;
+}
+::-webkit-scrollbar-track {
+    background:  #141414; 
+}
+
+::-webkit-scrollbar-thumb {
+    background:  #ff8000;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background:  #ff8000; 
+}
+.chat_main{
+    border: 2px solid #ff8000;
+    border-top-left-radius: 20px;
+    width: 75%;
+    margin-top: 5%;
+    margin-left: 5%;
+    min-height: 700px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+input[type=chat_input]{
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: 2px solid #ff8000;
+    width: 92.25%;
+    margin-left: 1%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+input[type=chat_input]:focus{
+    background-color: rgb(38, 42, 53);
+    color: #ff8000;
+    border: 2px solid #ff8000;
+}
+.chat_messages{
+    min-height: 650px;
+}
+.chat_button{
+    width: 5%;
+    color: #ff8000;
+    background-color: rgb(38, 42, 53);
+    margin-left: 0.25%;
+    border: 2px solid #ff8000;
+    font-size: large;
+}
+.chat_button:hover{
+    background-color: #ff8000;
+    color: rgb(38, 42, 53);
+}
+.friends_main{
+    border: 2px solid #ff8000;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    width: 15%;
+    min-height: 700px;
+    box-sizing: content-box;
+    display: inline-block;
+    margin-left: 2%;
+    margin-top: 1%;
+}
